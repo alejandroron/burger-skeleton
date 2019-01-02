@@ -5,12 +5,16 @@
       :backAddressProperty='"./#/"' 
       :backTextProperty='"START OVER"' 
       :titleProperty='"CREATE YOUR MENU"' 
-      :nextAddressProperty='"./#/OrderSummary"' 
-      :nextTextProperty='"FINISH ORDER"'/>
-    <Tabs/>
-    <Footer 
+      :nextAddressProperty='"./#/OrderSummary/"' 
+      :nextTextProperty='"FINISH ORDER"'
+      :order='currentOrder'
+      />
+    <Tabs @addedItemToOrder="addItem" />
+    <Footer
       :currentOrder='currentOrder' 
-      :orderTotal='orderTotal' />
+      :orderTotal='orderTotal' 
+      @removeItemFromOrder="removeItem"
+      />
   </div>
 </template>
 
@@ -19,12 +23,9 @@ import Navbar from '@/components/Navbar.vue';
 import Tabs from '@/components/Tab.vue';
 import Footer from '@/components/Footer.vue';
 
-var orderTotal = 12.81;
-
-var exampleItem = {
-  name: "Bacon Deli",
-  imgSrc: require('@/assets/Burgers/Beef/beef2.png')
-};
+// using array because vue live updated array values
+var runningTotal = [ 0.00 ];
+var runningOrder = [];
 
 export default {
   name: 'OrderPage',
@@ -35,8 +36,28 @@ export default {
   },
   data () {
     return {
-      currentOrder: [ exampleItem, exampleItem ],
-      orderTotal: orderTotal
+      currentOrder: runningOrder,
+      orderTotal: runningTotal
+    }
+  },
+  methods: {
+    addItem: function(item) {
+      // add order to order list
+      runningOrder.push({
+        title: item.title,
+        imgSrc: item.imgSrc,
+        price: item.price
+      });
+
+      // update total price, have to use an array unfortunately
+      runningTotal.push(runningTotal[0] + item.price);
+      runningTotal.splice(0, 1);
+    },
+    removeItem: function(itemIndex) {
+      runningTotal.push(runningTotal[0] - runningOrder[itemIndex].price);
+      runningTotal.splice(0, 1);
+
+      runningOrder.splice(itemIndex, 1);
     }
   }
 }
