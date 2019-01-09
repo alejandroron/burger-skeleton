@@ -1,18 +1,20 @@
 <template>
   <div id="container">
-    <Navbar 
+    <Navbar
       :displayButtons='true'
-      :backAddressProperty='"./#/"' 
-      :backTextProperty='"START OVER"' 
-      :titleProperty='"CREATE YOUR MENU"' 
-      :nextAddressProperty='"./#/OrderSummary/"' 
+      :backAddressProperty='"./#/"'
+      :backTextProperty='"START OVER"'
+      :titleProperty='"CREATE YOUR MENU"'
+      :nextAddressProperty='"./#/OrderSummary/"'
       :nextTextProperty='"FINISH ORDER"'
       :order='currentOrder'
       />
-    <Tabs @addedItemToOrder="addItem" />
+    <Tabs
+    @addedItemToOrder="addItem"
+    @changeview="$emit('changeview','BurgerConstruction')"/>
     <Footer
-      :currentOrder='currentOrder' 
-      :orderTotal='orderTotal' 
+      :currentOrder='currentOrder'
+      :orderTotal='orderTotal'
       @removeItemFromOrder="removeItem"
       />
   </div>
