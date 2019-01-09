@@ -1,21 +1,39 @@
 <template>
-<div>
-<Bars :treedata="tree"
-:meatdata="meat"
-:ingredientsdata="ingredients"
-:saucesdata="sauces"
-></Bars>
-</div>
+  <div id="container">
+    <Navbar2
+    :backAddressProperty='"./#/OrderPage"'
+    :backTextProperty='"MAIN PAGE"'
+    :titleProperty='"CREATE YOUR OWN BURGER"'
+      />
+    <Bars
+      :treedata="tree"
+      :meatdata="meat"
+      :ingredientsdata="ingredients"
+      :saucesdata="sauces"
+      />
+    <Footer
+      :currentOrder='currentOrder'
+      :orderTotal='orderTotal'
+      @removeItemFromOrder="removeItem"
+      />
+  </div>
 </template>
 
 <script>
 
-import Bars from './Test1.vue'
+import Navbar2 from '@/components/Navbar2.vue';
+import Bars from './Test1.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Test',
+  components:{
+    Bars,
+    Navbar2,
+    Footer
+  },
   data: ()=> ({
-  
+
 tree: {
   name: "BREAD",
   children: [
@@ -25,8 +43,8 @@ tree: {
       name: "Light Bread"},{
       name: "Ugly Bread"},{
       name: "Cute Bread"}
-     
-    
+
+
   ]
 },
 meat:{
@@ -38,8 +56,8 @@ meat:{
       name: "Light Bread"},{
       name: "Ugly Bread"},{
       name: "Cute Bread"}
-     
-    
+
+
   ]
 },
 ingredients:{
@@ -51,8 +69,8 @@ ingredients:{
       name: "Light Bread"},{
       name: "Ugly Bread"},{
       name: "Cute Bread"}
-     
-    
+
+
   ]
 },
 sauces:{
@@ -64,13 +82,13 @@ sauces:{
       name: "Light Bread"},{
       name: "Ugly Bread"},{
       name: "Cute Bread"}
-     
-    
   ]
 }
-  }),
-    components:{
-    Bars,
-  },
+  })
 }
+
+
 </script>
+
+<style scoped>
+</style>
