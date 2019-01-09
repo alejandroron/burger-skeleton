@@ -18,7 +18,7 @@
         :key="index"
         :model="model">
       </item>
-      
+
     </ul>
   </li>
 
@@ -40,9 +40,6 @@ name: "item",
    Title: function() {
       return this.model.children;
     },
-   Bread: function(){
-     return this.model.name;
-   },
    nonTitle: function(){
       return !this.model.children;
   }
@@ -67,7 +64,7 @@ name: "item",
 
 <style>
 @import url(https://fonts.google.com/specimen/Roboto);
-    
+
 body {
     font-family: 'Roboto';
     text-transform: uppercase;
@@ -123,7 +120,7 @@ left: 10px;
     width: 100px;
     height: 20px;
     justify-content: space-around;
-   
+
 
 }
 
@@ -166,8 +163,18 @@ left: 10px;
 
     border:none;
     padding: 0;
-    
+
 }
+
+
+
+.cd-accordion-menu ul label{
+  background-color: #18271f;
+  box-shadow: inset 0 -1px #141617;
+  padding-left: 82px;
+font-size: 20px;
+}
+</style>
 
 
 
