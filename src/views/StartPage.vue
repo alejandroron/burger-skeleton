@@ -1,30 +1,60 @@
 <template>
     <div class="container">
 
+
+
+      <div id="frontpage"
+      v-if="view==='frontpage'">
       <div class="flags">
         <img src="@/assets/sweden.png">
         <img src="@/assets/uk.png">
       </div>
-
       <div class="title">
         EATING LOCATION
       </div>
 
       <div class="buttons">
-        <a class="dine_in" href="./#/OrderPage">
+        <a class="dine_in" @click="view='orderpage'">
           <img class="dineIN" src="@/assets/dine_in.png">
         </a>
         <a class="take_out" href="./#/OrderPage">
           <img class="takeOUT" src="@/assets/take_out.png">
         </a>
       </div>
-      
+    </div>
+
+    <OrderPage
+    v-if="view==='orderpage'"
+    @changeview="changeView">
+  </OrderPage>
+
+  <BurgerConstruction
+  v-if="view==='BurgerConstruction'">
+  </BurgerConstruction>
+
     </div>
 </template>
 
 <script>
+import OrderPage from './OrderPage.vue';
+import BurgerConstruction from './BurgerConstruction.vue';
+
 export default {
-  name: 'StartPage'
+  name: 'StartPage',
+  components:{
+    OrderPage,
+    BurgerConstruction
+  },
+  data:function(){
+    return{
+      view:'frontpage'
+    }
+  },
+  methods:{
+    changeView:function(view){
+      this.view=view;
+    }
+  }
 }
 </script>
 
