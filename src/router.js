@@ -6,7 +6,7 @@ import StartPage from './views/StartPage.vue';
 import OrderPage from './views/OrderPage.vue';
 import OrderSummaryPage from './views/OrderSummaryPage.vue';
 import OrderCompletedPage from './views/OrderCompletedPage.vue';
-import BurgerConstructionPage from './views/BurgerConstructionPage.vue';
+import BurgerConstruction from './views/BurgerConstruction.vue';
 
 Vue.use(Router);
 
@@ -50,7 +50,7 @@ let router = new Router({
         title: 'Create your own burger',
       },
       name: 'BurgerConstruction',
-      component: BurgerConstructionPage
+      component: BurgerConstruction
     },
     {
       path: '/kitchen',
