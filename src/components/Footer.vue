@@ -20,8 +20,8 @@ export default {
         <div class="removeItem">
           <img src="@/assets/redX.png" />
         </div>
-        <img :src="item.imgSrc">
-        <p>{{ item.title }}</p>
+        <img :src="item.item.imgSrc">
+        <p>{{ item.item.title }}</p>
       </div>
     </div>
 

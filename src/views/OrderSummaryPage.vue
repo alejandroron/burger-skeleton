@@ -25,7 +25,7 @@ export default {
           <img src="@/assets/minus.png" id="minus" width="30px" height="30px">
 
           <div id="name">
-            <h2>{{ item.title }}</h2>
+            <h2>{{ item.item.title }}</h2>
             <!-- <h3>(QUANTITY)</h3> -->
           </div>
 
@@ -33,19 +33,17 @@ export default {
         </div>
 
         <div class="middle">
-          <p>The list of ingredients should be here:</p>
-          <p>- First the bread with a menu in case you want to change it</p>
-          <p>- Then all the ingredients as a list...</p>
-          <p>The list of ingredients should be here:</p>
-          <p>- First the bread with a menu in case you want to change it</p>
-          <p>- Then all the ingredients as a list...</p>
-          <p>The list of ingredients should be here:</p>
-          <p>- First the bread with a menu in case you want to change it</p>
-          <p>- Then all the ingredients as a list...</p>
+          <div v-if="item.item.isBurger===true">
+		  	<div class="ingredient" v-for="(ingredient, index) in item.item.ingredients" :key="index">
+				<p>{{ingredient}} </p>
+			</div>
+			
+		  </div>
+		  
         </div>
 
         <div class="bottom">
-          ${{ item.price.toFixed(2) }}
+          ${{ item.item.price.toFixed(2) }}
         </div>
       </div>
 

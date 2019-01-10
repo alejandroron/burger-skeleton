@@ -7,6 +7,7 @@ import OrderPage from './views/OrderPage.vue';
 import OrderSummaryPage from './views/OrderSummaryPage.vue';
 import OrderCompletedPage from './views/OrderCompletedPage.vue';
 import BurgerConstruction from './views/BurgerConstruction.vue';
+import KitchenOrderPage from './views/KitchenOrderPage.vue';
 
 Vue.use(Router);
 
@@ -27,6 +28,14 @@ let router = new Router({
       },
       name: 'OrderPage',
       component: OrderPage
+    },
+	{
+      path: '/KitchenOrderPage',
+      meta: {
+        title: 'Kitchen Order Screen',
+      },
+      name: 'KitchenOrderPage',
+      component: KitchenOrderPage
     },
     {
       path: '/OrderSummary/:orderString',
@@ -58,7 +67,7 @@ let router = new Router({
         title: 'Kitchen',
       },
       name: 'kitchen',
-      component: () => import('./views/Kitchen.vue')
+      component: () => import('./views/KitchenStartPage.vue')
     }
   ]
 });

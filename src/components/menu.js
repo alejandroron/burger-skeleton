@@ -5,74 +5,108 @@ var menu = {
     beef: [{
       title: 'Double Beef',
       imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
-      price: 1.52
+      price: 1.52,
+	  isBurger: true,
+	  ingredients: ['2 pieces of beef']
     }, {
       title: 'Bacon Deli',
       imgSrc: require('@/assets/Burgers/Beef/beef2.png'),
-      price: 1.31
-    }, {
+      price: 1.31,
+	  isBurger: true,
+	  ingredients:['Beef','Bacon']
+	}, {
       title: 'Chili Burger',
       imgSrc: require('@/assets/Burgers/Beef/beef3.png'),
-      price: 1.41
+      price: 1.41,
+	  isBurger: true,
+	  ingredients:['Beef','Peper']
     }, {
       title: 'Big Beef',
       imgSrc: require('@/assets/Burgers/Beef/beef4.png'),
-      price: 1.19
+      price: 1.19,
+	  isBurger: true,
+	  ingredients:['3 pieces of Beef']
     }, {
       title: 'Double Meat',
       imgSrc: require('@/assets/Burgers/Beef/beef5.png'),
-      price: 1.11
+	  price: 1.11,
+	  isBurger: true,
+	  ingredients:['2 pieces of beef','cheese']
     }],
     chicken: [{
       title: 'Chicken Basic',
       imgSrc: require('@/assets/Burgers/Chicken/chicken1.png'),
-      price: 1.44
+      price: 1.44,
+	  isBurger: true,
+	  ingredients:['chicken','cheese']
     }, {
       title: 'Chicken Deli',
       imgSrc: require('@/assets/Burgers/Chicken/chicken2.png'),
-      price: 2.01
+      price: 2.01,
+	  isBurger: true,
+	  ingredients:['chicken','cheese','tomato']
     }, {
       title: 'Crispy Chicken',
       imgSrc: require('@/assets/Burgers/Chicken/chicken3.png'),
-      price: 1.89
+      price: 1.89,
+	  isBurger: true,
+	  ingredients:['Crispychicken','cheese']
     }, {
       title: 'Large Chicken',
       imgSrc: require('@/assets/Burgers/Chicken/chicken4.png'),
-      price: 1.13
+      price: 1.13,
+	  isBurger: true,
+	  ingredients:['chicken','cheese','tomato']
     }, {
       title: 'Chicken BBQ',
       imgSrc: require('@/assets/Burgers/Chicken/chicken5.png'),
-      price: 2.51
+      price: 2.51,
+	  isBurger: true,
+	  ingredients:['chickenBBQ','cheese']
     }],
     fish: [{
       title: 'Fish Burger',
       imgSrc: require('@/assets/Burgers/Fish/fish1.png'),
-      price: 1.58
+      price: 1.58,
+	  isBurger: true,
+	  ingredients:['fish','cheese','tomato']
     }, {
       title: 'Integral Fish',
       imgSrc: require('@/assets/Burgers/Fish/fish2.png'),
-      price: 1.21
+      price: 1.21,
+	  isBurger: true,
+	  ingredients:['fish','cheese','Integral bread']
     }, {
       title: 'Long Fish',
       imgSrc: require('@/assets/Burgers/Fish/fish3.png'),
-      price: 1.54
+      price: 1.54,
+	  isBurger: true,
+	  ingredients:[' doble fish','cheese']
     }],
     vegetarian: [{
       title: 'Classic Veggie',
       imgSrc: require('@/assets/Burgers/Veggie/veggie1.png'),
-      price: 1.99
+      price: 1.99,
+	  isBurger: true,
+	  ingredients:['tofu','cheese']
     }, {
       title: 'Cripsy Veggie',
       imgSrc: require('@/assets/Burgers/Veggie/veggie2.png'),
-      price: 1.98
+      price: 1.98,
+	  isBurger: true,
+	  ingredients:['tofu','crispy onion','cheese']
     }, {
       title: 'Typical Veg',
       imgSrc: require('@/assets/Burgers/Veggie/veggie3.png'),
-      price: 1.78
+      price: 1.78,
+	  isBurger: true,
+	  ingredients:['tofu','crispy onion','cheese']
     }, {
       title: 'Veggie Cool',
       imgSrc: require('@/assets/Burgers/Veggie/veggie4.png'),
-      price: 1.78
+      price: 1.78,
+	  isBurger: true,
+	  ingredients:['tofu','tomato','cheese','peper']
     }]
   },
   drinks: {
