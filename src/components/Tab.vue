@@ -7,7 +7,8 @@
       return {
         activetab: 'burgers',
         burgers: menu.burgers,
-        drinks: menu.drinks
+        drinks: menu.drinks,
+        sides: menu.sides
       }
     },
     methods: {
@@ -64,12 +65,12 @@
       </div>
   
       <div class="contentItem" id="sidesContent" v-if="activetab === 'sides'">
-        <div v-for="(drinkItems, drinkType) in drinks" :key="drinkType">
+        <div v-for="(sideItems, sideType) in sides" :key="sideType">
           <br>
           <div class="grid-container">
-            <div class="categoryName">{{ drinkType }}</div>
+            <div class="categoryName">{{ sideType }}</div>
             <div class="scrollable">
-              <div class="menuItem" v-for="(item, index) in drinkItems" :key="index">
+              <div class="menuItem" v-for="(item, index) in sideItems" :key="index">
                 <div class="menuPic"><img :src="item.imgSrc" height="70%" width="70%" style="margin-top: 15px;"></div>
                 <div class="menuTitle">{{ item.title }}</div>
               </div>
