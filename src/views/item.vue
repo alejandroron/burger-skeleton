@@ -3,7 +3,7 @@
     <label
       :class="{'open': open}"
       @click="toggle"
-     >
+    >
       {{ model.name }}
     <div class="numbers" v-if="nonTitle">
 <div class = "minuses" v-if="counter!=0">
@@ -58,8 +58,6 @@ name: "item",
     }
   }
 }
-
-
 </script>
 
 <style>
@@ -120,15 +118,12 @@ left: 10px;
     width: 100px;
     height: 20px;
     justify-content: space-around;
-
-
 }
 
 .cd-accordion-menu label .numbers .minuses .minus{
-
     width: 4vh;
     height:4vh;
-  display: inline-block;
+    display: inline-block;
     position:relative;
     float: left;
     margin:0px;
@@ -136,7 +131,6 @@ left: 10px;
     background-color: transparent;
     border:none;
     padding: 0;
-
 }
 
 
@@ -154,7 +148,7 @@ left: 10px;
 .cd-accordion-menu label .numbers .pluses .plus{
    width: 4vh;
     height:4vh;
-  display: inline-block;
+    display: inline-block;
     position:relative;
     background-color: transparent;
     float: right;
@@ -165,18 +159,6 @@ left: 10px;
     padding: 0;
 
 }
-
-
-
-.cd-accordion-menu ul label{
-  background-color: #18271f;
-  box-shadow: inset 0 -1px #141617;
-  padding-left: 82px;
-font-size: 20px;
-}
-</style>
-
-
 
 .cd-accordion-menu ul label{
   background-color: #18271f;
