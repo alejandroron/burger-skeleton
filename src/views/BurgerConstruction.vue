@@ -11,11 +11,11 @@
       :ingredientsdata="ingredients"
       :saucesdata="sauces"
       />
-    <Footer
-      :currentOrder='currentOrder'
-      :orderTotal='orderTotal'
-      @removeItemFromOrder="removeItem"
-      />
+    <!-- <Footer
+      //:currentOrder='currentOrder'
+      //:orderTotal='orderTotal'
+      //@removeItemFromOrder="removeItem"
+      />-->
   </div>
 </template>
 
