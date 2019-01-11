@@ -1,9 +1,13 @@
 <template>
   <div id="container">
-    <Navbar2
-    :backAddressProperty='"./#/OrderPage"'
-    :backTextProperty='"MAIN PAGE"'
-    :titleProperty='"CREATE YOUR OWN BURGER"'
+    <Navbar
+      :displayButtons='true'
+      :backAddressProperty='"./#/OrderPage"'
+      :backTextProperty='"MAIN PAGE"'
+      :titleProperty='"CREATE YOUR OWN BURGER"'
+      :nextAddressProperty='"./#/OrderPage"'
+      :nextTextProperty='"FINISH BURGER"'
+      :order='currentOrder'
       />
     <Bars
       :treedata="tree"
@@ -11,19 +15,13 @@
       :ingredientsdata="ingredients"
       :saucesdata="sauces"
       />
-    <!-- <Footer
-      //:currentOrder='currentOrder'
-      //:orderTotal='orderTotal'
-      //@removeItemFromOrder="removeItem"
-      />-->
   </div>
 </template>
 
 <script>
 
-import Navbar2 from '@/components/Navbar2.vue';
+import Navbar from '@/components/Navbar.vue';
 import Bars from './Test1.vue';
-import Footer from '@/components/Footer.vue';
 
 
 var runningTotal = [ 0.00 ];
@@ -33,48 +31,39 @@ export default {
   name: 'Test',
   components:{
     Bars,
-    Navbar2,
-    Footer
+    Navbar
   },
   data: ()=> ({
 
 tree: {
-  name: "BREAD",
+  name: "BUNS",
   children: [
     {
-      name: "Flat Bread"},{
-      name: "Fat Bread"},{
-      name: "Light Bread"},{
-      name: "Ugly Bread"},{
-      name: "Cute Bread"}
-
-
+      name: "Kaiser Roll"},{
+      name: "Onion Roll"},{
+      name: "Potato Roll"},{
+      name: "Pretzel Roll"},{
+      name: "Sesame Seed Bun"}
   ]
 },
 meat:{
  name: "MEAT",
   children: [
     {
-      name: "Flat Bread"},{
-      name: "Fat Bread"},{
-      name: "Light Bread"},{
-      name: "Ugly Bread"},{
-      name: "Cute Bread"}
-
-
+      name: "Beef"},{
+      name: "Chicken"},{
+      name: "Fish"},{
+      name: "Vegetarian"}
   ]
 },
 ingredients:{
  name: "INGREDIENTS",
   children: [
     {
-      name: "Flat Bread"},{
-      name: "Fat Bread"},{
-      name: "Light Bread"},{
-      name: "Ugly Bread"},{
-      name: "Cute Bread"}
-
-
+      name: "Beef"},{
+      name: "Chicken"},{
+      name: "Fish"},{
+      name: "Vegetarian"}
   ]
 },
 sauces:{
@@ -90,8 +79,6 @@ sauces:{
 },
 currentOrder:runningTotal,
 orderTotal:runningOrder
-      
-
  }),
 
  methods: {
@@ -113,8 +100,6 @@ orderTotal:runningOrder
     },
  }
 }
-
-
 </script>
 
 <style scoped>

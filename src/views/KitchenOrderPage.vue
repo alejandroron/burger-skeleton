@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <Navbar2
+    <Navbar
     :backAddressProperty='"./#/OrderPage"'
     :backTextProperty='"MAIN PAGE"'
     :titleProperty='"CREATE YOUR OWN BURGER"'
@@ -21,7 +21,7 @@
 
 <script>
 
-import Navbar2 from '@/components/Navbar2.vue';
+import Navbar from '@/components/Navbar.vue'; 
 import Bars from './Test1.vue';
 import Footer from '@/components/Footer.vue';
 
@@ -33,7 +33,7 @@ export default {
   name: 'Test',
   components:{
     Bars,
-    Navbar2,
+    Navbar,
     Footer
   },
   data: ()=> ({
