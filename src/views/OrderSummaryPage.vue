@@ -2,6 +2,8 @@
 import Navbar from '@/components/Navbar.vue';
 import sharedVueStuff from '@/components/sharedVueStuff.js';
 
+var removedOrders = [];
+
 export default {
   name: 'Summary',
   components: {
@@ -11,7 +13,9 @@ export default {
   data: function() {
     return {
       orderstr: JSON.parse(this.$route.params.orderString),
-      price:  JSON.parse(this.$route.params.orderString).price[0]
+      price:  JSON.parse(this.$route.params.orderString).price[0],
+      // perhaps not necessary to return this array, just added in case
+      removedItemsArray: removedOrders
     }
   },
   methods:{
@@ -26,10 +30,11 @@ export default {
 
     },
     deleteItem: function(index){
+      removedItems.push(this.orderstr.order[index]);
       this.price = this.price - this.orderstr.order[index]["item"]["price"];
       this.orderstr.order.splice(index, 1);
-
     }
+
 
   }
 }
