@@ -13,14 +13,21 @@ export default {
       orderstr: JSON.parse(this.$route.params.orderString),
     }
   },
-  methods: {
+  methods:{
     placeOrder: function () {
       console.log(this.orderstr[0]["item"]["ingredients"]);
       //Wrap the order in an object
-          
+      var order={
+        str:this.orderstr
+      };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      this.$store.state.socket.emit('order', {order: this.orderstr});
-    } 
+      this.$store.state.socket.emit('order', {order: order});
+
+    },
+    deleteItem: function(index){
+      this.orderstr.splice(index, 1);
+    }
+
   }
 }
 </script>
@@ -31,7 +38,7 @@ export default {
 
     <div class="boxes">
 
-      <div class="item" v-for="(item, index) in orderstr" :key="index">
+      <div class="item" v-for="(item, index) in orderstr" :key="index" >
         <div class="top">
           <img src="@/assets/minus.png" id="minus" width="30px" height="30px">
   

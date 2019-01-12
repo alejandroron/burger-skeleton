@@ -21,7 +21,7 @@ app.use(devMiddleware(compiler, {
   noInfo: false,
   publicPath: webpackConfig.output.publicPath,
   headers: { "Access-Control-Allow-Origin": "*" },
-  stats: { colors: true } 
+  stats: { colors: true }
 }));
 
 const hotMiddleware = require('webpack-hot-middleware'); // eslint-disable-line
@@ -38,18 +38,18 @@ data.initializeData();
 
 io.on('connection', function (socket) {
   // Send list of orders and text labels when a client connects
-  socket.emit('initialize', { 
+  socket.emit('initialize', {
     orders: data.getAllOrders(),
     uiLabels: data.getUILabels()
   });
 
   // When someone orders something
   socket.on('order', function (order) {
-	
+	console.log(order.order.str[0]["item"]["ingredients"]);
     var orderIdAndName = data.addOrder(order);
-     
+
     socket.emit('orderNumber', orderIdAndName);
-    io.emit('currentQueue', { 
+    io.emit('currentQueue', {
       orders: data.getAllOrders(),
       /*ingredients: data.getIngredients()-->*/
     });
