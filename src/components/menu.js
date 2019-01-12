@@ -23,14 +23,14 @@ var menu = {
       price: 1.41,
       isBurger: true,
       ingredients:['Beef','Peper']
-    }, 
+    },
     {
       title: 'Big Beef',
       imgSrc: require('@/assets/Burgers/Beef/beef4.png'),
       price: 1.19,
       isBurger: true,
       ingredients:['3 pieces of Beef']
-    }, 
+    },
     {
       title: 'Double Meat',
       imgSrc: require('@/assets/Burgers/Beef/beef5.png'),
@@ -53,7 +53,7 @@ var menu = {
       price: 2.01,
       isBurger: true,
       ingredients:['chicken','cheese','tomato']
-    }, 
+    },
     {
       title: 'Crispy Chicken',
       imgSrc: require('@/assets/Burgers/Chicken/chicken3.png'),
@@ -67,7 +67,7 @@ var menu = {
       price: 1.13,
       isBurger: true,
       ingredients:['chicken','cheese','tomato']
-    }, 
+    },
     {
       title: 'Chicken BBQ',
       imgSrc: require('@/assets/Burgers/Chicken/chicken5.png'),
@@ -83,14 +83,14 @@ var menu = {
       price: 1.58,
       isBurger: true,
       ingredients:['fish','cheese','tomato']
-    }, 
+    },
     {
       title: 'Integral Fish',
       imgSrc: require('@/assets/Burgers/Fish/fish2.png'),
       price: 1.21,
       isBurger: true,
       ingredients:['fish','cheese','Integral bread']
-    }, 
+    },
     {
       title: 'Long Fish',
       imgSrc: require('@/assets/Burgers/Fish/fish3.png'),
@@ -217,7 +217,7 @@ var menu = {
       },
       {
         title: 'French Fries',
-        imgSrc: require('@/assets/Sides/Fries/french_fries.png'),
+        imgSrc: require('@/assets/Sides/Fries/french-fries.png'),
         price: 3.49
       },
       {
@@ -227,7 +227,7 @@ var menu = {
       },
       {
         title: 'Onion Rings',
-        imgSrc: require('@/assets/Sides/Fries/onion_rings.png'),
+        imgSrc: require('@/assets/Sides/Fries/onion-rings.png'),
         price: 3.49
       },
       {

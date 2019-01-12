@@ -1,6 +1,6 @@
 <script>
   import menu from '@/components/menu.js';
-  
+
   export default {
     name: 'Tabs',
     data: function() {
@@ -21,13 +21,13 @@
 
 <template>
   <div class="wrapper">
-  
+
     <div class="flaps">
       <a class="flap" id="burgersFlap" v-on:click="activetab='burgers'"> BURGERS </a>
       <a class="flap" id="drinksFlap" v-on:click="activetab='drinks'"> DRINKS </a>
       <a class="flap" id="sidesFlap" v-on:click="activetab='sides'"> SIDES </a>
     </div>
-  
+
     <div class="content">
       <div class="contentItem" id="burgersContent" v-if="activetab === 'burgers'">
         <a href="./#/BurgerConstruction">
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-  
+
       <div class="contentItem" id="drinksContent" v-if="activetab === 'drinks'">
         <div v-for="(drinkItems, drinkType) in drinks" :key="drinkType">
           <br>
@@ -63,14 +63,14 @@
           </div>
         </div>
       </div>
-  
+
       <div class="contentItem" id="sidesContent" v-if="activetab === 'sides'">
         <div v-for="(sideItems, sideType) in sides" :key="sideType">
           <br>
           <div class="grid-container">
             <div class="categoryName">{{ sideType }}</div>
             <div class="scrollable">
-              <div class="menuItem" v-for="(item, index) in sideItems" :key="index">
+              <div class="menuItem" v-for="(item, index) in sideItems" :key="index" @click="addItem(item)">
                 <div class="menuPic"><img :src="item.imgSrc" height="70%" width="70%" style="margin-top: 15px;"></div>
                 <div class="menuTitle">{{ item.title }}</div>
               </div>
@@ -79,7 +79,7 @@
         </div>
       </div>
     </div>
-  
+
   </div>
 </template>
 
@@ -91,7 +91,7 @@
     height: 45px;
     justify-content: center;
   }
-  
+
   .flap {
     /* Visual properties */
     height: 45px;
@@ -106,41 +106,41 @@
     text-align: center;
     line-height: 45px;
   }
-  
+
   #burgersFlap {
     order: 0;
     background-color: #ffc500;
   }
-  
+
   #drinksFlap {
     order: 1;
     background-color: black;
   }
-  
+
   #sidesFlap {
     order: 2;
     background-color: #3c40c6;
   }
-  
+
   .content {
     margin-top: 80px;
     margin-bottom: 100px;
   }
-  
+
   .contentItem {
     width: 100%;
     min-height: 100vh;
     padding: 20px;
   }
-  
+
   #burgersContent {
     background-color: #ffc500;
   }
-  
+
   #drinksContent {
     background-color: #000000;
   }
-  
+
   #sidesContent {
     background-color: #3c40c6;
   }
@@ -159,29 +159,29 @@
     text-transform: uppercase;
     line-height: 150px;
   }
-  
+
   .personalisedBurger:hover {
     cursor: pointer;
     box-shadow: 0px 0px 0px 1px white inset;
   }
-  
+
   .personalisedBurger:active {
     background-color: #2D353C;
   }
-  
+
   .personalisedBurger p {
     display: inline-block;
     vertical-align: middle;
     line-height: 60px;
   }
-  
+
   .grid-container {
     margin-top: 10px;
     display: grid;
     grid-template-rows: 40px 200px;
     grid-template-areas: "categoryName" "burgers";
   }
-  
+
   .categoryName {
     grid-area: categoryName;
     color: white;
@@ -190,7 +190,7 @@
     font-weight: bold;
     text-transform: uppercase;
   }
-  
+
   .scrollable {
     grid-area: burgers;
     overflow: auto;
@@ -199,28 +199,28 @@
     grid-template-columns: 202px 202px 202px 202px 202px;
     grid-template-areas: "burger1 burger2 burger3 burger4 burger5";
   }
-  
+
   .menuItem:hover {
     cursor: pointer;
     box-shadow: 0px 0px 0px 1px white inset;
     border-radius: 10px;
   }
-  
+
   .menuItem:active {
     background-color: white;
     background: rgba(0, 0, 0, 0.5);
   }
-  
+
   .menuPic {
     grid-area: menuPic;
   }
-  
+
   .menuPic img {
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .menuTitle {
     grid-area: menuTitle;
     color: white;
