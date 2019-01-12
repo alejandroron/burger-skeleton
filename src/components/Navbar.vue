@@ -11,11 +11,16 @@
       'nextAddressProperty',
       'nextTextProperty',
 
-      'order'
+      'order',
+      'totalPrice'
     ],
     methods: {
       convertOrdersToString() {
-        var truncatedOrderString = JSON.stringify(this.order);
+        var order = {
+          price:this.totalPrice,
+          order:this.order
+        };
+        var truncatedOrderString = JSON.stringify(order);
         // regex expression for removing the imgSrc property of the string
         // vue doesn't like this property being passed
         return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
@@ -36,7 +41,7 @@
       <a :href="nextAddressProperty + convertOrdersToString()" v-if="displayButtons">
         <div class="button" id="nextButton"> {{ nextTextProperty }} </div>
       </a>
-      
+
   </div>
 </template>
 

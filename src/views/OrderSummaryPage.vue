@@ -11,21 +11,24 @@ export default {
   data: function() {
     return {
       orderstr: JSON.parse(this.$route.params.orderString),
+      price:  JSON.parse(this.$route.params.orderString).price[0]
     }
   },
   methods:{
     placeOrder: function () {
-      console.log(this.orderstr[0]["item"]["ingredients"]);
+      console.log(this.orderstr.order[0]["item"]["ingredients"]);
       //Wrap the order in an object
       var order={
-        str:this.orderstr
+        str:this.orderstr.order
       };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
 
     },
     deleteItem: function(index){
-      this.orderstr.splice(index, 1);
+      this.price = this.price - this.orderstr.order[index]["item"]["price"];
+      this.orderstr.order.splice(index, 1);
+
     }
 
   }
@@ -38,7 +41,7 @@ export default {
 
     <div class="boxes">
 
-      <div class="item" v-for="(item, index) in orderstr" :key="index" >
+      <div class="item" v-for="(item, index) in orderstr.order" :key="index" >
         <div class="top">
           <img src="@/assets/minus.png" id="minus" width="30px" height="30px">
   
@@ -59,6 +62,12 @@ export default {
       </div>
 
     </div>
+
+    <a>
+      <div class="totalPrice">
+        <p>TOTAL: {{ this.price.toFixed(2) }}</p>
+      </div>
+    </a>
 
     <a href="./#/OrderPage">
       <div class="modify">
@@ -197,7 +206,16 @@ h3 {
   background-color: #0C44D1;
 }
 
-.pay p, .modify p {
+.totalPrice {
+  cursor: pointer;
+  bottom: 80px;
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  background-color: #0C44D1;
+}
+
+.pay p, .modify p, .totalPrice p {
   text-align: center;
   line-height: 40px;
   color: white;

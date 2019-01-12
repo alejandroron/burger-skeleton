@@ -7,7 +7,13 @@
       :titleProperty='"CREATE YOUR MENU"'
       :nextAddressProperty='"./#/OrderSummary/"'
       :nextTextProperty='"FINISH ORDER"'
+<<<<<<< HEAD
       :order='currentOrder' />
+=======
+      :order='currentOrder'
+      :totalPrice='orderTotal'
+      />
+>>>>>>> 37764845c0ae8333812a78153fcadb6a19a69475
     <Tabs
       @addedItemToOrder="addItem"
       @changeview="$emit('changeview','BurgerConstruction')" />
@@ -46,11 +52,11 @@ export default {
       runningOrder.push({
        item:item
       });
-		
+
       // update total price, have to use an array unfortunately
       runningTotal.push(runningTotal[0] + item.price);
       runningTotal.splice(0, 1);
-    },	
+    },
     removeItem: function(itemIndex) {
       runningTotal.push(runningTotal[0] - runningOrder[itemIndex].item.price);
       runningTotal.splice(0, 1);
