@@ -2,6 +2,8 @@
 import Navbar from '@/components/Navbar.vue';
 import sharedVueStuff from '@/components/sharedVueStuff.js';
 
+var removedOrders = [];
+
 export default {
   name: 'Summary',
   components: {
@@ -11,7 +13,9 @@ export default {
   data: function() {
     return {
       orderstr: JSON.parse(this.$route.params.orderString),
-      price:  JSON.parse(this.$route.params.orderString).price[0]
+      price:  JSON.parse(this.$route.params.orderString).price[0],
+      // perhaps not necessary to return this array, just added in case
+      removedItemsArray: removedOrders
     }
   },
   methods:{
@@ -26,10 +30,11 @@ export default {
 
     },
     deleteItem: function(index){
+      removedItems.push(this.orderstr.order[index]);
       this.price = this.price - this.orderstr.order[index]["item"]["price"];
       this.orderstr.order.splice(index, 1);
-
     }
+
 
   }
 }
@@ -43,8 +48,9 @@ export default {
 
       <div class="item" v-for="(item, index) in orderstr.order" :key="index" >
         <div class="top">
-          <img src="@/assets/minus.png" id="minus" width="30px" height="30px">
-  
+          <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/redX.png" id="minus" width="30px" height="30px"></button>
+
+
           <h2 id="name">{{ item.item.title }}</h2>
         </div>
 
@@ -105,6 +111,19 @@ h3 {
   font-size: 20px;
   font-weight: normal;
 }
+
+#delete {
+  width : 30px;
+  heigh: 30px;
+  cursor: pointer;
+  margin-right: -5px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background-color: transparent;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+  border: none;
+}
+
 
 .boxes {
   margin-top: 90px;
