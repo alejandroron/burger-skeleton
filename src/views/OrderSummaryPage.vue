@@ -22,20 +22,23 @@ export default {
     placeOrder: function () {
       // console.log(this.orderstr.order[0]["item"]["ingredients"]);
       //Wrap the order in an object
-      var order={
-        str:this.orderstr.order
+      var order = {
+        str: this.orderstr.order
       };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      this.$store.state.socket.emit('order', {order: order});
-
+      this.$store.state.socket.emit('order', { order: order });
     },
-    deleteItem: function(index){
+    deleteItem: function(index) {
       removedOrders.push(this.orderstr.order[index]);
       this.price = this.price - this.orderstr.order[index]["item"]["price"];
       this.orderstr.order.splice(index, 1);
+    },
+    incrementItem: function(item) {
+      alert(item);
+    },
+    decrementItem: function(item) {
+      alert(item);
     }
-
-
   }
 }
 </script>
@@ -49,16 +52,26 @@ export default {
       <div class="item" v-for="(item, index) in orderstr.order" :key="index" >
         <div class="top">
           <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/redX.png" id="minus" width="30px" height="30px"></button>
-
-
           <h2 id="name">{{ item.item.title }}</h2>
         </div>
 
         <div class="middle">
-          <div v-if="item.item.isBurger===true">
-            <div class="ingredient" v-for="(ingredient, index) in item.item.ingredients" :key="index">
-              <p> {{ingredient}} </p>
-            </div>
+          <div v-if="item.item.isBurger">
+            <ul class="ingredientList">
+              <li class="ingredient" v-for="(ingredient, index) in item.item.ingredients" :key="index">
+                <span>{{ ingredient }}</span>
+                <div class="ingredientInfo">
+                  <button class="minus" v-on:click="incrementItem(item)">
+                  <img src="@/assets/minus.png">
+                  </button>
+                  <span class="ingredientCount">1</span>
+                  <button class="plus" v-on:click="decrementItem(item)">
+                    <img src="@/assets/plus.png">
+                  </button>
+                </div>
+                
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -114,7 +127,6 @@ h3 {
 
 #delete {
   width : 30px;
-  heigh: 30px;
   cursor: pointer;
   margin-right: -5px;
   margin-top: -5px;
@@ -123,7 +135,6 @@ h3 {
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
   border: none;
 }
-
 
 .boxes {
   margin-top: 90px;
@@ -162,17 +173,18 @@ h3 {
   */
 }
 
-#minus {
+.plus, .minus {
+  background-color: transparent;
   cursor: pointer;
-  margin-left: 10px;
-  margin-top: 14px;
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
 }
 
-#plus {
-  cursor: pointer;
-  margin-right: 10px;
-  margin-top: 14px;
+.minus img, .plus img {
+  margin: -2px 0 0 -8px;
+  width: 20px;
+  height: 20px;
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
 }
 
@@ -204,6 +216,25 @@ h3 {
   Black: #171717
   Purple: #303398
   */
+}
+
+.ingredientList {
+  margin: 0;
+}
+
+.ingredient {
+  color: white;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+
+.ingredientInfo {
+  float: right;
+}
+
+.ingredientCount {
+  font-size: 23px;
+  margin: 0 8px;
 }
 /* Modify and Pay buttons */
 
