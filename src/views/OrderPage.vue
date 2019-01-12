@@ -8,6 +8,7 @@
       :nextAddressProperty='"./#/OrderSummary/"'
       :nextTextProperty='"FINISH ORDER"'
       :order='currentOrder'
+      :totalPrice='orderTotal'
       />
     <Tabs
     @addedItemToOrder="addItem"
@@ -48,11 +49,11 @@ export default {
       runningOrder.push({
        item:item
       });
-		
+
       // update total price, have to use an array unfortunately
       runningTotal.push(runningTotal[0] + item.price);
       runningTotal.splice(0, 1);
-    },	
+    },
     removeItem: function(itemIndex) {
       runningTotal.push(runningTotal[0] - runningOrder[itemIndex].item.price);
       runningTotal.splice(0, 1);
