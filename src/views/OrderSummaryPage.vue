@@ -30,7 +30,7 @@ export default {
 
     },
     deleteItem: function(index){
-      removedItems.push(this.orderstr.order[index]);
+      removedOrders.push(this.orderstr.order[index]);
       this.price = this.price - this.orderstr.order[index]["item"]["price"];
       this.orderstr.order.splice(index, 1);
     }

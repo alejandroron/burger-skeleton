@@ -2,10 +2,7 @@
 <div class="component">
   <ul class="cd-accordion-menu">
     <li v-for="dropdown in menuData" :key="dropdown">
-      <DropDownComponent
-        :model="dropdown"
-        @addIngredientToBurger="addIngredient"
-        />
+      <DropDownComponent :model="dropdown" />
     </li>
   </ul>
 </div>
@@ -13,22 +10,12 @@
 
 <script>
 import DropDownComponent from '../components/DropDownComponent.vue';
-
-export default{
-  name: 'Bars',
+export default {
+  name: 'AccordianMenu',
   props: {
     menuData: Object,
   },
-  components: { DropDownComponent },
-   methods:{
-     addIngredient: function() {
-
-       console.log("dfwe");
-  //
-  //     this.$emit('addIngredient', a); // talking to order page
-  //
-     }
-   }
+  components: { DropDownComponent }
 }
 </script>
 

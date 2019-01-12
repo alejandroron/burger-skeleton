@@ -45,7 +45,7 @@ export default {
     addItem: function(item) {
       // add order to order list
       runningOrder.push({
-       item:item
+       item: item
       });
 
       // update total price, have to use an array unfortunately

@@ -22,7 +22,7 @@ var menu = {
       imgSrc: require('@/assets/Burgers/Beef/beef3.png'),
       price: 1.41,
       isBurger: true,
-      ingredients:['Beef','Peper']
+      ingredients:['Beef','Pepper']
     },
     {
       title: 'Big Beef',
@@ -126,7 +126,7 @@ var menu = {
       imgSrc: require('@/assets/Burgers/Veggie/veggie4.png'),
       price: 1.78,
       isBurger: true,
-      ingredients:['tofu','tomato','cheese','peper']
+      ingredients:['tofu','tomato','cheese','pepper']
     }
   ]
   },
