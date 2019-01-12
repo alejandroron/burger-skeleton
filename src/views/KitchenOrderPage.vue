@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <Navbar2
+    <!--<Navbar2
     :backAddressProperty='"./#/OrderPage"'
     :backTextProperty='"MAIN PAGE"'
     :titleProperty='"CREATE YOUR OWN BURGER"'
@@ -10,12 +10,18 @@
       :meatdata="meat"
       :ingredientsdata="ingredients"
       :saucesdata="sauces"
-      />
-    <!-- <Footer
-      //:currentOrder='currentOrder'
-      //:orderTotal='orderTotal'
-      //@removeItemFromOrder="removeItem"
       />-->
+	   <OrderItemToPrepare
+      v-for="(order, key) in orders"
+      v-if="order.status !== 'done'"
+      v-on:done="markDone(key)"
+      :order-id="key"
+      :order="order" 
+      :ui-labels="uiLabels"
+      :lang="lang"
+      :key="key">
+</OrderItemToPrepare>
+    
   </div>
 </template>
 
@@ -23,7 +29,7 @@
 
 import Navbar2 from '@/components/Navbar2.vue';
 import Bars from './Test1.vue';
-import Footer from '@/components/Footer.vue';
+import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue';
 
 
 var runningTotal = [ 0.00 ];
@@ -33,8 +39,7 @@ export default {
   name: 'Test',
   components:{
     Bars,
-    Navbar2,
-    Footer
+    Navbar2
   },
   data: ()=> ({
 

@@ -25,7 +25,7 @@ function Data() {
   the CSV file, plus a calculated amount in stock, based on
   transactions.
 */
-Data.prototype.getIngredients = function () {
+/*Data.prototype.getIngredients = function () {
   var d = this.data;
   return d[ingredientsDataName].map(function (obj) {
     obj.stock = d[transactionsDataName].reduce(function (sum, trans) {
@@ -37,7 +37,7 @@ Data.prototype.getIngredients = function () {
     }, 0);
     return obj;
   });
-};
+};*/
 
 /*
   Function to load initial data from CSV files into the object
@@ -74,7 +74,7 @@ Data.prototype.addOrder = function (order) {
   this.orders[orderId] = order.order;
   this.orders[orderId].orderId = orderId;
   this.orders[orderId].status = "not-started";
-  var transactions = this.data[transactionsDataName],
+  /*var transactions = this.data[transactionsDataName],
     //find out the currently highest transaction id
     transId =  transactions[transactions.length - 1].transaction_id,
     i = order.order.ingredients,
@@ -87,7 +87,7 @@ Data.prototype.addOrder = function (order) {
       ingredient_id: i[k].ingredient_id,
       change: - 2
     });
-  }
+  }*/
     
   return orderId;
 };

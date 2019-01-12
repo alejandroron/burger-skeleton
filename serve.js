@@ -40,18 +40,18 @@ io.on('connection', function (socket) {
   // Send list of orders and text labels when a client connects
   socket.emit('initialize', { 
     orders: data.getAllOrders(),
-    uiLabels: data.getUILabels(),
-    ingredients: data.getIngredients() 
+    uiLabels: data.getUILabels()
   });
 
   // When someone orders something
   socket.on('order', function (order) {
+	
     var orderIdAndName = data.addOrder(order);
-    // send updated info to all connected clients, note the use of io instead of socket
+     
     socket.emit('orderNumber', orderIdAndName);
     io.emit('currentQueue', { 
       orders: data.getAllOrders(),
-      ingredients: data.getIngredients()
+      /*ingredients: data.getIngredients()-->*/
     });
   });
 

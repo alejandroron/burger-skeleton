@@ -1,16 +1,32 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
+import sharedVueStuff from '@/components/sharedVueStuff.js';
 
 export default {
   name: 'Summary',
   components: {
     Navbar
+	
   },
-  data() {
+  mixins: [sharedVueStuff],
+  data:function() {
     return {
-      order: JSON.parse(this.$route.params.orderString)
+      orderstr: JSON.parse(this.$route.params.orderString),
+	  
     }
-  }
+  },
+  methods:{
+	placeOrder: function () {
+      console.log(this.orderstr[0]["item"]["ingredients"]);
+      //Wrap the order in an object
+        
+      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+      this.$store.state.socket.emit('order', {order: this.orderstr});
+	  
+     } 
+      
+    }
+  
 }
 </script>
 
@@ -20,7 +36,7 @@ export default {
 
     <div class="boxes">
 
-      <div class="item" v-for="(item, index) in order" :key="index">
+      <div class="item" v-for="(item, index) in orderstr" :key="index">
         <div class="top">
           <img src="@/assets/minus.png" id="minus" width="30px" height="30px">
 
@@ -56,7 +72,7 @@ export default {
       </div>
     </a>
 
-    <a href="./#/OrderCompleted">
+    <a href="./#/OrderCompleted" v-on:click="placeOrder()">
       <div class="pay">
         <p>PAY</p>
       </div>
