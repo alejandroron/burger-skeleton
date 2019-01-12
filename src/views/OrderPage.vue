@@ -8,16 +8,14 @@
       :nextAddressProperty='"./#/OrderSummary/"'
       :nextTextProperty='"FINISH ORDER"'
       :order='currentOrder'
-      :totalPrice='orderTotal'
-      />
+      :totalPrice='orderTotal' />
     <Tabs
-    @addedItemToOrder="addItem"
-    @changeview="$emit('changeview','BurgerConstruction')"/>
+      @addedItemToOrder="addItem"
+      @changeview="$emit('changeview','BurgerConstruction')" />
     <Footer
       :currentOrder='currentOrder'
       :orderTotal='orderTotal'
-      @removeItemFromOrder="removeItem"
-      />
+      @removeItemFromOrder="removeItem" />
   </div>
 </template>
 

@@ -6,10 +6,9 @@ export default {
   name: 'Summary',
   components: {
     Navbar
-
   },
-  mixins: [sharedVueStuff],
-  data:function() {
+  mixins: [ sharedVueStuff ],
+  data: function() {
     return {
       orderstr: JSON.parse(this.$route.params.orderString),
       price:  JSON.parse(this.$route.params.orderString).price[0]
@@ -17,7 +16,7 @@ export default {
   },
   methods:{
     placeOrder: function () {
-      console.log(this.orderstr.order[0]["item"]["ingredients"]);
+      // console.log(this.orderstr.order[0]["item"]["ingredients"]);
       //Wrap the order in an object
       var order={
         str:this.orderstr.order
@@ -33,7 +32,6 @@ export default {
     }
 
   }
-
 }
 </script>
 
@@ -45,26 +43,17 @@ export default {
 
       <div class="item" v-for="(item, index) in orderstr.order" :key="index" >
         <div class="top">
-          <div @click="deleteItem(index)">
-            <img src="@/assets/minus.png" id="minus" width="30px" height="30px">
-          </div>
-
-
-          <div id="name">
-            <h2>{{ item.item.title }}</h2>
-          </div>
-
-          <img src="@/assets/plus.png" id="plus" width="30px" height="30px">
+          <img src="@/assets/minus.png" id="minus" width="30px" height="30px">
+  
+          <h2 id="name">{{ item.item.title }}</h2>
         </div>
 
         <div class="middle">
           <div v-if="item.item.isBurger===true">
             <div class="ingredient" v-for="(ingredient, index) in item.item.ingredients" :key="index">
-              <p>{{ingredient}} </p>
+              <p> {{ingredient}} </p>
             </div>
-
           </div>
-
         </div>
 
         <div class="bottom">
@@ -144,7 +133,6 @@ h3 {
 
 .item .top {
   display: flex;
-  justify-content: space-between;
   height: 58px;
   border-radius: 5px 5px 0px 0px;
   background-color: #EF9D00;
@@ -162,21 +150,19 @@ h3 {
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
 }
 
-#name {
-  margin-top: 8px;
-  margin-left: -10px;
-  margin-right: -10px;
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  line-height: 48px;
-}
-
 #plus {
   cursor: pointer;
   margin-right: 10px;
   margin-top: 14px;
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+}
+
+#name {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  line-height: 58px;
+  margin-left: 60px;
 }
 
 .item .middle {
