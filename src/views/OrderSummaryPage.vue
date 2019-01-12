@@ -42,7 +42,6 @@ export default {
 
           <div id="name">
             <h2>{{ item.item.title }}</h2>
-            <!-- <h3>(QUANTITY)</h3> -->
           </div>
 
           <img src="@/assets/plus.png" id="plus" width="30px" height="30px">
@@ -155,6 +154,7 @@ h3 {
   color: white;
   font-size: 20px;
   text-align: center;
+  line-height: 48px;
 }
 
 #plus {

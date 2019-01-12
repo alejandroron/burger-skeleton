@@ -41,11 +41,11 @@ var menu = {
     ],
   chicken: [
     {
-    title: 'Chicken Basic',
-    imgSrc: require('@/assets/Burgers/Chicken/chicken1.png'),
-    price: 1.44,
-	  isBurger: true,
-	  ingredients:['chicken','cheese']
+      title: 'Chicken Basic',
+      imgSrc: require('@/assets/Burgers/Chicken/chicken1.png'),
+      price: 1.44,
+      isBurger: true,
+      ingredients: ['chicken','cheese']
     },
     {
       title: 'Chicken Deli',
@@ -95,8 +95,8 @@ var menu = {
       title: 'Long Fish',
       imgSrc: require('@/assets/Burgers/Fish/fish3.png'),
       price: 1.54,
-	  isBurger: true,
-	  ingredients:[' doble fish','cheese']
+      isBurger: true,
+      ingredients: ['doble fish','cheese']
     }
   ],
   vegetarian: [
