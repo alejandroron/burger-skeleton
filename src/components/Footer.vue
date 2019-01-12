@@ -88,7 +88,7 @@ export default {
   margin-right: 15px;
 }
 
-.total { 
+.total {
   padding: 5px;
   background-color: #416451;
   color: #ffffff;
