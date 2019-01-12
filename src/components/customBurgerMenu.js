@@ -28,6 +28,7 @@ var customBurgerMenu = {
       { name: "Tomato" , price: 1.52, imgSrc: require('@/assets/Burgers/Beef/beef1.png') },
       { name: "Pickles", price: 1.52, imgSrc: require('@/assets/Burgers/Beef/beef1.png') },
       { name: "Onions", price: 1.52, imgSrc: require('@/assets/Burgers/Beef/beef1.png') },
+      { name: "Peppers", price: 1.52, imgSrc: require('@/assets/Burgers/Beef/beef1.png') },
     ]
   },
   sauces: {
