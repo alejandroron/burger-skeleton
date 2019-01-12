@@ -212,7 +212,7 @@ var menu = {
     fries: [
       {
         title: 'Chillicheese',
-        imgSrc: require('@/assets/Sides/Fries/Chillicheese.png'),
+        imgSrc: require('@/assets/Sides/Fries/chillicheese.png'),
         price: 3.49
       },
       {
@@ -232,14 +232,14 @@ var menu = {
       },
       {
         title: 'Chicken Wings',
-        imgSrc: require('@/assets/Sides/Fries/Wings.png'),
+        imgSrc: require('@/assets/Sides/Fries/wings.png'),
         price: 5.49
       }
     ],
     sauces: [
       {
         title: 'BBQ',
-        imgSrc: require('@/assets/Sides/Sauces/BBQ.png'),
+        imgSrc: require('@/assets/Sides/Sauces/bbq.png'),
         price: 3.45
       },
       {
@@ -254,12 +254,12 @@ var menu = {
       },
       {
         title: 'Original',
-        imgSrc: require('@/assets/Sides/Sauces/Original.png'),
+        imgSrc: require('@/assets/Sides/Sauces/original.png'),
         price: 2.76
       },
       {
         title: 'Ranch',
-        imgSrc: require('@/assets/Sides/Sauces/Ranch.png'),
+        imgSrc: require('@/assets/Sides/Sauces/ranch.png'),
         price: 5.51
       }
     ],
@@ -276,7 +276,7 @@ var menu = {
       },
       {
         title: 'Strawberry',
-        imgSrc: require('@/assets/Sides/Shakes/Strawberry.png'),
+        imgSrc: require('@/assets/Sides/Shakes/strawberry.png'),
         price: 4.99
       }
     ]
