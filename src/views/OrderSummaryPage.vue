@@ -6,27 +6,22 @@ export default {
   name: 'Summary',
   components: {
     Navbar
-	
   },
-  mixins: [sharedVueStuff],
-  data:function() {
+  mixins: [ sharedVueStuff ],
+  data: function() {
     return {
       orderstr: JSON.parse(this.$route.params.orderString),
-	  
     }
   },
-  methods:{
-	placeOrder: function () {
+  methods: {
+    placeOrder: function () {
       console.log(this.orderstr[0]["item"]["ingredients"]);
       //Wrap the order in an object
-        
+          
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: this.orderstr});
-	  
-     } 
-      
-    }
-  
+    } 
+  }
 }
 </script>
 
@@ -39,22 +34,16 @@ export default {
       <div class="item" v-for="(item, index) in orderstr" :key="index">
         <div class="top">
           <img src="@/assets/minus.png" id="minus" width="30px" height="30px">
-
-          <div id="name">
-            <h2>{{ item.item.title }}</h2>
-          </div>
-
-          <img src="@/assets/plus.png" id="plus" width="30px" height="30px">
+  
+          <h2 id="name">{{ item.item.title }}</h2>
         </div>
 
         <div class="middle">
           <div v-if="item.item.isBurger===true">
-		  	<div class="ingredient" v-for="(ingredient, index) in item.item.ingredients" :key="index">
-				<p>{{ingredient}} </p>
-			</div>
-			
-		  </div>
-		  
+		  	    <div class="ingredient" v-for="(ingredient, index) in item.item.ingredients" :key="index">
+				      <p> {{ingredient}} </p>
+			      </div>
+		      </div>
         </div>
 
         <div class="bottom">
@@ -63,7 +52,6 @@ export default {
       </div>
 
     </div>
-
 
     <a href="./#/OrderPage">
       <div class="modify">
@@ -129,7 +117,6 @@ h3 {
 
 .item .top {
   display: flex;
-  justify-content: space-between;
   height: 58px;
   border-radius: 5px 5px 0px 0px;
   background-color: #EF9D00;
@@ -147,21 +134,19 @@ h3 {
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
 }
 
-#name {
-  margin-top: 8px;
-  margin-left: -10px;
-  margin-right: -10px;
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  line-height: 48px;
-}
-
 #plus {
   cursor: pointer;
   margin-right: 10px;
   margin-top: 14px;
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+}
+
+#name {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  line-height: 58px;
+  margin-left: 60px;
 }
 
 .item .middle {
