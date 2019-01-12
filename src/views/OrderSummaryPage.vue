@@ -43,8 +43,9 @@ export default {
 
       <div class="item" v-for="(item, index) in orderstr.order" :key="index" >
         <div class="top">
-          <img src="@/assets/minus.png" id="minus" width="30px" height="30px">
-  
+          <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/redX.png" id="minus" width="30px" height="30px"></button>
+
+
           <h2 id="name">{{ item.item.title }}</h2>
         </div>
 
@@ -105,6 +106,19 @@ h3 {
   font-size: 20px;
   font-weight: normal;
 }
+
+#delete {
+  width : 30px;
+  heigh: 30px;
+  cursor: pointer;
+  margin-right: -5px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background-color: transparent;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+  border: none;
+}
+
 
 .boxes {
   margin-top: 90px;
