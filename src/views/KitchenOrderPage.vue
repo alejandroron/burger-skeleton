@@ -39,8 +39,7 @@ export default {
   name: 'Test',
   components:{
     Bars,
-    Navbar,
-    Footer
+    Navbar
   },
   data: ()=> ({
 
