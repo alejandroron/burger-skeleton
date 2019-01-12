@@ -2,7 +2,10 @@
 <div class="component">
   <ul class="cd-accordion-menu">
     <li v-for="dropdown in menuData" :key="dropdown">
-      <DropDownComponent :model="dropdown"></DropDownComponent>
+      <DropDownComponent
+        :model="dropdown"
+        @addIngredientToBurger="addIngredient"
+        />
     </li>
   </ul>
 </div>
@@ -17,6 +20,15 @@ export default{
     menuData: Object,
   },
   components: { DropDownComponent },
+   methods:{
+     addIngredient: function() {
+
+       console.log("dfwe");
+  //
+  //     this.$emit('addIngredient', a); // talking to order page
+  //
+     }
+   }
 }
 </script>
 

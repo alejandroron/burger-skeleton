@@ -8,7 +8,7 @@
         </div>
         <div class="number">{{counter}}</div>
         <div class ="pluses">
-          <button class="plus" @click="incrementCounter"><img src ="../assets/plus2.png"></button>
+          <button class="plus" @click="addIngredient"><img src ="../assets/plus2.png"></button>
         </div>
       </div>
     </label>
@@ -48,11 +48,15 @@ name: "item",
         this.open = !this.open;
       }
     },
-    incrementCounter(){
-      this.counter++;
-    },
     decrementCounter(){
       this.counter--;
+    },
+    addIngredient: function() {
+      // var a="ale"
+    this.$emit('addIngredientToBurger', "ee"); // talking to order page
+
+      this.counter++;
+      console.log("Ss");
     }
   }
 }
