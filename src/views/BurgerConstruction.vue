@@ -44,51 +44,54 @@ var menuData = {
   ingredients: {
     name: "INGREDIENTS",
     children: [
-      { name: "Beef" },
-      { name: "Chicken" },
-      { name: "Fish" },
-      { name: "Vegetarian" },
+      { name: "Lettuce" },
+      { name: "Cheese" },
+      { name: "Tomato" },
+      { name: "Pickles" },
+      { name: "Onions" },
     ]
   },
   sauces: {
     name: "SAUCES",
     children: [
-      { name: "Beef" },
-      { name: "Chicken" },
-      { name: "Fish" },
-      { name: "Vegetarian" },
+      { name: "Ketchup" },
+      { name: "Mustard" },
+      { name: "BQQ Sauce" },
+      { name: "Mayo" },
     ]
   }
 }
 
 export default {
-  name: 'Test',
+  name: 'BurgerConstruction',
   components:{
     AccordianMenu,
     Navbar
   },
-  data: ()=> ({
-    menuData,
-    currentOrder: runningTotal,
-    orderTotal: runningOrder
-  }),
+  data () {
+    return {
+      menuData,
+      currentOrder: runningOrder,
+      orderTotal: runningTotal
+    }
+  },
   methods: {
-    removeItem: function(itemIndex) {
-      runningTotal.push(runningTotal[0] - runningOrder[itemIndex].price);
-      runningTotal.splice(0, 1);
-
-      runningOrder.splice(itemIndex, 1);
-    },
     addItem: function(item) {
       // add order to order list
       runningOrder.push({
-      item:item
-    });
-      
+       item:item
+      });
+		
       // update total price, have to use an array unfortunately
-      runningTotal.push(orderTotal[0] + item.price);
+      runningTotal.push(runningTotal[0] + item.price);
       runningTotal.splice(0, 1);
-    },
+    },	
+    removeItem: function(itemIndex) {
+      runningTotal.push(runningTotal[0] - runningOrder[itemIndex].item.price);
+      runningTotal.splice(0, 1);
+
+      runningOrder.splice(itemIndex, 1);
+    }
   }
 }
 </script>
