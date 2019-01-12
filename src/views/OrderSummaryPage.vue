@@ -16,7 +16,7 @@ export default {
   },
   methods:{
     placeOrder: function () {
-      console.log(this.orderstr.order[0]["item"]["ingredients"]);
+      // console.log(this.orderstr.order[0]["item"]["ingredients"]);
       //Wrap the order in an object
       var order={
         str:this.orderstr.order
@@ -50,10 +50,10 @@ export default {
 
         <div class="middle">
           <div v-if="item.item.isBurger===true">
-		  	    <div class="ingredient" v-for="(ingredient, index) in item.item.ingredients" :key="index">
-				      <p> {{ingredient}} </p>
-			      </div>
-		      </div>
+            <div class="ingredient" v-for="(ingredient, index) in item.item.ingredients" :key="index">
+              <p> {{ingredient}} </p>
+            </div>
+          </div>
         </div>
 
         <div class="bottom">

@@ -7,13 +7,8 @@
       :titleProperty='"CREATE YOUR MENU"'
       :nextAddressProperty='"./#/OrderSummary/"'
       :nextTextProperty='"FINISH ORDER"'
-<<<<<<< HEAD
-      :order='currentOrder' />
-=======
       :order='currentOrder'
-      :totalPrice='orderTotal'
-      />
->>>>>>> 37764845c0ae8333812a78153fcadb6a19a69475
+      :totalPrice='orderTotal' />
     <Tabs
       @addedItemToOrder="addItem"
       @changeview="$emit('changeview','BurgerConstruction')" />
