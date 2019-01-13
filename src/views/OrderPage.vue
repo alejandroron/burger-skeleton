@@ -10,7 +10,7 @@
       :nextTextProperty='"FINISH ORDER"'
       :order='currentOrder'
       :totalPrice='orderTotal'
-      @addedCustomizedToOrder="addItem" />
+      @added_customized_to_order="addItem" />
     <Tabs
       @addedItemToOrder="addItem"
       @changeview="$emit('changeview','BurgerConstruction')"/>

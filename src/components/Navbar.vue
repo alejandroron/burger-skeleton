@@ -30,17 +30,17 @@
         return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
       },
       addCustomizedToOrder: function() {
-        /*convert the customized order array into an item
-        and add it to the footer*/
-        var item = {
-          title: 'Custom Order',
-          imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
-          price: this.customizedPrice,
-          isBurger: true,
-          ingredients: this.customizedOrder
-          };
-        console.log(item);
-        this.$emit('addedCustomizedToOrder', item);
+      /*convert the customized order array into an item
+      and add it to the footer*/
+      var item = {
+        title: 'Custom Order',
+        imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
+        price: this.customizedPrice,
+        isBurger: true,
+        ingredients: this.customizedOrder
+        };
+      console.log(item);
+      this.$parent.$emit('added_customized_to_order', item);
       }
     }
   }
