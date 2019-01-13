@@ -11,16 +11,21 @@
 
         <div class="middle">
           <ul class="ingredientList">
-            <li class="ingredient" v-for="(orderItem, index) in object.order" :key="index">
-              <span>{{ orderItem.item.title }}</span>
+            <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
+              <span>{{ orderItem.item.title }}
+              <li class="ingredient" v-for="(item, ingredientIndex) in orderItem" :key="ingredientIndex">
+              <span>{{ item.ingredients[ingredientIndex]}}
+              </span>
+              </li>
+              </span>
+              </li>
               <div class="ingredientInfo">
-                <span class="ingredientCount">1</span>
               </div>
             </li>
           </ul>
         </div>
 
-        <div class="bottom">
+        <div class="bottom" v-on:click="changeStatus(object)">
           {{ object.status }}
         </div>
       </div>
@@ -31,7 +36,7 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue'; 
+import Navbar from '@/components/Navbar.vue';
 
 // example orders data
 // { '1':
@@ -72,8 +77,15 @@ export default {
 
       orders.push(currentOrders);
       orders.splice(0, 1);
-    }.bind(this))
+      }.bind(this))
   },
+methods: {
+changeStatus: function(object)
+{
+  console.log(object);
+  object.status = 'started';
+}
+}
 }
 </script>
 
