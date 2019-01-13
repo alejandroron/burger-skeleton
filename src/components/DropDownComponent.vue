@@ -7,6 +7,7 @@
           <button class="minus" @click="deleteIngredient(model)"><img src ="../assets/minus2.png">
           </button>
         </div>
+        
         <div class="number">{{ counter }}</div>
         <div class ="pluses">
         
@@ -28,7 +29,8 @@
 export default {
 name: "DropDownComponent",
   props: {
-    model: Object
+    model: Object,
+    deccount: String
   },
   data: function() {
     return {

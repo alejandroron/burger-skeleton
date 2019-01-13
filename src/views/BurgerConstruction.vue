@@ -12,6 +12,7 @@
       :customizedPrice='orderTotal' />
     <AccordianMenu
       :menuData="menuData"
+      :decitem = "decitem"
       @addIngredientToBurger="addIngredient"
       @deleteIngredientFromBurger="removeItembyname"/>
     <Footer
@@ -42,7 +43,8 @@ export default {
     return {
       menuData: customBurgerMenu,
       currentOrder: runningOrder,
-      orderTotal: runningTotal
+      orderTotal: runningTotal,
+      decitem: ''
     }
   },
   methods: {
@@ -59,7 +61,7 @@ export default {
     removeItem: function(itemIndex) {
       runningTotal.push(runningTotal[0] - runningOrder[itemIndex].item.price);
       runningTotal.splice(0, 1);
-
+      this.decitem = runningOrder[itemIndex].item.name;
       runningOrder.splice(itemIndex, 1);
     },
     removeItembyname: function(model) {

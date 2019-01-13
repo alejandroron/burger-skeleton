@@ -44,6 +44,8 @@ export default {
   width: 100%;
   background-color: #1e272e;
   z-index: 2;
+  overflow: auto;
+  white-space: nowrap;
 
   display: grid;
   grid-template-columns: 1fr 110px;
@@ -105,3 +107,4 @@ export default {
   font-size: 25px;
 }
 </style>
+

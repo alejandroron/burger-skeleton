@@ -2,7 +2,9 @@
 <div class="component">
   <ul class="cd-accordion-menu">
     <li v-for="dropdown in menuData" :key="dropdown">
-      <DropDownComponent :model="dropdown" />
+      <DropDownComponent :model="dropdown" 
+      :deccount = "decitem"
+      />
     </li>
   </ul>
 </div>
@@ -14,6 +16,7 @@ export default {
   name: 'AccordianMenu',
   props: {
     menuData: Object,
+    decitem: String
   },
   components: { DropDownComponent }
 }
