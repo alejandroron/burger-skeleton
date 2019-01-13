@@ -2,6 +2,7 @@
   export default {
     props: [
       'displayButtons',
+      'orderPage',
 
       'backAddressProperty',
       'backTextProperty',
@@ -12,7 +13,8 @@
       'nextTextProperty',
 
       'order',
-      'totalPrice'
+      'totalPrice',
+      'customized'
     ],
     methods: {
       convertOrdersToString() {
@@ -24,6 +26,13 @@
         // regex expression for removing the imgSrc property of the string
         // vue doesn't like this property being passed
         return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
+      },
+      addCustomizedToOrder(){
+        /*convert the customized order array into an item
+        and add it to the footer*/
+        var item = this.customized;
+        this.$emit('addedCustomizedToOrder', item);
+
       }
     }
   }
@@ -38,7 +47,10 @@
 
       <h1>{{ titleProperty }}</h1>
 
-      <a :href="nextAddressProperty + convertOrdersToString()" v-if="displayButtons">
+      <a :href="nextAddressProperty + convertOrdersToString()" v-if="displayButtons, orderPage">
+        <div class="button" id="nextButton"> {{ nextTextProperty }} </div>
+      </a>
+      <a :href="nextAddressProperty + addCustomizedToOrder()" v-else-if="displayButtons">
         <div class="button" id="nextButton"> {{ nextTextProperty }} </div>
       </a>
 

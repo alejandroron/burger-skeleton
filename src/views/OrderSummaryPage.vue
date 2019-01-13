@@ -41,7 +41,7 @@ export default {
 
 <template>
   <div>
-    <Navbar :titleProperty='"ORDER SUMMARY"' :displayButtons='null' />
+    <Navbar :titleProperty='"ORDER SUMMARY"' :displayButtons='null' :orderPage='null' />
 
     <div class="boxes">
 

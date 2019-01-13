@@ -2,17 +2,19 @@
   <div id="container">
     <Navbar
       :displayButtons='true'
+      :orderPage='true'
       :backAddressProperty='"./#/"'
       :backTextProperty='"START OVER"'
       :titleProperty='"CREATE YOUR MENU"'
       :nextAddressProperty='"./#/OrderSummary/"'
       :nextTextProperty='"FINISH ORDER"'
       :order='currentOrder'
-      :totalPrice='orderTotal' />
+      :totalPrice='orderTotal'
+      @addedCustomizedToOrder="addItem" />
     <Tabs
       @addedItemToOrder="addItem"
       @changeview="$emit('changeview','BurgerConstruction')"/>
-    
+
     <Footer
       :currentOrder='currentOrder'
       :orderTotal='orderTotal'

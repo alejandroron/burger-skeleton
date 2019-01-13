@@ -2,21 +2,22 @@
   <div id="container">
     <Navbar
       :displayButtons='true'
+      :orderPage='false'
       :backAddressProperty='"./#/OrderPage"'
       :backTextProperty='"MAIN PAGE"'
       :titleProperty='"CREATE YOUR OWN BURGER"'
       :nextAddressProperty='"./#/OrderPage"'
       :nextTextProperty='"FINISH BURGER"'
-      :order='currentOrder' />
+      :customized='currentOrder' />
     <AccordianMenu
       :menuData="menuData"
-      @addIngredientToBurger="addIngredient" 
+      @addIngredientToBurger="addIngredient"
       @deleteIngredientFromBurger="removeItembyname"/>
     <Footer
       :currentOrder='currentOrder'
       :orderTotal='orderTotal'
       @removeItemFromOrder="removeItem" />
-  </div> 
+  </div>
 </template>
 
 <script>
@@ -63,7 +64,7 @@ export default {
     removeItembyname: function(model) {
     var i;
     var counter = 0;
-    
+
     for (i=0; i<runningOrder.length; i++){
     if(runningOrder[i].item.name == model.name && counter == 0){
       runningTotal.push(runningTotal[0] - runningOrder[i].item.price);
