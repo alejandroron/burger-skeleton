@@ -13,7 +13,7 @@ export default {
   data: function() {
     return {
       order: this.orderToArray(),
-      price:  JSON.parse(this.$route.params.orderString).price[0],
+
       // perhaps not necessary to return this array, just added in case
       removedItemsArray: removedOrders,
       counter: 0
@@ -60,14 +60,15 @@ export default {
   deleteItem: function(index)
     {
       removedOrders.push(this.order.order[index]);
-      this.price = this.price - this.order.order[index]["item"]["price"];
+      this.order["price"][0] = this.order["price"][0] - this.order.order[index]["item"]["price"];
+
       this.order.order.splice(index, 1);
     },
 
   incrementItem: function(indexItem,indexIngredient)
     {
       this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]++;
-      var ingredientPrice=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
+      var ingredientPrice=this.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
       var ingredientQuantity=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
 
       if(ingredientQuantity>1)
@@ -116,8 +117,13 @@ export default {
     {
 			price=this.order.order[i]["item"]["price"]+price;
 		}
-    this.price=price;
-	}
+    this.order[price]=price;
+    console.log(this.order[price]);
+
+	},
+  orderToString: function(){
+    return "./#/OrderPage/" + JSON.stringify(this.order);
+  }
   }
 }
 </script>
@@ -162,11 +168,11 @@ export default {
 
     <a>
       <div class="totalPrice">
-        <p>TOTAL: {{ this.price.toFixed(2) }}</p>
+        <p>TOTAL: {{ this.order["price"][0].toFixed(2) }}</p>
       </div>
     </a>
 
-    <a href="./#/OrderPage">
+    <a :href="orderToString()">
       <div class="modify">
         <p>MODIFY</p>
       </div>

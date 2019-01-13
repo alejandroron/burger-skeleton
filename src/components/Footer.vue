@@ -7,6 +7,7 @@ export default {
   ],
   methods: {
     removeItem: function(itemIndex) {
+      // this.$parent.$emit('removeItemFromOrder', itemIndex); 
       this.$parent.$emit('removeItemFromOrder', itemIndex); //talking to orderpage
     }
   }

@@ -17,7 +17,7 @@
         <a class="dine_in" @click="view='orderpage'">
           <img class="dineIN" src="@/assets/dine_in.png">
         </a>
-        <a class="take_out" href="./#/OrderPage">
+        <a class="take_out" href="./#/OrderPage/empty">
           <img class="takeOUT" src="@/assets/take_out.png">
         </a>
       </div>

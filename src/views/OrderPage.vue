@@ -61,6 +61,14 @@ export default {
       runningTotal.splice(0, 1);
 
       runningOrder.splice(itemIndex, 1);
+    },
+    toOderArray: function(){
+      var string = this.$route.params.orderString;
+      if (string=="empty") {
+        this.orderTotal = runningTotal;
+      }else{
+        
+      }
     }
   }
 }

@@ -24,7 +24,9 @@
           price:this.totalPrice,
           order:this.order
         };
+
         var truncatedOrderString = JSON.stringify(order);
+        console.log(truncatedOrderString);
         // regex expression for removing the imgSrc property of the string
         // vue doesn't like this property being passed
         return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
