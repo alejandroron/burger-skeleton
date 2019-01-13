@@ -32,7 +32,6 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue'; 
-import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue';
 
 // example orders data
 // { '1':
@@ -53,8 +52,7 @@ var orders = [];
 export default {
   name: 'KitchenOrderPage',
   components: {
-    Navbar,
-    OrderItemToPrepare
+    Navbar
   },
   data () {
     return {
