@@ -4,10 +4,12 @@
       {{ model.name }}
       <div class="numbers" v-if="!hasChildren">
         <div class = "minuses" v-if="counter!=0">
-          <button class="minus" @click="decrementCounter"><img src ="../assets/minus2.png"></button>
+          <button class="minus" @click="deleteIngredient(model)"><img src ="../assets/minus2.png">
+          </button>
         </div>
         <div class="number">{{ counter }}</div>
         <div class ="pluses">
+        
           <button class="plus" @click="addIngredient(model)"><img src ="../assets/plus2.png"></button>
         </div>
       </div>
@@ -45,10 +47,13 @@ name: "DropDownComponent",
         this.open = !this.open;
       }
     },
-    decrementCounter(){
+    deleteIngredient: function(ingredient) {
+    
+      this.$parent.$parent.$emit('deleteIngredientFromBurger', ingredient); 
       this.counter--;
     },
     addIngredient: function(ingredient) {
+    
       this.$parent.$parent.$emit('addIngredientToBurger', ingredient);      
       this.counter++;
     }
