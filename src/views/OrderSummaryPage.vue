@@ -1,66 +1,3 @@
-<template>
-  <div>
-    <Navbar
-    :titleProperty='"ORDER SUMMARY"'
-    :displayButtons='null'
-    :orderPage='null' />
-
-    <div class="boxes">
-
-      <div class="item" v-for="(item, index) in order.order" :key="index" >
-        <div class="top">
-          <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/redX.png" id="minus" width="30px" height="30px"></button>
-          <h2 id="name">{{ item.item.title }}</h2>
-        </div>
-
-        <div class="middle">
-          <div v-if="item.item.isBurger">
-            <ul class="ingredientList">
-              <li class="ingredient" v-for="(ingredient, indexIngredient) in item.item.ingredients" :key="indexIngredient">
-                <span>{{ ingredient["name"] }}: {{ ingredient["totalPrice"].toFixed(2) }}</span>
-                <div class="ingredientInfo">
-                  <button class="minus" v-on:click="decrementItem(index,indexIngredient)">
-                  <img src="@/assets/minus.png">
-                  </button>
-                  <span class="ingredientCount">{{ingredient["quantity"]}}</span>
-                  <button class="plus" v-on:click="incrementItem(index,indexIngredient)">
-                    <img src="@/assets/plus.png">
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="bottom">
-          ${{ item.item.price.toFixed(2) }}
-        </div>
-      </div>
-
-    </div>
-
-    <a>
-      <div class="totalPrice">
-        <p>TOTAL: {{ this.price.toFixed(2) }}</p>
-      </div>
-    </a>
-
-    <a href="./#/OrderPage">
-      <div class="modify">
-        <p>MODIFY</p>
-      </div>
-    </a>
-
-    <a href="./#/OrderCompleted" v-on:click="placeOrder()">
-      <div class="pay">
-        <p>PAY</p>
-      </div>
-    </a>
-
-  </div>
-</template>
-
-
 <script>
 import Navbar from '@/components/Navbar.vue';
 import sharedVueStuff from '@/components/sharedVueStuff.js';
@@ -191,7 +128,6 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
 <template>
   <div>
     <Navbar :titleProperty='"ORDER SUMMARY"' :displayButtons='null' :orderPage='null' />
@@ -250,8 +186,6 @@ export default {
 
   </div>
 </template>
-=======
->>>>>>> 146168114f6c526dc6bad4367a42eb2070d61f5b
 
 <style>
 h1, h2, h3, h4, h5, p {
