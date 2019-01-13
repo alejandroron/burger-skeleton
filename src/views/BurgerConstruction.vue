@@ -8,7 +8,8 @@
       :titleProperty='"CREATE YOUR OWN BURGER"'
       :nextAddressProperty='"./#/OrderPage"'
       :nextTextProperty='"FINISH BURGER"'
-      :customized='currentOrder' />
+      :customizedOrder='currentOrder'
+      :customizedPrice='orderTotal' />
     <AccordianMenu
       :menuData="menuData"
       @addIngredientToBurger="addIngredient"

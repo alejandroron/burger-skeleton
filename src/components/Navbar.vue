@@ -14,7 +14,9 @@
 
       'order',
       'totalPrice',
-      'customized'
+
+      'customizedOrder',
+      'customizedPrice'
     ],
     methods: {
       convertOrdersToString() {
@@ -27,12 +29,18 @@
         // vue doesn't like this property being passed
         return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
       },
-      addCustomizedToOrder(){
+      addCustomizedToOrder: function() {
         /*convert the customized order array into an item
         and add it to the footer*/
-        var item = this.customized;
+        var item = {
+          title: 'Custom Order',
+          imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
+          price: this.customizedPrice,
+          isBurger: true,
+          ingredients: this.customizedOrder
+          };
+        console.log(item);
         this.$emit('addedCustomizedToOrder', item);
-
       }
     }
   }
@@ -50,8 +58,8 @@
       <a :href="nextAddressProperty + convertOrdersToString()" v-if="displayButtons, orderPage">
         <div class="button" id="nextButton"> {{ nextTextProperty }} </div>
       </a>
-      <a :href="nextAddressProperty + addCustomizedToOrder()" v-else-if="displayButtons">
-        <div class="button" id="nextButton"> {{ nextTextProperty }} </div>
+      <a :href="nextAddressProperty" v-else-if="displayButtons">
+        <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()"> {{ nextTextProperty }} </div>
       </a>
 
   </div>

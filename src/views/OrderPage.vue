@@ -46,6 +46,7 @@ export default {
   },
   methods: {
     addItem: function(item) {
+      console.log(item);
       // add order to order list
       runningOrder.push({
        item: item
