@@ -62,12 +62,16 @@ export default {
     },
     removeItembyname: function(model) {
     var i;
+    var counter = 0;
+    
     for (i=0; i<runningOrder.length; i++){
-    if(runningOrder[i].item.name == model.name)
+    if(runningOrder[i].item.name == model.name && counter == 0){
       runningTotal.push(runningTotal[0] - runningOrder[i].item.price);
       runningTotal.splice(0, 1);
 
       runningOrder.splice(i, 1);
+      counter++;
+      }
       }
     }
   }

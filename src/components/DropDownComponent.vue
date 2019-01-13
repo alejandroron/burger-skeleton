@@ -4,7 +4,8 @@
       {{ model.name }}
       <div class="numbers" v-if="!hasChildren">
         <div class = "minuses" v-if="counter!=0">
-          <button class="minus" @click="deleteIngredient(model)"><img src ="../assets/minus2.png"></button>
+          <button class="minus" @click="deleteIngredient(model)"><img src ="../assets/minus2.png">
+          {{model.name}}</button>
         </div>
         <div class="number">{{ counter }}</div>
         <div class ="pluses">
