@@ -17,7 +17,7 @@
         <a class="dine_in" @click="view='orderpage'">
           <img class="dineIN" src="@/assets/dine_in.png">
         </a>
-        <a class="take_out" href="./#/OrderPage/empty">
+        <a class="take_out" :href="urlstring()">
           <img class="takeOUT" src="@/assets/take_out.png">
         </a>
       </div>
@@ -53,6 +53,10 @@ export default {
   methods:{
     changeView:function(view){
       this.view=view;
+    },
+    urlstring:function(){
+      var urlstring = "./#/OrderPage/";
+      return urlstring + JSON.stringify('[0.00]');
     }
   }
 }

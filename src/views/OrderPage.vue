@@ -41,6 +41,7 @@ export default {
   data () {
     return {
       currentOrder: runningOrder,
+      // orderTotal: this.toOrderArray()
       orderTotal: runningTotal
     }
   },
@@ -62,12 +63,19 @@ export default {
 
       runningOrder.splice(itemIndex, 1);
     },
-    toOderArray: function(){
+    toOrderArray: function(){
       var string = this.$route.params.orderString;
-      if (string=="empty") {
-        this.orderTotal = runningTotal;
+      if (string==0) {
+
+        this.orderTotal=[0.0];
       }else{
-        
+        var urljson = JSON.parse(string);
+          console.log(urljson);
+        var array=[];
+        array.push(urljson.price);
+
+
+        this.orderTotal=array;
       }
     }
   }
