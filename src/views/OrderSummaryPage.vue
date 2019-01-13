@@ -12,7 +12,7 @@ export default {
   mixins: [ sharedVueStuff ],
   data: function() {
     return {
-      orderstr: JSON.parse(this.$route.params.orderString),
+      order: JSON.parse(this.$route.params.orderString),
       price:  JSON.parse(this.$route.params.orderString).price[0],
       // perhaps not necessary to return this array, just added in case
       removedItemsArray: removedOrders
@@ -20,18 +20,13 @@ export default {
   },
   methods:{
     placeOrder: function () {
-      // console.log(this.orderstr.order[0]["item"]["ingredients"]);
-      //Wrap the order in an object
-      var order = {
-        str: this.orderstr.order
-      };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      this.$store.state.socket.emit('order', { order: order });
+      this.$store.state.socket.emit('order', this.order );
     },
     deleteItem: function(index) {
-      removedOrders.push(this.orderstr.order[index]);
-      this.price = this.price - this.orderstr.order[index]["item"]["price"];
-      this.orderstr.order.splice(index, 1);
+      removedOrders.push(this.order.order[index]);
+      this.price = this.price - this.order.order[index]["item"]["price"];
+      this.order.order.splice(index, 1);
     },
     incrementItem: function(item) {
       alert(item);
@@ -49,7 +44,7 @@ export default {
 
     <div class="boxes">
 
-      <div class="item" v-for="(item, index) in orderstr.order" :key="index" >
+      <div class="item" v-for="(item, index) in order.order" :key="index" >
         <div class="top">
           <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/redX.png" id="minus" width="30px" height="30px"></button>
           <h2 id="name">{{ item.item.title }}</h2>
@@ -69,7 +64,6 @@ export default {
                     <img src="@/assets/plus.png">
                   </button>
                 </div>
-                
               </li>
             </ul>
           </div>

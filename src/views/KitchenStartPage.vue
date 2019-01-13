@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-	  <div class="title">
+      <div class="title">
         ORDERS STATE
       </div>
       <div class="buttons">
@@ -11,10 +11,6 @@
           <img class="orderfinish" src="@/assets/finishedOrders.png">
         </a>
       </div>
-    
-
-  
-  
     </div>
 </template>
 

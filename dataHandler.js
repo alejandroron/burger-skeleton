@@ -59,11 +59,6 @@ Data.prototype.initializeData = function() {
   this.initializeTable(transactionsDataName);
 }
 
-/*
-  Adds an order to to the queue and makes an withdrawal from the
-  stock. If you have time, you should think a bit about whether
-  this is the right moment to do this.
-*/
 Data.prototype.getOrderNumber = function () {
   this.currentOrderNumber += 1;
   return this.currentOrderNumber;
@@ -71,24 +66,8 @@ Data.prototype.getOrderNumber = function () {
 
 Data.prototype.addOrder = function (order) {
   var orderId = this.getOrderNumber();
-  this.orders[orderId] = order.order;
-  this.orders[orderId].orderId = orderId;
+  this.orders[orderId] = order;
   this.orders[orderId].status = "not-started";
-  /*var transactions = this.data[transactionsDataName],
-    //find out the currently highest transaction id
-    transId =  transactions[transactions.length - 1].transaction_id,
-    i = order.order.ingredients,
-    k;
-
-  for (k = 0; k < i.length; k += 1) {
-    transId += 1;
-    transactions.push({
-      transaction_id: transId,
-      ingredient_id: i[k].ingredient_id,
-      change: - 2
-    });
-  }*/
-    
   return orderId;
 };
 
@@ -106,17 +85,9 @@ Data.prototype.getAllOrders = function () {
   return this.orders;
 };
 
-Data.prototype.markOrderDone = function (orderId) {
-  this.orders[orderId].status = "done";
-};
-
-Data.prototype.markOrderStarted = function (orderId) {
-  this.orders[orderId].status = "started";
-};
-
-Data.prototype.markOrderNotStarted = function (orderId) {
-  this.orders[orderId].status = "not-started";
-};
+Data.prototype.setOrderStatus = function(orderID, orderStatus){
+  this.orders[orderID].status = orderStatus;
+}
 
 module.exports = Data;
 

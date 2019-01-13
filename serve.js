@@ -29,15 +29,18 @@ app.use(hotMiddleware(compiler, {
   log: console.log
 }));
 
-// Read in the "class" to store all our data on the server side
-// If you need to change how data is handled, check the dataHandler.js file!
+/*
+ EVERYTING ABOVE DOESN'T NEED TO BE UNDERSTOOD OR CHANGED
+*/
+
 const Data = require("./dataHandler.js");
 
 var data = new Data();
 data.initializeData();
 
 io.on('connection', function (socket) {
-  // Send list of orders and text labels when a client connects
+  
+  // on client connect
   socket.emit('initialize', {
     orders: data.getAllOrders(),
     uiLabels: data.getUILabels()
@@ -45,14 +48,12 @@ io.on('connection', function (socket) {
 
   // When someone orders something
   socket.on('order', function (order) {
-	console.log(order.order.str[0]["item"]["ingredients"]);
-    var orderIdAndName = data.addOrder(order);
+    var newOrderID = data.addOrder(order);
+    console.log("order total: " + order.price);
 
-    socket.emit('orderNumber', orderIdAndName);
-    io.emit('currentQueue', {
-      orders: data.getAllOrders(),
-      /*ingredients: data.getIngredients()-->*/
-    });
+    // Kitchen Order page isn't receiving this socket emit call
+    // it has to do a refresh and use initialize to get new orders
+    socket.emit('newOrder', newOrderID, data.getAllOrders()[newOrderID]);
   });
 
   // send UI labels in the chosen language
@@ -62,17 +63,17 @@ io.on('connection', function (socket) {
 
   // when order is marked as done, send updated queue to all connected clients
   socket.on('orderDone', function (orderId) {
-    data.markOrderDone(orderId);
+    data.setOrderStatus(orderId, 'done');
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
 
   socket.on('orderStarted', function (orderId) {
-    data.markOrderStarted(orderId);
+    data.setOrderStatus(orderId, 'started');
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
 
   socket.on('orderNotStarted', function (orderId) {
-    data.markOrderNotStarted(orderId);
+    data.setOrderStatus(orderId, 'non-started');
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
 

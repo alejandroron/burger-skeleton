@@ -29,13 +29,13 @@ let router = new Router({
       name: 'OrderPage',
       component: OrderPage
     },
-	{
-      path: '/KitchenOrderPage',
+    {
+      path: '/BurgerConstruction',
       meta: {
-        title: 'Kitchen Order Screen',
+        title: 'Create your own burger',
       },
-      name: 'KitchenOrderPage',
-      component: KitchenOrderPage
+      name: 'BurgerConstruction',
+      component: BurgerConstruction
     },
     {
       path: '/OrderSummary/:orderString',
@@ -54,19 +54,19 @@ let router = new Router({
       component: OrderCompletedPage
     },
     {
-      path: '/BurgerConstruction',
+      path: '/KitchenOrderPage',
       meta: {
-        title: 'Create your own burger',
+        title: 'Kitchen Order Screen',
       },
-      name: 'BurgerConstruction',
-      component: BurgerConstruction
+      name: 'KitchenOrderPage',
+      component: KitchenOrderPage
     },
     {
-      path: '/kitchen',
+      path: '/Kitchen',
       meta: {
         title: 'Kitchen',
       },
-      name: 'kitchen',
+      name: 'Kitchen',
       component: () => import('./views/KitchenStartPage.vue')
     }
   ]
