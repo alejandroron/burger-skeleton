@@ -16,6 +16,7 @@ export default {
 <template>
   <div class="footer">
     <div class="currentOrder">
+
       <div class="orderItem" v-for="(item, index) of currentOrder" :key="index" @click="removeItem(index)">
         <div class="removeItem">
           <img src="@/assets/redX.png" />

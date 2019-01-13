@@ -15,7 +15,8 @@ export default {
       orderstr: JSON.parse(this.$route.params.orderString),
       price:  JSON.parse(this.$route.params.orderString).price[0],
       // perhaps not necessary to return this array, just added in case
-      removedItemsArray: removedOrders
+      removedItemsArray: removedOrders,
+      counter: 0
     }
   },
   methods:{
@@ -64,7 +65,7 @@ export default {
                   <button class="minus" v-on:click="incrementItem(item)">
                   <img src="@/assets/minus.png">
                   </button>
-                  <span class="ingredientCount">1</span>
+                  <span class="ingredientCount">{{counter}}</span>
                   <button class="plus" v-on:click="decrementItem(item)">
                     <img src="@/assets/plus.png">
                   </button>
@@ -179,6 +180,7 @@ h3 {
   border-radius: 50%;
   width: 20px;
   height: 20px;
+  border: none;
 }
 
 .minus img, .plus img {

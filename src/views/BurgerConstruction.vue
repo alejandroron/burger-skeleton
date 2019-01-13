@@ -10,7 +10,8 @@
       :order='currentOrder' />
     <AccordianMenu
       :menuData="menuData"
-      @addIngredientToBurger="addIngredient" />
+      @addIngredientToBurger="addIngredient" 
+      @deleteIngredientFromBurger="removeItembyname"/>
     <Footer
       :currentOrder='currentOrder'
       :orderTotal='orderTotal'
@@ -58,6 +59,16 @@ export default {
       runningTotal.splice(0, 1);
 
       runningOrder.splice(itemIndex, 1);
+    },
+    removeItembyname: function(model) {
+    var i;
+    for (i=0; i<runningOrder.length; i++){
+    if(runningOrder[i].item.name == model.name)
+      runningTotal.push(runningTotal[0] - runningOrder[i].item.price);
+      runningTotal.splice(0, 1);
+
+      runningOrder.splice(i, 1);
+      }
     }
   }
 }
