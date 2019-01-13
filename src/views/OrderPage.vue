@@ -41,8 +41,7 @@ export default {
   data () {
     return {
       currentOrder: runningOrder,
-      // orderTotal: this.toOrderArray()
-      orderTotal: runningTotal
+      orderTotal: this.toOrderArray()
     }
   },
   methods: {
@@ -64,18 +63,16 @@ export default {
       runningOrder.splice(itemIndex, 1);
     },
     toOrderArray: function(){
-      var string = this.$route.params.orderString;
+      var string = this.$route.params.orderPageString;
+	  console.log("string");
+	  console.log(string);
       if (string==0) {
-
-        this.orderTotal=[0.0];
+		console.log("entra");
+        return runningTotal;
       }else{
         var urljson = JSON.parse(string);
           console.log(urljson);
-        var array=[];
-        array.push(urljson.price);
-
-
-        this.orderTotal=array;
+         return urljson.price;
       }
     }
   }

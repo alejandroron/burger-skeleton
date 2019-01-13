@@ -56,7 +56,7 @@ export default {
     },
     urlstring:function(){
       var urlstring = "./#/OrderPage/";
-      return urlstring + JSON.stringify('[0.00]');
+      return urlstring + JSON.stringify(0);
     }
   }
 }
