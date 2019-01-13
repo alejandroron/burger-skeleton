@@ -36,7 +36,7 @@ var customBurgerMenu = {
     children: [
       { name: "Ketchup", price: 1.52, imgSrc: require('@/assets/Burgers/Beef/beef1.png') },
       { name: "Mustard", price: 1.52, imgSrc: require('@/assets/Burgers/Beef/beef1.png') },
-      { name: "BQQ Sauce", price: 1.52, imgSrc: require('@/assets/Sides/Sauces/BBQ.png') },
+      { name: "BQQ Sauce", price: 1.52, imgSrc: require('@/assets/Sides/Sauces/bbq.png') },
       { name: "Mayo", price: 1.52, imgSrc: require('@/assets/Sides/Sauces/mayo.png') },
     ]
   }
