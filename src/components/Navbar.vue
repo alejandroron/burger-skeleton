@@ -17,7 +17,7 @@
     ],
     methods: {
       addCustomizedToOrder: function() {
-	    
+  
         /*convert the customized order array into an item
         and add it to the footer*/
         var item = {
@@ -29,30 +29,30 @@
         };
         this.$parent.$emit('added_customized_to_order', item);
       },
-	  goSummaryOrder: function(){
-		
-	  }
+      goSummaryOrder: function() {
+  
+      }
     }
   }
 </script>
 
 <template>
   <div class='fixed navbar'>
-
-      <a :href="backAddressProperty" v-if="displayButtons" >
-        <div class="button" id="backButton"> {{ backTextProperty }} </div>
-      </a>
-
-      <h1>{{ titleProperty }}</h1>
-
-      <a :href="nextAddressProperty" v-if="displayButtons">
-        <div class="button" id="nextButton" v-on:click="goSummaryOrder()"> {{ nextTextProperty }} </div>
-      </a>
-
-      <!-- <a :href="nextAddressProperty" v-else-if="displayButtons">
-        <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()"> {{ nextTextProperty }} </div>
-      </a> -->
-
+  
+    <a :href="backAddressProperty" v-if="displayButtons">
+      <div class="button" id="backButton"> {{ backTextProperty }} </div>
+    </a>
+  
+    <h1>{{ titleProperty }}</h1>
+  
+    <a :href="nextAddressProperty" v-if="displayButtons">
+      <div class="button" id="nextButton" v-on:click="goSummaryOrder()"> {{ nextTextProperty }} </div>
+    </a>
+  
+    <!-- <a :href="nextAddressProperty" v-else-if="displayButtons">
+          <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()"> {{ nextTextProperty }} </div>
+        </a> -->
+  
   </div>
 </template>
 
@@ -131,28 +131,25 @@
       font-size: 25px;
     }
     .button {
-      width: 35px;
+      width: 50px;
       height: 35px;
+      font-size: 10px;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 14px;
+      padding-top: 4px;
     }
     #backButton {
-      margin-left: 10px;
+      margin-left: 7px;
     }
     #nextButton {
-      margin-right: 10px;
+      margin-right: 7px;
     }
   }
   
   @media only screen and (max-width: 380px) {
     .navbar h1 {
-      font-size: 20px;
-    }
-
-    .button {
-      font-size: 13px;
-      width: 70px;
-      line-height: 20px;
+      font-size: 19px;
     }
   }
-
-
 </style>
