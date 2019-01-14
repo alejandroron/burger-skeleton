@@ -2,7 +2,7 @@
   import menu from '@/components/menu.js';
 
   export default {
-    name: 'Tabs',
+    name: 'Tabs',	
     data: function() {
       return {
         activetab: 'burgers',
@@ -15,7 +15,7 @@
       addItem: function(item) {
         this.$emit('addedItemToOrder', item); // talking to order page
       }
-    }
+  }
   }
 </script>
 

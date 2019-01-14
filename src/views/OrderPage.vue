@@ -8,6 +8,7 @@
       :titleProperty='"CREATE YOUR MENU"'
       :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
       :nextTextProperty='"FINISH ORDER"'
+	  
       @added_customized_to_order="addItem" />
     <Tabs
       @addedItemToOrder="addItem"
@@ -23,9 +24,12 @@
 import Navbar from '@/components/Navbar.vue';
 import Tabs from '@/components/Tab.vue';
 import Footer from '@/components/Footer.vue';
+import sharedVueStuff from '@/components/sharedVueStuff.js';
+
 // wanted to do something like this to utilize the url bar
-// var runningTotal = passedTotal;
-// var runningOrder = passedOrder;
+//var runningTotal = passedTotal();
+//var runningOrder = passedOrder();
+"use strict";
 var runningTotal = [ 0.00 ];
 var runningOrder = [];
 
@@ -42,18 +46,25 @@ export default {
       orderTotal: runningTotal
     }
   },
+  mixins: [sharedVueStuff],
   computed: {
+    modifyUrl: function(){
+		runningTotal=JSON.parse(this.$route.params.orderPageString).price;
+		
+	},
     passedTotal: function() {
-      return [ JSON.parse(this.$route.params.orderString).price ];
+	    console.log("passedTotal");
+	    return  JSON.parse(this.$route.params.orderPageString).price;
+	  
     },
     passedOrder: function(){
-      return [ JSON.parse(this.$route.params.orderString).order ];      
-    },
+	    return JSON.parse(this.$route.params.orderPageString).order; 
+	},
   },
   methods: {
     addItem: function(item) {
       // add order to order list
-      runningOrder.push({
+	   runningOrder.push({
        item: item
       });
 
@@ -66,6 +77,7 @@ export default {
       runningTotal.splice(0, 1);
 
       runningOrder.splice(itemIndex, 1);
+	 
     },
     convertOrdersToString() {
       var order = {
@@ -78,6 +90,17 @@ export default {
       // vue doesn't like this property being passed
       return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
     }
+  },
+  created: function () {
+    this.$store.state.socket.on('modified',function() {
+	  console.log("recibo");
+      runningOrder=this.passedOrder;
+	  runningTotal=this.passedTotal;
+	  this.orderTotal=this.passedTotal;
+	  this.currentOrder=this.passedOrder;
+	  console.log(this.orderTotal);
+    }.bind(this));
+
   }
 }
 </script>
