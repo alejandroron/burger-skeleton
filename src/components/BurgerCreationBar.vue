@@ -6,7 +6,7 @@
       <div class="removeItem">
         <img src="@/assets/redX.png" />
       </div>
-      <img :src="item.imgSrc">
+      <img :src="getImagePath(item)">
       <p>{{ item.title }}</p>
     </div>
   </div>
@@ -22,14 +22,20 @@
 </template>
 
 <script>
-
+var imagePath="@\\assets\\Food\\";
 export default {
 name: 'BurgerCreationBar',
 props: [
   'currentBurger',
   'burgerTotal'
-]
-}
+],
+methods: {
+      getImagePath: function(item){
+		console.log("burgercreation");
+		return imagePath+item.imgSrc;
+	  }
+  }
+
 
 
 </script>

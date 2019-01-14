@@ -4,42 +4,42 @@ var customBurgerMenu = {
   buns: {
     name: "BUNS",
     children: [
-      { name: "Kaiser Roll", price: 1.52, imgSrc: require('@/assets/Creation/Buns/kaiserroll.png') },
-      { name: "Onion Roll", price: 1.52, imgSrc: require('@/assets/Creation/Buns/onionroll.png')  },
-      { name: "Potato Roll", price: 1.52, imgSrc: require('@/assets/Creation/Buns/potatoroll.png')  },
-      { name: "Pretzel Roll", price: 1.52, imgSrc: require('@/assets/Creation/Buns/pretzelroll.png')  },
-      { name: "Sesame Seed Bun", price: 1.52, imgSrc: require('@/assets/Creation/Buns/sesameroll.png')  }
+      { name: "Kaiser Roll", price: 1.52, imgSrc:'kaiserroll.png' },
+      { name: "Onion Roll", price: 1.52, imgSrc:'onionroll.png'  },
+      { name: "Potato Roll", price: 1.52, imgSrc:'potatoroll.png'  },
+      { name: "Pretzel Roll", price: 1.52, imgSrc:'pretzelroll.png'  },
+      { name: "Sesame Seed Bun", price: 1.52, imgSrc:'sesameroll.png'  }
     ]
   },
   meat: {
     name: "MEAT",
     children: [
-      { name: "Beef", price: 1.52, imgSrc: require('@/assets/Creation/Meat/beef.png')  },
-      { name: "Chicken", price: 1.52, imgSrc: require('@/assets/Creation/Meat/chicken.png')  },
-      { name: "Fish", price: 1.52, imgSrc: require('@/assets/Creation/Meat/fish.png')  },
-      { name: "Vegetarian", price: 1.52, imgSrc: require('@/assets/Creation/Meat/vegie.png')  },
+      { name: "Beef", price: 1.52, imgSrc:'beef.png'  },
+      { name: "Chicken", price: 1.52, imgSrc:'chicken.png'  },
+      { name: "Fish", price: 1.52, imgSrc:'fish.png'  },
+      { name: "Vegetarian", price: 1.52, imgSrc:'vegie.png'  },
     ]
   },
   ingredients: {
     name: "INGREDIENTS",
     children: [
-      { name: "Lettuce", price: 1.52, imgSrc: require('@/assets/Creation/Ingredients/lettuce.png')  },
-      { name: "Cheese", price: 1.52, imgSrc: require('@/assets/Creation/Ingredients/cheese.png') },
-      { name: "Tomato" , price: 1.52, imgSrc: require('@/assets/Creation/Ingredients/tomato.png') },
-      { name: "Pickles", price: 1.52, imgSrc: require('@/assets/Creation/Ingredients/pickles.png') },
-      { name: "Onions", price: 1.52, imgSrc: require('@/assets/Creation/Ingredients/onion.png') },
-      { name: "Peppers", price: 1.52, imgSrc: require('@/assets/Creation/Ingredients/pepper.png') },
+      { name: "Lettuce", price: 1.52, imgSrc:'lettuce.png'  },
+      { name: "Cheese", price: 1.52, imgSrc:'cheese.png' },
+      { name: "Tomato" , price: 1.52, imgSrc:'tomato.png' },
+      { name: "Pickles", price: 1.52, imgSrc:'pickles.png' },
+      { name: "Onions", price: 1.52, imgSrc:'onion.png' },
+      { name: "Peppers", price: 1.52, imgSrc:'pepper.png' },
     ]
   },
   sauces: {
     name: "SAUCES",
     children: [
 
-      { name: "Ketchup", price: 1.52, imgSrc: require('@/assets/Sides/Sauces/ketchup.png') },
-      { name: "Mustard", price: 1.52, imgSrc: require('@/assets/Sides/Sauces/mustard.png') },
-      { name: "BQQ Sauce", price: 1.52, imgSrc: require('@/assets/Sides/Sauces/bbq.png') },
+      { name: "Ketchup", price: 1.52, imgSrc:'ketchup.png' },
+      { name: "Mustard", price: 1.52, imgSrc:'mustard.png' },
+      { name: "BQQ Sauce", price: 1.52, imgSrc:'bbq.png' },
 
-      { name: "Mayo", price: 1.52, imgSrc: require('@/assets/Sides/Sauces/mayo.png') },
+      { name: "Mayo", price: 1.52, imgSrc:'mayo.png' },
     ]
   }
 }

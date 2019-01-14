@@ -22,7 +22,7 @@
         and add it to the footer*/
         var item = {
           title: 'Custom Order',
-          imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
+          imgSrc: require('@/assets/Food/beef1.png'),
           price: this.customizedPrice,
           isBurger: true,
           ingredients: this.customizedOrder

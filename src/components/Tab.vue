@@ -1,6 +1,5 @@
 <script>
   import menu from '@/components/menu.js';
-
   export default {
     name: 'Tabs',	
     data: function() {
@@ -14,7 +13,11 @@
     methods: {
       addItem: function(item) {
         this.$emit('addedItemToOrder', item); // talking to order page
-      }
+      },
+	  getImagePath: function(img){
+		
+		return "bbq.png";
+	  }
   }
   }
 </script>
@@ -40,8 +43,8 @@
           <div class="grid-container">
             <div class="categoryName">{{ burgerType }}</div>
             <div class="scrollable">
-              <div class="menuItem" v-for="(item, index) in burgerItems" :key="index" @click="addItem(item)">
-                <div class="menuPic"><img :src="item.imgSrc" height="70%" width="70%" style="margin-top: 15px;"></div>
+              <div class="menuItem" v-for="(item, index1) in burgerItems" :key="index1" @click="addItem(item)">
+                <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
                 <div class="menuTitle">{{ item.title }}</div>
               </div>
             </div>
@@ -56,7 +59,7 @@
             <div class="categoryName">{{ drinkType }}</div>
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index) in drinkItems" :key="index" @click="addItem(item)">
-                <div class="menuPic"><img :src="item.imgSrc" height="70%" width="70%" style="margin-top: 15px;"></div>
+                <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
                 <div class="menuTitle">{{ item.title }}</div>
               </div>
             </div>
@@ -71,7 +74,7 @@
             <div class="categoryName">{{ sideType }}</div>
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index) in sideItems" :key="index" @click="addItem(item)">
-                <div class="menuPic"><img :src="item.imgSrc" height="70%" width="70%" style="margin-top: 15px;"></div>
+                <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
                 <div class="menuTitle">{{ item.title }}</div>
               </div>
             </div>

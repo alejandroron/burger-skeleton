@@ -21,7 +21,7 @@ export default {
         <div class="removeItem">
           <img src="@/assets/redX.png" />
         </div>
-        <img :src="item.item.imgSrc">
+        <img :src='require("@/assets/Food/" + item.item.imgSrc)'>
         <p>{{ item.item.title }}</p>
       </div>
     </div>
