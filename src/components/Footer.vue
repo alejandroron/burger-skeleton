@@ -32,7 +32,7 @@
     <div class="total">
       <span>TOTAL:</span>
       <p class="totalValue">
-        ${{ formatTotal(orderTotal[0]) }}
+        €{{ formatTotal(orderTotal[0]) }}
       </p>
     </div>
   </div>

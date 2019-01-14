@@ -13,9 +13,11 @@
     methods: {
       addItem: function(item) {
         this.$emit('addedItemToOrder', item); // talking to order page
+      },
+      showIngredients: function(ingredients) {
+        return 'Ingredients: \n\n' + ingredients.join('\n');
       }
     }
-  
   }
 </script>
 
@@ -30,20 +32,22 @@
   
     <div class="content">
       <div class="contentItem" id="burgersContent" v-if="activetab === 'burgers'">
-        <a href="./#/BurgerConstruction">
+        <!-- <a href="./#/BurgerConstruction">
           <div class="personalisedBurger">
             <p>CREATE YOUR OWN PERSONALISED BURGER!</p>
           </div>
-        </a>
+        </a> -->
         <div v-for="(burgerItems, burgerType) in burgers" :key="burgerType">
           <br>
           <div class="grid-container">
             <div class="categoryName">{{ burgerType }}</div>
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index1) in burgerItems" :key="index1" @click="addItem(item)">
-                <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
-                <div class="menuTitle">{{ item.title }}</div>
-                <div class="menuPrice">({{ item.price }}€)</div>
+                <a :title="showIngredients(item.ingredients)">
+                  <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
+                  <div class="menuTitle">{{ item.title }}</div>
+                  <div class="menuPrice">({{ item.price }}€)</div>
+                </a>
               </div>
             </div>
           </div>
