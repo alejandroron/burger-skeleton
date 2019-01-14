@@ -198,12 +198,11 @@ h3 {
   margin-top: -5px;
   border-radius: 50%;
   background-color: transparent;
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
   border: none;
 }
 
 .boxes {
-  margin-top: 80px;
+  margin-top: 110px;
   margin-bottom: 140px;
   margin-left: auto;
   margin-right: auto;
@@ -218,7 +217,7 @@ h3 {
 .item {
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  background-color: #FFA801;
+  background-color: #485460;
   /* The colour depends, all the options are, i think we'd need JS for this:
   Gray: #485460
   Black: #000000
@@ -231,7 +230,7 @@ h3 {
   display: flex;
   height: 58px;
   border-radius: 5px 5px 0px 0px;
-  background-color: #EF9D00;
+  background-color: #333C45;
   /* Options:
   Gray: #333C45
   Black: #171717
@@ -252,7 +251,6 @@ h3 {
   margin: -2px 0 0 -8px;
   width: 20px;
   height: 20px;
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
 }
 
 #name {
@@ -277,7 +275,7 @@ h3 {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  background-color: #EF9D00;
+  background-color: #333C45;
   /* Options:
   Gray: #333C45
   Black: #171717
@@ -305,6 +303,14 @@ h3 {
 }
 /* Modify and Pay buttons */
 
+.totalPrice {
+  top: 60px;
+  position: fixed;
+  width: 100%;
+  height: 30px;
+  background-color: #000000;
+}
+
 .modify {
   cursor: pointer;
   bottom: 40px;
@@ -323,19 +329,16 @@ h3 {
   background-color: #0C44D1;
 }
 
-.totalPrice {
-  cursor: pointer;
-  bottom: 80px;
-  position: fixed;
-  width: 100%;
-  height: 40px;
-  background-color: #0C44D1;
-}
-
 .pay p, .modify p, .totalPrice p {
   text-align: center;
   line-height: 40px;
   color: white;
   font-size: 20px;
+}
+.totalPrice p {
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  font-size: 15px;
 }
 </style>
