@@ -203,8 +203,8 @@ h3 {
 }
 
 .boxes {
-  margin-top: 90px;
-  margin-bottom: 100px;
+  margin-top: 80px;
+  margin-bottom: 140px;
   margin-left: auto;
   margin-right: auto;
   width: 90%;

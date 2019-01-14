@@ -54,21 +54,29 @@ let router = new Router({
       component: OrderCompletedPage
     },
     {
-      path: '/KitchenOrderPage',
-      meta: {
-        title: 'Kitchen Order Screen',
-      },
-      name: 'KitchenOrderPage',
-      component: KitchenOrderPage
-    },
-    {
       path: '/Kitchen',
       meta: {
         title: 'Kitchen',
       },
       name: 'Kitchen',
-      component: () => import('./views/KitchenStartPage.vue')
+      component: KitchenOrderPage
     }
+    // {
+    //   path: '/KitchenOrderPage',
+    //   meta: {
+    //     title: 'Kitchen Order Screen',
+    //   },
+    //   name: 'KitchenOrderPage',
+    //   component: KitchenOrderPage
+    // },
+    // {
+    //   path: '/Kitchen',
+    //   meta: {
+    //     title: 'Kitchen',
+    //   },
+    //   name: 'Kitchen',
+    //   component: () => import('./views/KitchenStartPage.vue')
+    // }
   ]
 });
 

@@ -8,6 +8,10 @@
 export default {
   name: 'app'
 }
+
+window.onbeforeunload = function() {
+  return ''; // return default message
+}
 </script>
 
 <style>
