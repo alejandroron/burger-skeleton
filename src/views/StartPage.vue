@@ -2,10 +2,10 @@
   <div class="container">
 
     <div id="frontpage">
-      <div class="flags">
+      <!-- <div class="flags">
         <img src="@/assets/sweden.png">
         <img src="@/assets/uk.png">
-      </div>
+      </div> -->
 
       <div class="title">
         EATING LOCATION
@@ -63,7 +63,7 @@ a {
 }
 
 .title {
-  margin-top: 20px;
+  margin-top: 50px;
   align-self: center;
   font-family: Roboto, sans-serif;
   font-weight: bold;
@@ -99,7 +99,7 @@ a {
   }
 
   .title {
-    margin-top: 10px;
+    margin-top: 40px;
     font-size: 50px;
   }
 

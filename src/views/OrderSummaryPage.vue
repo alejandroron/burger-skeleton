@@ -156,7 +156,7 @@ export default {
 
     <a :href="'./#/OrderPage/' + orderToString()" v-on:click="modify()">
       <div class="modify">
-        <p>MODIFY</p>
+        <p>ADD AN ITEM</p>
       </div>
     </a>
 
