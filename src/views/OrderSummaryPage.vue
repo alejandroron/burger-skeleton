@@ -1,25 +1,25 @@
 <script>
-'use strict';
-import Navbar from '@/components/Navbar.vue';
-import sharedVueStuff from '@/components/sharedVueStuff.js';
-
-var removedOrders = [];
-
-export default {
-  name: 'OrderSummaryPage',
-  components: {
-    Navbar
-  },
-  mixins: [ sharedVueStuff ],
-  data: function() {
-    return {
-      order: this.initializeOrderWithIngredients(),
-      // perhaps not necessary to return this array, just added in case
-      removedItemsArray: removedOrders,
-      counter: 0
-    }
-  },
-  methods: {
+  'use strict';
+  import Navbar from '@/components/Navbar.vue';
+  import sharedVueStuff from '@/components/sharedVueStuff.js';
+  
+  var removedOrders = [];
+  
+  export default {
+    name: 'OrderSummaryPage',
+    components: {
+      Navbar
+    },
+    mixins: [sharedVueStuff],
+    data: function() {
+      return {
+        order: this.initializeOrderWithIngredients(),
+        // perhaps not necessary to return this array, just added in case
+        removedItemsArray: removedOrders,
+        counter: 0
+      }
+    },
+    methods: {
       initializeOrderWithIngredients: function() {
         var order = JSON.parse(this.$route.params.orderString);
         var orderItems = order.order;
