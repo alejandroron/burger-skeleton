@@ -38,12 +38,12 @@ export default {
                 price: randomPrice,
                 quantity: 1,
                 totalPrice: randomPrice,
-			  
+
             };
-				
+
 			}
 
-            
+
           }
         }
       }
@@ -61,33 +61,20 @@ export default {
       this.order.order.splice(index, 1);
     },
     incrementItem: function(indexItem, indexIngredient) {
+      var ingredientPrice=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
       this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]++;
-      var ingredientPrice=this.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
       var ingredientQuantity=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
-
-      if(ingredientQuantity > 1) {
-        this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice*(ingredientQuantity);
-        this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]+ingredientPrice;
-        this.updateTotalPrice();
-      } else {
-        //this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice;
-        this.updateTotalPrice();
-      }
+      this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice*(ingredientQuantity);
+      this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]+ingredientPrice;
+      this.updateTotalPrice();
     },
     decrementItem: function(indexItem, indexIngredient) {
-      var quantity=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
+      if(this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"] > 1) {
       var ingredientPrice=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
+      this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]--;
       var ingredientQuantity=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
-
-      if(quantity > 1) {
-        this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]--;
-        this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice*(ingredientQuantity);
-        this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]-ingredientPrice;
-      }
-      if(quantity == 1) {
-        //this.order.order[indexItem]["item"]["ingredients"].splice(indexIngredient,1);
-        this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]--;
-        //this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]-ingredientPrice;
+      this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice*(ingredientQuantity);
+      this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]-ingredientPrice;
       }
       this.updateTotalPrice();
     },
@@ -96,8 +83,10 @@ export default {
       var i, len;
       for (i=0, len=this.order.order.length; i < len; i++) {
         price = this.order.order[i]["item"]["price"] + price;
+        console.log(price);
       }
       this.order[price] = price;
+      console.log(this.order[price]);
     },
     orderToString: function(){
       return JSON.stringify(this.order);
