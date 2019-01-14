@@ -2,7 +2,7 @@
   import menu from '@/components/menu.js';
   
   export default {
-    name: 'Tabs',	
+    name: 'Tabs',
     data: function() {
       return {
         activetab: 'burgers',
@@ -15,7 +15,7 @@
       addItem: function(item) {
         this.$emit('addedItemToOrder', item); // talking to order page
       }
-  }
+    }
   }
 </script>
 
@@ -178,7 +178,7 @@
   .grid-container {
     margin-top: 10px;
     display: grid;
-    grid-template-rows: 40px 200px;
+    grid-template-rows: 40px 210px;
     grid-template-areas: "categoryName" "burgers";
   }
   
@@ -196,7 +196,7 @@
     overflow: auto;
     white-space: nowrap;
     display: grid;
-    grid-template-columns: 202px 202px 202px 202px 202px;
+    grid-template-columns: 200px 200px 200px 200px 200px;
     grid-template-areas: "burger1 burger2 burger3 burger4 burger5";
   }
   
@@ -234,6 +234,7 @@
   
   
   /* Queries */
+  
   @media only screen and (max-width: 730px) {
     .flap {
       /* Visual properties */
@@ -255,12 +256,27 @@
     .personalisedBurger p {
       line-height: 20px;
     }
+    .grid-container {
+      margin-top: 0px;
+      grid-template-rows: 20px 110px;
+    }
     .content {
-    margin-top: 52.50px;
-    margin-bottom: 100px;
-  }
+      margin-top: 52.50px;
+      margin-bottom: 100px;
+    }
     .contentItem {
       padding: 10px;
+    }
+    .categoryName {
+      line-height: 20px;
+      font-size: 20px;
+    }
+    .scrollable {
+      grid-template-columns: 100px 100px 100px 100px 100px;
+    }
+    .menuTitle {
+      line-height: 20px;
+      font-size: 12px;
     }
   }
 </style>
