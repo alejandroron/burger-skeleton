@@ -81,8 +81,10 @@ io.on('connection', function (socket) {
     data.changeStock(item, saldo);
     io.emit('currentQueue', {ingredients: data.getIngredients() });
   });
+  socket.on('modified',function() {
+	  io.emit('modified');
+  });
 });
-
 const port = 8080;
 http.listen(port, function() {
   console.log("Developer server running on http://localhost:" + port);

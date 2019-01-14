@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar :titleProperty='"Orders"' />
+    <Navbar :titleProperty='"Orders state"' />
 
     <div class="boxes">
         <div class="item" v-for="(object, index) in orders[0]" :key="index">
@@ -11,10 +11,10 @@
           <div class="middle">
             <ul class="ingredientList">
               <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
-                <span>{{ orderItem.item.title }}</span>
+                <span id="title">{{ orderItem.item.title }}</span>
                 <ul>
-                <li class="ingredient" v-for="(item, ingredientIndex) in orderItem" :key="ingredientIndex">
-                  <span>{{ orderItem.item.ingredients }}</span>
+                <li class="ingredient" v-for="(ingredient, ingredientIndex) in orderItem.item.ingredients" :key="ingredientIndex">
+                  <span>{{ ingredient["name"] }}</span>
 
               <!--
               The above span will list the entire ingredient attribute for each ingredient:
@@ -31,8 +31,10 @@
             </li>
           </ul>
         </div>
-
-        <div class="bottom" v-on:click="changeStatus(object)">
+        <div class="bottom" id="orderFinished" v-if="object.status==='finished'" v-on:click="changeStatus(object)">
+          {{ object.status }}
+        </div>
+        <div class="bottom" v-else v-on:click="changeStatus(object)">
           {{ object.status }}
         </div>
       </div>
@@ -159,10 +161,19 @@ h3 {
   margin: 0 auto;
 }
 
+#title{
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 40px;
+  margin: 0 auto;
+}
+
 .item .middle {
   overflow: auto;
   height: 187px;
-  padding: 5px 10px;
+  padding: 15px 10px;
 }
 
 .item .bottom {
@@ -175,18 +186,25 @@ h3 {
   text-align: center;
   background-color: #EF9D00;
 }
+#orderFinished {
+  color: 	#008000;
+}
 .item .bottom:hover {
 cursor: pointer;
 }
 
 .ingredientList {
-  margin: 0;
+  margin: 0 ;
+}
+
+.itemsInOrder {
+  padding-bottom: 20px;
 }
 
 .ingredient {
-  color: white;
+  color: black;
   border-bottom: 1px solid black;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 .ingredientInfo {

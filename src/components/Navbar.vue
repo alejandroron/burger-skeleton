@@ -17,6 +17,7 @@
     ],
     methods: {
       addCustomizedToOrder: function() {
+	    
         /*convert the customized order array into an item
         and add it to the footer*/
         var item = {
@@ -27,28 +28,31 @@
           ingredients: this.customizedOrder
         };
         this.$parent.$emit('added_customized_to_order', item);
-      }
+      },
+	  goSummaryOrder: function(){
+		
+	  }
     }
   }
 </script>
 
 <template>
   <div class='fixed navbar'>
-  
-    <a :href="backAddressProperty" v-if="displayButtons">
-      <div class="button" id="backButton"> {{ backTextProperty }} </div>
-    </a>
-  
-    <h1>{{ titleProperty }}</h1>
-  
-    <a :href="nextAddressProperty" v-if="displayButtons">
-      <div class="button" id="nextButton"> {{ nextTextProperty }} </div>
-    </a>
-  
-    <!-- <a :href="nextAddressProperty" v-else-if="displayButtons">
-          <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()"> {{ nextTextProperty }} </div>
-        </a> -->
-  
+
+      <a :href="backAddressProperty" v-if="displayButtons" >
+        <div class="button" id="backButton"> {{ backTextProperty }} </div>
+      </a>
+
+      <h1>{{ titleProperty }}</h1>
+
+      <a :href="nextAddressProperty" v-if="displayButtons">
+        <div class="button" id="nextButton" v-on:click="goSummaryOrder()"> {{ nextTextProperty }} </div>
+      </a>
+
+      <!-- <a :href="nextAddressProperty" v-else-if="displayButtons">
+        <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()"> {{ nextTextProperty }} </div>
+      </a> -->
+
   </div>
 </template>
 
