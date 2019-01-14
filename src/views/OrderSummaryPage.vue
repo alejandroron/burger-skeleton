@@ -12,40 +12,36 @@ export default {
   mixins: [ sharedVueStuff ],
   data: function() {
     return {
-      order: this.orderToArray(),
-
+      order: this.initializeOrderWithIngredients(),
       // perhaps not necessary to return this array, just added in case
       removedItemsArray: removedOrders,
       counter: 0
     }
   },
   methods: {
-    giveIngredientsPrices: function(){
-
-    },
-    orderToArray: function () {
+    initializeOrderWithIngredients: function () {
       var order = JSON.parse(this.$route.params.orderString);
-      var i,len;
+      var orderItems = order.order;
 
-      for (i = 0, len=order.order.length; i < len; i++)
-      {
-        if(order.order[i]["item"]["isBurger"])
-        {
-          var j,len2;
-          for(j=0, len2=order.order[i]["item"]["ingredients"].length; j < len2;j++)
-          {
-            var randomPrice=Math.random();
-            var ingre=
-            {
-              name:order.order[i]["item"]["ingredients"][j],
-              price:randomPrice,
-              quantity:1,
-              totalPrice:randomPrice
+      for (var i = 0; i < orderItems.length; i++) {
+
+        var currentItem = orderItems[i]["item"];
+
+        if(currentItem["isBurger"]) {
+          for(var j=0; j < currentItem["ingredients"].length; j++) {
+            var randomPrice = Math.random();
+            var ingredientName = currentItem["ingredients"][j];
+
+            orderItems[i]["item"]["ingredients"][j] = {
+              name: ingredientName,
+              price: randomPrice,
+              quantity: 1,
+              totalPrice: randomPrice
             };
-            order.order[i]["item"]["ingredients"][j]=ingre;
           }
         }
       }
+
       return order;
     },
     placeOrder: function () {
