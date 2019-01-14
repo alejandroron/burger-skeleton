@@ -3,25 +3,33 @@
     <Navbar :titleProperty='"Orders"' />
 
     <div class="boxes">
+        <div class="item" v-for="(object, index) in orders[0]" :key="index">
+          <div class="top">
+            <h2 id="name">Order #{{ index }}</h2>
+          </div>
 
-      <div class="item" v-for="(object, index) in orders[0]" :key="index" >
-        <div class="top">
-          <h2 id="name">Order #{{ index }}</h2>
-        </div>
+          <div class="middle">
+            <ul class="ingredientList">
+              <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
+                <span>{{ orderItem.item.title }}
+                <li class="ingredient" v-for="(item, ingredientIndex) in orderItem" :key="ingredientIndex">
+                <span>{{ orderItem.item.ingredients }}
 
-        <div class="middle">
-          <ul class="ingredientList">
-            <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
-              <span>{{ orderItem.item.title }}
-              <li class="ingredient" v-for="(item, ingredientIndex) in orderItem" :key="ingredientIndex">
-              <span>{{ item.ingredients[ingredientIndex]}}
-              </span>
-              </li>
-              </span>
-              </li>
-              <div class="ingredientInfo">
-              </div>
-            </li>
+              <!--
+              The above span will list the entire ingredient attribute for each ingredient:
+              as example, if you order Bacon Deli one of the ingredients will be this:
+              { "NAME": "KAISER ROLL",
+              "PRICE": 0.3825082958361685, "QUANTITY": 1,
+              "TOTALPRICE": 0.3825082958361685 }
+              and so on for each ingredient,
+              if anyone knows how to get ONLY the name property out of this
+              then feel free to add it, otherwise code is working fine
+              -->
+
+                </span>
+                </li>
+                </span>
+                </li>
           </ul>
         </div>
 
@@ -29,7 +37,6 @@
           {{ object.status }}
         </div>
       </div>
-
     </div>
 
   </div>
@@ -79,13 +86,20 @@ export default {
       orders.splice(0, 1);
       }.bind(this))
   },
-methods: {
-changeStatus: function(object)
-{
-  console.log(object);
-  object.status = 'started';
-}
-}
+  methods:
+  {
+  changeStatus: function(object)
+    {
+      if (object.status==='not-started')
+      {
+        object.status = 'started';
+      }
+      else if (object.status==='started')
+      {
+        object.status = 'finished';
+      }
+    }
+  }
 }
 </script>
 
@@ -161,6 +175,9 @@ h3 {
   font-weight: bold;
   text-align: center;
   background-color: #EF9D00;
+}
+.item .bottom:hover {
+cursor: pointer;
 }
 
 .ingredientList {

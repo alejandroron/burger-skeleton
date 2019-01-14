@@ -1,32 +1,38 @@
 <template>
-  <div id="container">
-    <Navbar
-      :displayButtons='true'
-      :orderPage='false'
-      :backAddressProperty='"./#/OrderPage"'
-      :backTextProperty='"MAIN PAGE"'
-      :titleProperty='"CREATE YOUR OWN BURGER"'
-      :nextAddressProperty='"./#/OrderPage"'
-      :nextTextProperty='"FINISH BURGER"'
-      :customizedOrder='currentOrder'
-      :customizedPrice='orderTotal' />
-    <AccordianMenu
-      :menuData="menuData"
-      :decitem = "decitem"
-      @addIngredientToBurger="addIngredient"
-      @deleteIngredientFromBurger="removeItembyname"/>
-    <Footer
-      :currentOrder='currentOrder'
-      :orderTotal='orderTotal'
-      @removeItemFromOrder="removeItem" />
+  <div id="container" v-if="currentPage.length !== 0">
+  <NavbarBurger
+  :currentPage='currentPage'
+  :displayButtons='true'
+  :backTextProperty='"BACK TO ORDER"'
+  :titleProperty='"CREATE YOUR OWN BURGER"'
+  :nextTextProperty='"FINISH BURGER"'
+  :order='currentOrder'
+  :totalPrice='orderTotal'
+  @added_customized_to_order="addItem"
+  @back_address_property="changeView"
+  @next_address_property="addBurgerToOrder"
+  />
+
+  <AccordianMenu
+  :menuData="menuData"
+  :decitem = "decitem"
+  @addIngredientToBurger="addIngredient"
+  @deleteIngredientFromBurger="removeItembyname"
+  />
+
+  <BurgerFooter
+  :currentOrder='currentOrder'
+  :orderTotal='orderTotal'
+  @removeItemFromOrder="removeItem"
+  />
+
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
 import AccordianMenu from '@/components/AccordianMenu.vue';
-import Footer from '@/components/Footer.vue';
-
+import NavbarBurger from '@/components/NavbarBurger.vue';
+import BurgerFooter from '@/components/BurgerFooter.vue';
 import customBurgerMenu from '@/components/customBurgerMenu.js';
 
 var runningTotal = [ 0.00 ];
@@ -34,10 +40,13 @@ var runningOrder = [];
 
 export default {
   name: 'BurgerConstruction',
+  props: [
+    'currentPage'
+  ],
   components: {
+    NavbarBurger,
     AccordianMenu,
-    Navbar,
-    Footer
+    BurgerFooter
   },
   data () {
     return {
@@ -77,6 +86,13 @@ export default {
       counter++;
       }
       }
+    },
+    addBurgerToOrder: function() {
+
+    },
+    changeView: function() {
+    console.log('hi from burgerCons');
+    this.$emit('changeview','Tabs');
     }
   }
 }

@@ -13,28 +13,42 @@
 
     ],
     methods: {
+      addCustomizedToOrder: function() {
+      /*convert the customized order array into an item
+      and add it to the footer*/
+      var item = {
+        title: 'Custom Order',
+        imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
+        price: this.customizedPrice,
+        isBurger: true,
+        ingredients: this.customizedOrder
+        };
+      console.log(item);
+      this.$parent.$emit('added_customized_to_order', item);
+      },
       changeView: function() {
-      console.log('hi')
-      this.$emit('changeview','Tabs');
+      console.log('hi from NavbarBurger');
+      this.$emit('back_address_property','Tabs');
+
+
       }
     }
   }
 </script>
 
-  <template>
-    <div class='fixed navbar' v-if='currentPage.length === 0'>
-        <div class="button" id="backButton" v-on:click="">
-        {{ backTextProperty }}
-        </div>
+<template>
+  <div class='fixed navbar' v-if="'currentPage.length !== 0'">
+      <div class="button" id="backButton" v-on:click="changeView()">
+      {{ backTextProperty }}
+      </div>
 
-        <h1>{{ titleProperty }}</h1>
+      <h1>{{ titleProperty }}</h1>
 
-        <div class="button" id="nextButton" v-on:click="">
-        {{ nextTextProperty }}
-        </div>
-    </div>
-  </template>
-
+      <div class="button" id="nextButton" v-on:click="">
+      {{ nextTextProperty }}
+      </div>
+  </div>
+</template>
 
 <style>
   a {

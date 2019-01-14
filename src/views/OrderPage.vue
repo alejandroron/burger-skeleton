@@ -1,47 +1,41 @@
 <template>
   <div id="container">
-    <Navbar
-      :displayButtons='true'
-      :orderPage='true'
-      :backAddressProperty='"./#/"'
-      :backTextProperty='"START OVER"'
-      :titleProperty='"CREATE YOUR MENU"'
-      :nextAddressProperty='"./#/OrderSummary/"'
-      :nextTextProperty='"FINISH ORDER"'
-      :order='currentOrder'
-      :totalPrice='orderTotal'
-      @added_customized_to_order="addItem" />
-    <Tabs
-      @addedItemToOrder="addItem"
-      @changeview="$emit('changeview','BurgerConstruction')"/>
+  <Tab
+  :currentPage='currentPage'
+  @addedItemToOrder="addItem"
+  @changeview="changeView"
+  />
 
-    <Footer
-      :currentOrder='currentOrder'
-      :orderTotal='orderTotal'
-      @removeItemFromOrder="removeItem" />
+  <BurgerConstruction
+  :currentPage='currentPage'
+  @changeview="changeView"
+  />
+
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
-import Tabs from '@/components/Tab.vue';
-import Footer from '@/components/Footer.vue';
+import Tab from '@/components/Tab.vue';
+import BurgerConstruction from './BurgerConstruction.vue';
 
 // using array because vue live updated array values
 var runningTotal = [ 0.00 ];
 var runningOrder = [];
+var pageArray = [];
+
 
 export default {
   name: 'OrderPage',
   components: {
-    Navbar,
-    Tabs,
-    Footer
+    Tab,
+    BurgerConstruction,
   },
   data () {
     return {
       currentOrder: runningOrder,
-      orderTotal: this.toOrderArray()
+      orderTotal: this.toOrderArray(),
+      currentPage: pageArray
+
     }
   },
   methods: {
@@ -63,9 +57,9 @@ export default {
       runningOrder.splice(itemIndex, 1);
     },
     toOrderArray: function(){
-      var string = this.$route.params.orderPageString;
-	  console.log("string");
-	  console.log(string);
+    var string = this.$route.params.orderPageString;
+    console.log("string");
+    console.log(string);
       if (string==0) {
 		console.log("entra");
         return runningTotal;
@@ -74,8 +68,22 @@ export default {
           console.log(urljson);
          return urljson.price;
       }
-    }
-  }
+    },
+    changeView:function(inputKey)
+    {
+    console.log(inputKey);
+    if (inputKey==='BurgerConstruction')
+      {
+      var justNumber = 0;
+      pageArray.push(justNumber);
+      }
+    else if (inputKey==='Tabs')
+      {
+      pageArray = [];
+      }
+    console.log(pageArray);
+   }
+}
 }
 </script>
 

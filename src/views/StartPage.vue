@@ -3,8 +3,7 @@
 
 
 
-      <div id="frontpage"
-      v-if="view==='frontpage'">
+      <div id="frontpage">
       <div class="flags">
         <img src="@/assets/sweden.png">
         <img src="@/assets/uk.png">
@@ -14,7 +13,7 @@
       </div>
 
       <div class="buttons">
-        <a class="dine_in" @click="view='orderpage'">
+        <a class="dine_in" :href="urlstring()">
           <img class="dineIN" src="@/assets/dine_in.png">
         </a>
         <a class="take_out" :href="urlstring()">
@@ -23,37 +22,20 @@
       </div>
     </div>
 
-    <OrderPage
-    v-if="view==='orderpage'"
-    @changeview="changeView">
-  </OrderPage>
-
-  <BurgerConstruction
-  v-if="view==='BurgerConstruction'">
-  </BurgerConstruction>
-
     </div>
 </template>
 
 <script>
-import OrderPage from './OrderPage.vue';
-import BurgerConstruction from './BurgerConstruction.vue';
 
 export default {
   name: 'StartPage',
   components:{
-    OrderPage,
-    BurgerConstruction
   },
   data:function(){
     return{
-      view:'frontpage'
     }
   },
   methods:{
-    changeView:function(view){
-      this.view=view;
-    },
     urlstring:function(){
       var urlstring = "./#/OrderPage/";
       return urlstring + JSON.stringify(0);
