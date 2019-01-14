@@ -70,7 +70,7 @@
 import menu from '@/components/menu.js';
 
 export default {
-  name: 'Tabs',
+  name: 'Tab',
   props: [
     'currentPage'
   ],

@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-  <Tab
+  <Tabs
   :currentPage='currentPage'
   @addedItemToOrder="addItem"
   @changeview="changeView"
@@ -15,26 +15,25 @@
 </template>
 
 <script>
-import Tab from '@/components/Tab.vue';
+import Tabs from '@/components/Tabs.vue';
 import BurgerConstruction from './BurgerConstruction.vue';
 
 // using array because vue live updated array values
 var runningTotal = [ 0.00 ];
 var runningOrder = [];
-var pageArray = [];
 
 
 export default {
   name: 'OrderPage',
   components: {
-    Tab,
+    Tabs,
     BurgerConstruction,
   },
   data () {
     return {
       currentOrder: runningOrder,
       orderTotal: this.toOrderArray(),
-      currentPage: pageArray
+      currentPage: []
 
     }
   },
@@ -71,17 +70,15 @@ export default {
     },
     changeView:function(inputKey)
     {
-    console.log(inputKey);
     if (inputKey==='BurgerConstruction')
       {
       var justNumber = 0;
-      pageArray.push(justNumber);
+      this.currentPage.push(justNumber);
       }
     else if (inputKey==='Tabs')
       {
-      pageArray = [];
+      this.currentPage = [];
       }
-    console.log(pageArray);
    }
 }
 }

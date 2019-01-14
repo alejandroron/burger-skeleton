@@ -40,15 +40,11 @@
     ],
     components: {
     Navbar,
-    Tab
+    Tab,
     TabsFooter
     },
     data: function() {
       return {
-        activetab: 'burgers',
-        burgers: menu.burgers,
-        drinks: menu.drinks,
-        sides: menu.sides
       }
     },
     methods: {
@@ -58,7 +54,6 @@
       changeView: function() {
       this.$emit('changenavbar','BurgerConstruction');
       this.$emit('changeview','BurgerConstruction');
-
 
       }
     }
