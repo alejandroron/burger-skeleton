@@ -8,6 +8,12 @@
     methods: {
       removeItem: function(itemIndex) {
         this.$emit('removeItemFromOrder', itemIndex); //talking to orderpage
+      },
+      formatTotal: function(total){
+        if(total < 0){
+          total = 0;
+        }
+        return total.toFixed(2);
       }
     }
   }
@@ -18,9 +24,6 @@
     <div class="currentOrder">
   
       <div class="orderItem" v-for="(item, index) of currentOrder" :key="index" @click="removeItem(index)">
-        <div class="removeItem">
-          <img src="@/assets/redX.png" />
-        </div>
         <img :src="item.item.imgSrc">
         <p>{{ item.item.title }}</p>
       </div>
@@ -29,7 +32,7 @@
     <div class="total">
       <span>TOTAL:</span>
       <p class="totalValue">
-        ${{ orderTotal[0].toFixed(2) }}
+        ${{ formatTotal(orderTotal[0]) }}
       </p>
     </div>
   </div>
