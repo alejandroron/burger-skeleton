@@ -15,7 +15,7 @@
         this.$emit('addedItemToOrder', item); // talking to order page
       }
     }
-
+  
   }
 </script>
 
@@ -43,6 +43,7 @@
               <div class="menuItem" v-for="(item, index1) in burgerItems" :key="index1" @click="addItem(item)">
                 <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
                 <div class="menuTitle">{{ item.title }}</div>
+                <div class="menuPrice">({{ item.price }}€)</div>
               </div>
             </div>
           </div>
@@ -58,6 +59,7 @@
               <div class="menuItem" v-for="(item, index) in drinkItems" :key="index" @click="addItem(item)">
                 <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
                 <div class="menuTitle">{{ item.title }}</div>
+                <div class="menuPrice">({{ item.price }}€)</div>
               </div>
             </div>
           </div>
@@ -73,6 +75,7 @@
               <div class="menuItem" v-for="(item, index) in sideItems" :key="index" @click="addItem(item)">
                 <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
                 <div class="menuTitle">{{ item.title }}</div>
+                <div class="menuPrice">({{ item.price }}€)</div>
               </div>
             </div>
           </div>
@@ -176,9 +179,8 @@
   }
   
   .grid-container {
-    margin-top: 10px;
     display: grid;
-    grid-template-rows: 40px 210px;
+    grid-template-rows: 40px 225px;
     grid-template-areas: "categoryName" "burgers";
   }
   
@@ -198,6 +200,11 @@
     display: grid;
     grid-template-columns: 200px 200px 200px 200px 200px;
     grid-template-areas: "burger1 burger2 burger3 burger4 burger5";
+  }
+  
+  .menuItem {
+    grid-template-rows: 160px 30px 30px;
+    grid-template-areas: "menuPic" "menuTitle" "menuPrice";
   }
   
   .menuItem:hover {
@@ -225,7 +232,18 @@
     grid-area: menuTitle;
     color: white;
     text-align: center;
-    line-height: 40px;
+    line-height: 30px;
+    font-size: 20px;
+    /* font-weight: bold; */
+    /* text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
+    text-transform: uppercase;
+  }
+  
+  .menuPrice {
+    grid-area: menuPrice;
+    color: white;
+    text-align: center;
+    line-height: 30px;
     font-size: 20px;
     /* font-weight: bold; */
     /* text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
@@ -257,8 +275,10 @@
       line-height: 20px;
     }
     .grid-container {
-      margin-top: 0px;
-      grid-template-rows: 20px 110px;
+      grid-template-rows: 20px 115px;
+    }
+    .menuItem {
+      grid-template-rows: 80px 15px 15px;
     }
     .content {
       margin-top: 52.50px;
@@ -275,7 +295,11 @@
       grid-template-columns: 100px 100px 100px 100px 100px;
     }
     .menuTitle {
-      line-height: 20px;
+      line-height: 15px;
+      font-size: 12px;
+    }
+    .menuPrice {
+      line-height: 15px;
       font-size: 12px;
     }
   }
