@@ -142,9 +142,17 @@
     }
   }
   
-  @media only screen and (max-width: 340px) {
+  @media only screen and (max-width: 380px) {
     .navbar h1 {
       font-size: 20px;
     }
+
+    .button {
+      font-size: 13px;
+      width: 70px;
+      line-height: 20px;
+    }
   }
+
+
 </style>
