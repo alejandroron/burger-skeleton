@@ -22,7 +22,7 @@ let router = new Router({
       component: StartPage
     },
     {
-      path: '/OrderPage/:orderPageString',
+      path: '/OrderPage/:orderString',
       meta: {
         title: 'Order Screen',
       },

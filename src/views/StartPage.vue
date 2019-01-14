@@ -1,38 +1,27 @@
 <template>
-    <div class="container">
+  <div class="container">
 
-
-
-      <div id="frontpage"
-      v-if="view==='frontpage'">
+    <div id="frontpage">
       <div class="flags">
         <img src="@/assets/sweden.png">
         <img src="@/assets/uk.png">
       </div>
+
       <div class="title">
         EATING LOCATION
       </div>
 
       <div class="buttons">
-        <a class="dine_in" @click="view='orderpage'">
+        <a class="dine_in" :href="'./#/OrderPage/' + emptyOrderString()">
           <img class="dineIN" src="@/assets/dine_in.png">
         </a>
-        <a class="take_out" :href="urlstring()">
+        <a class="take_out" :href="'./#/OrderPage/' + emptyOrderString()">
           <img class="takeOUT" src="@/assets/take_out.png">
         </a>
       </div>
     </div>
 
-    <OrderPage
-    v-if="view==='orderpage'"
-    @changeview="changeView">
-  </OrderPage>
-
-  <BurgerConstruction
-  v-if="view==='BurgerConstruction'">
-  </BurgerConstruction>
-
-    </div>
+  </div>
 </template>
 
 <script>
@@ -45,18 +34,10 @@ export default {
     OrderPage,
     BurgerConstruction
   },
-  data:function(){
-    return{
-      view:'frontpage'
-    }
-  },
   methods:{
-    changeView:function(view){
-      this.view=view;
-    },
-    urlstring:function(){
-      var urlstring = "./#/OrderPage/";
-      return urlstring + JSON.stringify(0);
+    emptyOrderString: function (){
+      var emptyOrder = { price:[0], order:[] };
+      return JSON.stringify(emptyOrder);
     }
   }
 }
@@ -98,6 +79,10 @@ a {
   align-self: center;
   align-items: center;
   justify-content: center;
+}
+
+.dine_in:hover {
+  cursor: pointer;
 }
 
 /*    Responsiveness*/

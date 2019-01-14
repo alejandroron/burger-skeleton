@@ -6,15 +6,12 @@
       :backAddressProperty='"./#/"'
       :backTextProperty='"START OVER"'
       :titleProperty='"CREATE YOUR MENU"'
-      :nextAddressProperty='"./#/OrderSummary/"'
+      :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
       :nextTextProperty='"FINISH ORDER"'
-      :order='currentOrder'
-      :totalPrice='orderTotal'
       @added_customized_to_order="addItem" />
     <Tabs
       @addedItemToOrder="addItem"
-      @changeview="$emit('changeview','BurgerConstruction')"/>
-
+      @changeview="$emit('changeview','BurgerConstruction')" />
     <Footer
       :currentOrder='currentOrder'
       :orderTotal='orderTotal'
@@ -26,8 +23,9 @@
 import Navbar from '@/components/Navbar.vue';
 import Tabs from '@/components/Tab.vue';
 import Footer from '@/components/Footer.vue';
-
-// using array because vue live updated array values
+// wanted to do something like this to utilize the url bar
+// var runningTotal = passedTotal;
+// var runningOrder = passedOrder;
 var runningTotal = [ 0.00 ];
 var runningOrder = [];
 
@@ -41,12 +39,19 @@ export default {
   data () {
     return {
       currentOrder: runningOrder,
-      orderTotal: this.toOrderArray()
+      orderTotal: runningTotal
     }
+  },
+  computed: {
+    passedTotal: function() {
+      return [ JSON.parse(this.$route.params.orderString).price ];
+    },
+    passedOrder: function(){
+      return [ JSON.parse(this.$route.params.orderString).order ];      
+    },
   },
   methods: {
     addItem: function(item) {
-      console.log(item);
       // add order to order list
       runningOrder.push({
        item: item
@@ -62,18 +67,16 @@ export default {
 
       runningOrder.splice(itemIndex, 1);
     },
-    toOrderArray: function(){
-      var string = this.$route.params.orderPageString;
-	  console.log("string");
-	  console.log(string);
-      if (string==0) {
-		console.log("entra");
-        return runningTotal;
-      }else{
-        var urljson = JSON.parse(string);
-          console.log(urljson);
-         return urljson.price;
-      }
+    convertOrdersToString() {
+      var order = {
+        price: runningTotal,
+        order: runningOrder
+      };
+
+      var truncatedOrderString = JSON.stringify(order);
+      // regex expression for removing the imgSrc property of the string
+      // vue doesn't like this property being passed
+      return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
     }
   }
 }

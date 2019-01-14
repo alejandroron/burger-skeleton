@@ -12,37 +12,21 @@
       'nextAddressProperty',
       'nextTextProperty',
 
-      'order',
-      'totalPrice',
-
       'customizedOrder',
       'customizedPrice'
     ],
     methods: {
-      convertOrdersToString() {
-        var order = {
-          price:this.totalPrice,
-          order:this.order
-        };
-
-        var truncatedOrderString = JSON.stringify(order);
-        console.log(truncatedOrderString);
-        // regex expression for removing the imgSrc property of the string
-        // vue doesn't like this property being passed
-        return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
-      },
       addCustomizedToOrder: function() {
-      /*convert the customized order array into an item
-      and add it to the footer*/
-      var item = {
-        title: 'Custom Order',
-        imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
-        price: this.customizedPrice,
-        isBurger: true,
-        ingredients: this.customizedOrder
+        /*convert the customized order array into an item
+        and add it to the footer*/
+        var item = {
+          title: 'Custom Order',
+          imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
+          price: this.customizedPrice,
+          isBurger: true,
+          ingredients: this.customizedOrder
         };
-      console.log(item);
-      this.$parent.$emit('added_customized_to_order', item);
+        this.$parent.$emit('added_customized_to_order', item);
       }
     }
   }
@@ -57,12 +41,13 @@
 
       <h1>{{ titleProperty }}</h1>
 
-      <a :href="nextAddressProperty + convertOrdersToString()" v-if="displayButtons, orderPage">
+      <a :href="nextAddressProperty" v-if="displayButtons">
         <div class="button" id="nextButton"> {{ nextTextProperty }} </div>
       </a>
-      <a :href="nextAddressProperty" v-else-if="displayButtons">
+
+      <!-- <a :href="nextAddressProperty" v-else-if="displayButtons">
         <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()"> {{ nextTextProperty }} </div>
-      </a>
+      </a> -->
 
   </div>
 </template>
@@ -72,14 +57,11 @@
     text-decoration: none;
   }
   * {
-      box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .fixed {
     position: fixed;
-    /* NOT NECESSARY BECAUSE THE WIDTH IS 100% */
-    /* left: 0;
-          right: 0; */
     top: 0;
     z-index: 2;
   }
@@ -134,7 +116,6 @@
     margin-right: 15px;
     background-color: #05c46b;
   }
-
 
   /* Queries */
   @media only screen and (max-width: 480px) {

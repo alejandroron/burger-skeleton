@@ -11,9 +11,10 @@
           <div class="middle">
             <ul class="ingredientList">
               <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
-                <span>{{ orderItem.item.title }}
+                <span>{{ orderItem.item.title }}</span>
+                <ul>
                 <li class="ingredient" v-for="(item, ingredientIndex) in orderItem" :key="ingredientIndex">
-                <span>{{ orderItem.item.ingredients }}
+                  <span>{{ orderItem.item.ingredients }}</span>
 
               <!--
               The above span will list the entire ingredient attribute for each ingredient:
@@ -25,11 +26,8 @@
               if anyone knows how to get ONLY the name property out of this
               then feel free to add it, otherwise code is working fine
               -->
-
-                </span>
-                </li>
-                </span>
-                </li>
+              </li>
+              </ul>
             </li>
           </ul>
         </div>
