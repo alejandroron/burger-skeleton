@@ -1,4 +1,5 @@
 <script>
+'use strict';
 import Navbar from '@/components/Navbar.vue';
 import sharedVueStuff from '@/components/sharedVueStuff.js';
 
@@ -31,13 +32,18 @@ export default {
           for(var j=0; j < currentItem["ingredients"].length; j++) {
             var randomPrice = Math.random();
             var ingredientName = currentItem["ingredients"][j];
-
-            orderItems[i]["item"]["ingredients"][j] = {
-              name: ingredientName,
-              price: randomPrice,
-              quantity: 1,
-              totalPrice: randomPrice
+			if (typeof ingredientName==='string'){
+				orderItems[i]["item"]["ingredients"][j] = {
+                name: ingredientName,
+                price: randomPrice,
+                quantity: 1,
+                totalPrice: randomPrice,
+			  
             };
+				
+			}
+
+            
           }
         }
       }
@@ -95,7 +101,11 @@ export default {
     },
     orderToString: function(){
       return JSON.stringify(this.order);
-    }
+    },
+	modify: function(){
+		 console.log("emito");
+		 this.$store.state.socket.emit('modified');
+	}
   }
 }
 </script>
@@ -144,7 +154,7 @@ export default {
       </div>
     </a>
 
-    <a :href="'./#/OrderPage/' + orderToString()">
+    <a :href="'./#/OrderPage/' + orderToString()" v-on:click="modify()">
       <div class="modify">
         <p>MODIFY</p>
       </div>

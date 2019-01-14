@@ -36,8 +36,9 @@ export default {
   },
   methods:{
     emptyOrderString: function (){
-      var emptyOrder = { price:[0], order:[] };
+      var emptyOrder = { price:[0.001], order:[] };
       return JSON.stringify(emptyOrder);
+	  return emptyOrder.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
     }
   }
 }
