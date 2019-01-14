@@ -24,9 +24,6 @@
     <div class="currentOrder">
   
       <div class="orderItem" v-for="(item, index) of currentOrder" :key="index" @click="removeItem(index)">
-        <div class="removeItem">
-          <img src="@/assets/redX.png" />
-        </div>
         <img :src='require("@/assets/Food/" + item.item.imgSrc)'>
         <p>{{ item.item.title }}</p>
       </div>
@@ -81,19 +78,6 @@
     color: white;
     text-align: center;
     font-size: 12px;
-  }
-  
-  .removeItem {
-    position: fixed;
-    height: 30px;
-    width: 30px;
-    z-index: 2;
-    margin-left: 79px;
-  }
-  
-  .removeItem img {
-    max-width: 70%;
-    margin-right: 15px;
   }
   
   .total {
