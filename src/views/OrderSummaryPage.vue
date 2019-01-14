@@ -1,24 +1,4 @@
 <script>
-<<<<<<< HEAD
-  'use strict';
-  import Navbar from '@/components/Navbar.vue';
-  import sharedVueStuff from '@/components/sharedVueStuff.js';
-  
-  var removedOrders = [];
-  
-  export default {
-    name: 'OrderSummaryPage',
-    components: {
-      Navbar
-    },
-    mixins: [sharedVueStuff],
-    data: function() {
-      return {
-        order: this.initializeOrderWithIngredients(),
-        // perhaps not necessary to return this array, just added in case
-        removedItemsArray: removedOrders,
-        counter: 0
-=======
 'use strict';
 import Navbar from '@/components/Navbar.vue';
 import sharedVueStuff from '@/components/sharedVueStuff.js';
@@ -40,66 +20,6 @@ export default {
     }
   },
   methods: {
-    initializeOrderWithIngredients: function () {
-      var order = JSON.parse(this.$route.params.orderString);
-      var orderItems = order.order;
-
-      for (var i = 0; i < orderItems.length; i++) {
-
-        var currentItem = orderItems[i]["item"];
-
-        if(currentItem["isBurger"]) {
-          for(var j=0; j < currentItem["ingredients"].length; j++) {
-            var randomPrice = Math.random();
-            var ingredientName = currentItem["ingredients"][j];
-			if (typeof ingredientName==='string'){
-				orderItems[i]["item"]["ingredients"][j] = {
-                name: ingredientName,
-                price: randomPrice,
-                quantity: 1,
-                totalPrice: randomPrice,
-
-            };
-
-			}
-
-
-          }
-        }
-      }
-
-      return order;
-    },
-    placeOrder: function () {
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      this.$store.state.socket.emit('order', this.order );
-    },
-    deleteItem: function(index) {
-      removedOrders.push(this.order.order[index]);
-      this.order["price"][0] = this.order["price"][0] - this.order.order[index]["item"]["price"];
-
-      this.order.order.splice(index, 1);
-    },
-    incrementItem: function(indexItem, indexIngredient) {
-      var ingredientPrice=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
-      this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]++;
-      var ingredientQuantity=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
-      this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice*(ingredientQuantity);
-      this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]+ingredientPrice;
-      this.updateTotalPrice();
-    },
-    decrementItem: function(indexItem, indexIngredient) {
-      if(this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"] > 1) {
-      var ingredientPrice=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
-      this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]--;
-      var ingredientQuantity=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
-      this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice*(ingredientQuantity);
-      this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]-ingredientPrice;
->>>>>>> 4b936a54832011aadb79903392390c0dc9d42334
-      }
-    },
-<<<<<<< HEAD
-    methods: {
       initializeOrderWithIngredients: function() {
         var order = JSON.parse(this.$route.params.orderString);
         var orderItems = order.order;
@@ -186,25 +106,6 @@ export default {
         this.$store.state.socket.emit('modified');
       }
     }
-=======
-    updateTotalPrice: function() {
-      var price = 0.0;
-      var i, len;
-      for (i=0, len=this.order.order.length; i < len; i++) {
-        price = this.order.order[i]["item"]["price"] + price;
-        console.log(price);
-      }
-      this.order[price] = price;
-      console.log(this.order[price]);
-    },
-    orderToString: function(){
-      return JSON.stringify(this.order);
-    },
-	modify: function(){
-		 console.log("emito");
-		 this.$store.state.socket.emit('modified');
-	}
->>>>>>> 4b936a54832011aadb79903392390c0dc9d42334
   }
 </script>
 
