@@ -262,7 +262,7 @@
     }
     .content {
       margin-top: 52.50px;
-      margin-bottom: 100px;
+      margin-bottom: 78px;
     }
     .contentItem {
       padding: 10px;

@@ -143,29 +143,29 @@ var menu = {
         price: 2.20
       },
       {
-        title: 'Solan de Cabras',
+        title: 'Solan',
         imgSrc: require('@/assets/Drinks/Water/solan.png'),
         price: 0.57
       },
       {
-        title: 'Vichy Catalan',
+        title: 'Vichy',
         imgSrc: require('@/assets/Drinks/Water/vichy.png'),
         price: 0.68
       }
     ],
     sodas: [
       {
-        title: 'Coca-Cola',
+        title: 'Coke',
         imgSrc: require('@/assets/Drinks/Sodas/coke.png'),
         price: 0.99
       },
       {
-        title: 'Coca-Cola Zero',
+        title: 'Coke Zero',
         imgSrc: require('@/assets/Drinks/Sodas/coke-zero.png'),
         price: 0.99
       },
       {
-        title: 'Coca-Cola Light',
+        title: 'Coke Light',
         imgSrc: require('@/assets/Drinks/Sodas/coke-light.png'),
         price: 0.99
       },
@@ -202,7 +202,7 @@ var menu = {
         price: 2.76
       },
       {
-        title: 'Estrella Galicia',
+        title: 'Galicia',
         imgSrc: require('@/assets/Drinks/Beers/eg.png'),
         price: 5.51
       }
