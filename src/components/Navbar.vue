@@ -3,15 +3,15 @@
     props: [
       'displayButtons',
       'orderPage',
-
+  
       'backAddressProperty',
       'backTextProperty',
-
+  
       'titleProperty',
-
+  
       'nextAddressProperty',
       'nextTextProperty',
-
+  
       'customizedOrder',
       'customizedPrice'
     ],
@@ -34,21 +34,21 @@
 
 <template>
   <div class='fixed navbar'>
-
-      <a :href="backAddressProperty" v-if="displayButtons" >
-        <div class="button" id="backButton"> {{ backTextProperty }} </div>
-      </a>
-
-      <h1>{{ titleProperty }}</h1>
-
-      <a :href="nextAddressProperty" v-if="displayButtons">
-        <div class="button" id="nextButton"> {{ nextTextProperty }} </div>
-      </a>
-
-      <!-- <a :href="nextAddressProperty" v-else-if="displayButtons">
-        <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()"> {{ nextTextProperty }} </div>
-      </a> -->
-
+  
+    <a :href="backAddressProperty" v-if="displayButtons">
+      <div class="button" id="backButton"> {{ backTextProperty }} </div>
+    </a>
+  
+    <h1>{{ titleProperty }}</h1>
+  
+    <a :href="nextAddressProperty" v-if="displayButtons">
+      <div class="button" id="nextButton"> {{ nextTextProperty }} </div>
+    </a>
+  
+    <!-- <a :href="nextAddressProperty" v-else-if="displayButtons">
+          <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()"> {{ nextTextProperty }} </div>
+        </a> -->
+  
   </div>
 </template>
 
@@ -56,21 +56,23 @@
   a {
     text-decoration: none;
   }
+  
   * {
     box-sizing: border-box;
   }
-
+  
   .fixed {
     position: fixed;
     top: 0;
     z-index: 2;
   }
-  .blank{
+  
+  .blank {
     grid-area: c;
     width: 150px;
     height: 40px;
   }
-
+  
   .navbar {
     display: grid;
     grid-template-areas: "a b c";
@@ -81,7 +83,7 @@
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16);
     background-color: #416451;
   }
-
+  
   .navbar h1 {
     grid-area: b;
     color: white;
@@ -89,7 +91,7 @@
     font-size: 40px;
     text-transform: uppercase;
   }
-
+  
   .button {
     width: 150px;
     height: 40px;
@@ -104,23 +106,41 @@
     text-align: center;
     line-height: 40px;
   }
-
+  
   #backButton {
     grid-area: a;
     margin-left: 15px;
     background-color: #ff3f34;
   }
-
+  
   #nextButton {
     grid-area: c;
     margin-right: 15px;
     background-color: #05c46b;
   }
-
+  
+  
   /* Queries */
-  @media only screen and (max-width: 480px) {
+  
+  @media only screen and (max-width: 730px) {
     .navbar h1 {
-      font-size: 30px;
+      font-size: 25px;
+    }
+    .button {
+      width: 35px;
+      height: 35px;
+    }
+    #backButton {
+      margin-left: 10px;
+    }
+    #nextButton {
+      margin-right: 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 340px) {
+    .navbar h1 {
+      font-size: 20px;
     }
   }
 </style>
