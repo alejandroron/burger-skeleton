@@ -32,11 +32,11 @@
   
     <div class="content">
       <div class="contentItem" id="burgersContent" v-if="activetab === 'burgers'">
-        <a href="./#/BurgerConstruction">
+        <!-- <a href="./#/BurgerConstruction">
           <div class="personalisedBurger">
             <p>CREATE YOUR OWN PERSONALISED BURGER!</p>
           </div>
-        </a>
+        </a> -->
         <div v-for="(burgerItems, burgerType) in burgers" :key="burgerType">
           <br>
           <div class="grid-container">
