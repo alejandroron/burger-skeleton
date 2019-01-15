@@ -18,7 +18,7 @@
     />
 
     <TabsFooter
-    :currentOrder='currentOrderTabs'
+    :currentOrders='currentOrderTabs'
     :orderTotal='orderTotalTabs'
     @remove_item_from_order="removeItem"
     />

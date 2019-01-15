@@ -1,10 +1,15 @@
 <template>
+<div class="wrapper" v-if="currentPage.length === 4">
 <img id="completed" src="@/assets/Completed.png" class="image">
+</div>
 </template>
 
 <script>
     export default {
-        name: 'OrderCompletedPage'
+        name: 'OrderCompletedPage',
+        props: [
+        'currentPage'
+        ]
     }
 </script>
 

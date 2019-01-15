@@ -8,8 +8,8 @@
     :order='finalOrder'
     :price='finalTotal'
     @delete_item="deleteItem"
-    @decrement_item="decrementItem"
-    @increment_item="incrementItem"
+    @modify_order="modifyOrder"
+    @emit_order="sendOrder"
     />
   </div>
 
@@ -24,8 +24,8 @@
     name: 'OrderSummaryPage',
     props: [
       'currentPage',
-      'currentOrder',
-      'orderTotal'
+      'currentOrderSummary',
+      'orderTotalSummary'
     ],
     components: {
       NavbarSummary,
@@ -33,25 +33,25 @@
     },
     data: function() {
       return {
-        finalOrder: this.currentOrder,
-        finalTotal: this.orderTotal
+        finalOrder: this.currentOrderSummary,
+        finalTotal: this.orderTotalSummary
       }
     },
     methods: {
     deleteItem: function(index)
     {
+    console.log('deleting item');
     this.$emit('item_delete', index);
     },
-
-    decrementItem: function(indexItem, indexIngredient)
+    sendOrder: function()
     {
-    this.$emit('decrement_ingredient', indexItem, indexIngredient);
+    this.$emit('send_order');
+    this.$emit('changeview', 'OrderCompletedPage');
     },
-
-    incrementItem: function(indexItem, indexIngredient)
+    modifyOrder: function()
     {
-    this.$emit('increment_ingredient',indexItem, indexIngredient);
-    },
+    this.$emit('changeview', 'Tabs');
+    }
 
     }
   }

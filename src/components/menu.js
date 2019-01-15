@@ -66,14 +66,14 @@ var menu = {
       imgSrc: require('@/assets/Burgers/Chicken/chicken4.png'),
       price: 1.13,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo']      
+      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo']
     },
     {
       title: 'Chicken BBQ',
       imgSrc: require('@/assets/Burgers/Chicken/chicken5.png'),
       price: 2.51,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo', 'BBQ']      
+      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo', 'BBQ']
     }
   ],
   fish: [
@@ -112,21 +112,21 @@ var menu = {
       imgSrc: require('@/assets/Burgers/Veggie/veggie2.png'),
       price: 1.98,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese']      
+      ingredients:['Kaiser Roll','Vegetarian','Cheese']
     },
     {
       title: 'Typical Veg',
       imgSrc: require('@/assets/Burgers/Veggie/veggie3.png'),
       price: 1.78,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers']      
+      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers']
     },
     {
       title: 'Veggie Cool',
       imgSrc: require('@/assets/Burgers/Veggie/veggie4.png'),
       price: 1.78,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers', 'Tomato']       
+      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers', 'Tomato']
     }
   ]
   },

@@ -23,10 +23,15 @@
 
   <OrderSummaryPage
   :currentPage='currentPage'
-  :currentOrder='currentOrder'
-  :orderTotal='orderTotal'
-  @modifyorder="changeView"
+  :currentOrderSummary='currentOrder'
+  :orderTotalSummary='orderTotal'
+  @changeview="changeView"
+  @send_order="placeOrder"
   @item_delete="removeItem"
+  />
+
+  <OrderCompletedPage
+  :currentPage='currentPage'
   />
 
   </div>
@@ -37,7 +42,7 @@ import StartPage from './StartPage.vue';
 import Tabs from '@/components/Tabs.vue';
 import BurgerConstruction from './BurgerConstruction.vue';
 import OrderSummaryPage from './OrderSummaryPage.vue';
-
+import OrderCompletedPage from './OrderCompletedPage.vue';
 
 export default {
   name: 'OrderPage',
@@ -45,7 +50,8 @@ export default {
     StartPage,
     Tabs,
     BurgerConstruction,
-    OrderSummaryPage
+    OrderSummaryPage,
+    OrderCompletedPage
   },
   data () {
     return {
@@ -73,10 +79,11 @@ export default {
 
     placeOrder: function()
     {
+      console.log('order sent');
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', this.currentOrder);
     },
-
+/*
     decrementIngredient: function(indexItem, indexIngredient)
     {
     },
@@ -84,7 +91,7 @@ export default {
     incrementIngredient: function(indexItem, indexIngredient)
     {
     },
-
+*/
     changeView:function(inputKey)
     {
     console.log(inputKey);
@@ -114,11 +121,19 @@ export default {
     }
     else if (inputKey==='OrderSummary')
     {
-    console.log('hello from orderSummary loopdiloop');
+      console.log(this.currentOrder);
       while (this.currentPage.length < 3)
       {
         var justAnotherNumber = 3;
         this.currentPage.push(justAnotherNumber);
+      }
+    }
+    else if (inputKey==='OrderCompletedPage')
+    {
+      while (this.currentPage.length < 4)
+      {
+        var justOneMoreNumber = 4;
+        this.currentPage.push(justOneMoreNumber);
       }
     }
     }

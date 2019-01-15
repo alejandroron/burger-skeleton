@@ -2,7 +2,7 @@
 export default {
   name: 'TabsFooter',
   props: [
-    'currentOrder',
+    'currentOrders',
     'orderTotal'
   ],
   methods: {
@@ -17,7 +17,7 @@ export default {
   <div class="footer">
     <div class="currentOrder">
 
-      <div class="orderItem" v-for="(item, index) of this.currentOrder" :key="index" @click="removeItem(index)">
+      <div class="orderItem" v-for="(item, index) of this.currentOrders" :key="index" @click="removeItem(index)">
         <div class="removeItem">
           <img src="@/assets/redX.png" />
         </div>

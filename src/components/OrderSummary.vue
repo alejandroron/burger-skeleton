@@ -4,20 +4,20 @@
     <div class="item" v-for="(item, index) in order" :key="index">
 
       <div class="top">
-        <button id="delete" v-on:click="this.$emit('delete_item', index)">
+        <button id="delete" v-on:click="$emit('delete_item', index)">
         <img src="@/assets/redX.png" id="minus" width="30px" height="30px">
         </button>
-        <h2 id="name">{{ item.name }}</h2>
+        <h2 id="name">{{ item.item.title }}</h2>
       </div>
 
       <div class="middle">
-        <div v-if="item.isBurger">
+        <div v-if="item.item.isBurger">
           <ul class="ingredientList">
-            <li class="ingredient" v-for="(ingredient, indexIngredient) in item.ingredients" :key="indexIngredient">
+            <li class="ingredient" v-for="(ingredient, indexIngredient) in item.item.ingredients" :key="indexIngredient">
             <span>
-              {{ ingredient["name"] }}: {{ ingredient["price"].toFixed(2) }}
+              {{ ingredient }}
             </span>
-            <div class="ingredientInfo">
+            <!-- <div class="ingredientInfo">
               <button class="minus" v-on:click="this.$emit('decrement_item', index, indexIngredient)">
                 <img src="@/assets/minus.png">
               </button>
@@ -27,7 +27,7 @@
               <button class="plus" v-on:click="this.$emit('increment_item', index, indexIngredient)">
                 <img src="@/assets/plus.png">
               </button>
-            </div>
+            </div> -->
             </li>
           </ul>
         </div>
@@ -47,11 +47,11 @@
     <p>TOTAL: {{price.toFixed(2) }}</p>
   </div>
 
-  <div class="modify">
+  <div class="modify" v-on:click="$emit('modify_order')">
     <p>ADD AN ITEM</p>
   </div>
 
-  <div class="pay">
+  <div class="pay" v-on:click="$emit('emit_order')">
     <p>PAY</p>
   </div>
 
