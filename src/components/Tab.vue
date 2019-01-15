@@ -95,13 +95,13 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 45px;
+    height: 35px;
     justify-content: center;
   }
   
   .flap {
     /* Visual properties */
-    height: 45px;
+    height: 35px;
     width: 220px;
     border-radius: 10px 10px 0 0;
     cursor: pointer;
@@ -111,7 +111,7 @@
     color: white;
     text-transform: uppercase;
     text-align: center;
-    line-height: 45px;
+    line-height: 40px;
   }
   
   #burgersFlap {
@@ -212,13 +212,15 @@
   
   .menuItem:hover {
     cursor: pointer;
+    /* This brings problems in mobile devices
     box-shadow: 0px 0px 0px 1px white inset;
-    border-radius: 10px;
+    border-radius: 10px; */
   }
   
   .menuItem:active {
     background-color: white;
     background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
   }
   
   .menuPic {
@@ -257,34 +259,36 @@
   
   /* Queries */
   @media only screen and (max-width: 730px) {
+    .flaps {
+    height: 40px;
+    }
     .flap {
       /* Visual properties */
-      height: 27.7px;
+      height: 20px;
       width: 100px;
-      margin-top: 70px;
+      margin-top: 72.5px;
       /* Text inside*/
       font-size: 15px;
-      line-height: 27.7px;
+      line-height: 25px;
     }
     .content {
       margin-top: 52.50px;
       margin-bottom: 78px;
     }
     .contentItem {
-      min-height: 80vh;
+      min-height: 85vh;
       padding: 0px 8px;
     }
-    .personalisedBurger {
+    /* .personalisedBurger {
       height: 72.2px;
       padding-left: 13%;
       padding-right: 13%;
-      /* Text */
       font-size: 13px;
       line-height: 72.2px;
     }
     .personalisedBurger p {
       line-height: 20px;
-    }
+    } */
     .grid-container {
       grid-template-rows: 20px 115px;
     }
@@ -303,11 +307,11 @@
     }
     .menuTitle {
       line-height: 15px;
-      font-size: 12px;
+      font-size: 10px;
     }
     .menuPrice {
       line-height: 15px;
-      font-size: 12px;
+      font-size: 10px;
       margin-top: 0;
     }
   }
