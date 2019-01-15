@@ -255,7 +255,6 @@
     text-transform: uppercase;
   }
   
-  
   /* Queries */
   @media only screen and (max-width: 730px) {
     .flap {
@@ -272,6 +271,7 @@
       margin-bottom: 78px;
     }
     .contentItem {
+      min-height: 80vh;
       padding: 0px 8px;
     }
     .personalisedBurger {

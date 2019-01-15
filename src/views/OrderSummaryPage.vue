@@ -114,7 +114,7 @@
       <div class="item" v-for="(item, index) in order.order" :key="index">
         <div class="top">
           <!-- <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/X.png"></button> -->
-          <div id="delete" v-on:click="deleteItem(index)"><img src="@/assets/X.png"></div>
+          <div id="delete" v-on:click="deleteItem(index)"><img src="@/assets/redX.png"></div>
           <h2 id="name">{{ item.item.title }}</h2>
         </div>
   
@@ -302,7 +302,6 @@
     font-size: 23px;
     margin: 0 8px;
   }
-  
   
   /* Modify and Pay buttons */
   
