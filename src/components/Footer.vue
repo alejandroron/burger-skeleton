@@ -30,9 +30,9 @@
     </div>
   
     <div class="total">
-      <span>TOTAL:</span>
+      <span>TOTAL</span>
       <p class="totalValue">
-        €{{ formatTotal(orderTotal[0]) }}
+        {{ formatTotal(orderTotal[0]) }} €
       </p>
     </div>
   </div>
@@ -54,7 +54,7 @@
     /* Visual Properties */
     height: 110px;
     width: calc(100% - 110px);
-    background-color: #1e272e;
+    background-color: #1A1E22;
   }
   
   .orderItem {
@@ -87,10 +87,10 @@
     /* Visual Properties */
     height: 110px;
     width: 110px;
-    background-color: #416451;
+    background-color: #323B43;
     /* Text */
-    padding-top: 25px;
-    font-size: 25px;
+    padding-top: 30px;
+    font-size: 20px;
     color: #ffffff;
     text-align: center;
     font-weight: bold;

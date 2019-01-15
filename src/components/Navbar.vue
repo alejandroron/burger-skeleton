@@ -91,7 +91,7 @@
   .navbar h1 {
     grid-area: b;
     color: white;
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     font-size: 40px;
     text-transform: uppercase;
   }
@@ -99,7 +99,7 @@
   .button {
     width: 150px;
     height: 40px;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     border-radius: 100px;
     align-self: center;
     /* Text content */

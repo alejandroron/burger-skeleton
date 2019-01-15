@@ -105,7 +105,7 @@ h1, h2, h3, h4, h5, p {
 body {
   margin: 0;
   background-color: #2D4739;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h2 {

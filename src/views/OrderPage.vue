@@ -1,15 +1,15 @@
 <template>
   <div id="container">
     <Navbar
-    :displayButtons='true'
-    :orderPage='true'
-    :backAddressProperty='"./#/"'
-    :backTextProperty='"START OVER"'
-    :titleProperty='"CREATE YOUR MENU"'
-    :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
-    :nextTextProperty='"FINISH ORDER"'
+      :displayButtons='true'
+      :orderPage='true'
+      :backAddressProperty='"./#/"'
+      :backTextProperty='"START OVER"'
+      :titleProperty='"CREATE YOUR MENU"'
+      :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
+      :nextTextProperty='"MODIFY OR PAY"'
 
-    @added_customized_to_order="addItem" />
+      @added_customized_to_order="addItem" />
     <Tabs
     @addedItemToOrder="addItem"
     @changeview="$emit('changeview','BurgerConstruction')" />
