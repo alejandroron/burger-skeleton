@@ -37,12 +37,8 @@
                   price: 0.50,
                   quantity: 1,
                   totalPrice: 0.50
-  
                 };
-  
               }
-  
-  
             }
           }
         }
@@ -117,7 +113,8 @@
   
       <div class="item" v-for="(item, index) in order.order" :key="index">
         <div class="top">
-          <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/redX.png" id="minus" width="30px" height="30px"></button>
+          <!-- <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/X.png"></button> -->
+          <div id="delete" v-on:click="deleteItem(index)"><img src="@/assets/X.png"></div>
           <h2 id="name">{{ item.item.title }}</h2>
         </div>
   
@@ -169,12 +166,7 @@
 </template>
 
 <style>
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  p {
+  h1, h2, h3, h4, h5, p {
     margin: 0;
     padding: 0;
   }
@@ -196,11 +188,12 @@
   }
   
   #delete {
-    width: 30px;
+    /* width: 30px;
+    height: 30px; */
     cursor: pointer;
-    margin-right: -5px;
-    margin-top: -5px;
-    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 14px;
+    /* border-radius: 20%; */
     background-color: transparent;
     border: none;
   }
@@ -217,9 +210,7 @@
     justify-content: center;
   }
   
-  
   /* Boxes is the group of boxes, formed by items */
-  
   .item {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -232,7 +223,6 @@
   
   
   /* Items are divided into three parts: top, middle and bottom */
-  
   .item .top {
     display: flex;
     height: 58px;
@@ -245,8 +235,7 @@
     */
   }
   
-  .plus,
-  .minus {
+  .plus, .minus {
     background-color: transparent;
     cursor: pointer;
     border-radius: 50%;
@@ -255,8 +244,7 @@
     border: none;
   }
   
-  .minus img,
-  .plus img {
+  .minus img, .plus img {
     margin: -2px 0 0 -8px;
     width: 20px;
     height: 20px;
@@ -265,9 +253,9 @@
   #name {
     color: white;
     font-size: 20px;
-    text-align: center;
     line-height: 58px;
-    margin-left: 60px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .item .middle {
