@@ -39,17 +39,21 @@
 </template>
 
 <style>
-  .currentOrder {
+  .footer {
     /* Position */
     position: fixed;
     bottom: 0;
     z-index: 2;
+    width: 100%;
+  }
+
+  .currentOrder {
     /* Behaviour */
     overflow: auto;
     white-space: nowrap;
     /* Visual Properties */
     height: 110px;
-    width: 100%;
+    width: calc(100% - 110px);
     background-color: #1e272e;
   }
   
@@ -95,6 +99,7 @@
   @media only screen and (max-width: 730px) {
     .currentOrder {
       height: 78px;
+      width: calc(100% - 78px);
     }
     .orderItem {
       height: 78px;
