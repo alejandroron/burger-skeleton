@@ -32,8 +32,6 @@ import NavbarBurger from '@/components/NavbarBurger.vue';
 import BurgerFooter from '@/components/BurgerFooter.vue';
 import customBurgerMenu from '@/components/customBurgerMenu.js';
 
-var runningTotal = [ 0.00 ];
-var runningOrder = [];
 
 export default {
   name: 'BurgerConstruction',
@@ -54,31 +52,40 @@ export default {
     }
   },
   methods: {
+    makeArrayToOrder: function() {
+      // convert the customized order array into an item
+      var item = {
+        title: 'Custom Order',
+        imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
+        price: this.burgerTotal,
+        isBurger: true,
+        ingredients: this.currentBurger
+        };
+      return item;
+    },
     addIngredient: function(ingredient) {
-    console.log('hi from burgerCons');
       this.currentBurger.push({
       item: ingredient
       });
 
       // update total price, have to use an array unfortunately
-      this.burgerTotal.push(runningTotal[0] + ingredient.price);
+      this.burgerTotal.push(this.burgerTotal[0] + ingredient.price);
       this.burgerTotal.splice(0, 1);
     },
     removeItem: function(itemIndex) {
-      this.burgerTotal.push(runningTotal[0] - this.currentBurger[itemIndex].item.price);
+      this.burgerTotal.push(this.burgerTotal[0] - this.currentBurger[itemIndex].item.price);
       this.burgerTotal.splice(0, 1);
       this.decitem = this.currentBurger[itemIndex].item.name;
       this.currentBurger.splice(itemIndex, 1);
     },
     removeItembyname: function(model) {
-    console.log('hi from burgerCons');
     var i;
     var counter = 0;
 
     for (i=0; i<this.currentBurger.length; i++){
     if(this.currentBurger[i].item.name == model.name && counter == 0){
       this.burgerTotal.push(this.burgerTotal[0] - this.currentBurger[i].item.price);
-      this.burgerTotalTotal.splice(0, 1);
+      this.burgerTotal.splice(0, 1);
 
       this.currentBurger.splice(i, 1);
       counter++;
@@ -86,10 +93,12 @@ export default {
       }
     },
     addBurgerToOrder: function() {
-
+    console.log('hi from add burger to order');
+    this.$emit('added_custom_burger', this.makeArrayToOrder());
+    this.$emit('changeview','Tabs');
     },
+
     changeView: function() {
-    console.log('hi from burgerCons');
     this.$emit('changeview','Tabs');
     }
   }

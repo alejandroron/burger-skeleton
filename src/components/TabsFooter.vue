@@ -29,7 +29,7 @@ export default {
     <div class="total">
       <span>TOTAL:</span>
       <p class="totalValue">
-        ${{ this.orderTotal[0].toFixed(2) }}
+        ${{ orderTotal.toFixed(2) }}
       </p>
     </div>
   </div>

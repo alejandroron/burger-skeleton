@@ -10,6 +10,7 @@
 
   <BurgerConstruction
   :currentPage='currentPage'
+  @added_custom_burger="addItem"
   @changeview="changeView"
   />
 
@@ -30,7 +31,7 @@ export default {
   data () {
     return {
       currentOrder: [],
-      orderTotal: [ 0.00 ],
+      orderTotal:  0.00,
       currentPage: []
 
     }
@@ -44,12 +45,10 @@ export default {
       });
 
       // update total price, have to use an array unfortunately
-      this.orderTotal.push(this.orderTotal[0] + item.price);
-      this.orderTotal.splice(0, 1);
+      this.orderTotal[0] + item.price;
     },
     removeItem: function(itemIndex) {
-      this.orderTotal.push(this.orderTotal[0] - this.currentOrder[itemIndex].item.price);
-      this.orderTotal.splice(0, 1);
+      this.orderTotal[0] - this.currentOrder[itemIndex].item.price;
 
       this.currentOrder.splice(itemIndex, 1);
     },

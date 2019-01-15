@@ -14,17 +14,8 @@
     ],
     methods: {
       addCustomizedToOrder: function() {
-      /*convert the customized order array into an item
-      and add it to the footer*/
-      var item = {
-        title: 'Custom Order',
-        imgSrc: require('@/assets/Burgers/Beef/beef1.png'),
-        price: this.customizedPrice,
-        isBurger: true,
-        ingredients: this.customizedOrder
-        };
-      console.log(item);
-      this.$parent.$emit('added_customized_to_order', item);
+      console.log('hi from addCustomToOrder');
+      this.$emit('next_address_property');
       },
       changeView: function() {
       console.log('hi from NavbarBurger');
@@ -44,7 +35,7 @@
 
       <h1>{{ titleProperty }}</h1>
 
-      <div class="button" id="nextButton" v-on:click="">
+      <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()">
       {{ nextTextProperty }}
       </div>
   </div>

@@ -51,12 +51,12 @@ name: "DropDownComponent",
     },
     deleteIngredient: function(ingredient) {
     console.log('hi from dropdownComp');
-      this.$emit('delete_ingredient_from_burger', ingredient);
-      this.counter--;
+    this.$parent.$parent.$emit('delete_ingredient_from_burger', ingredient);
+    this.counter--;
     },
     addIngredient: function(ingredient) {
     console.log('hi from dropdownComp');
-    this.$emit('add_ingredient_to_burger', ingredient);
+    this.$parent.$parent.$emit('add_ingredient_to_burger', ingredient);
     this.counter++;
     }
   }
