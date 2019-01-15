@@ -44,7 +44,7 @@
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index1) in burgerItems" :key="index1" @click="addItem(item)">
                 <a :title="showIngredients(item.ingredients)">
-                  <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
+                  <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)'></div>
                   <div class="menuTitle">{{ item.title }}</div>
                   <div class="menuPrice">({{ item.price }}€)</div>
                 </a>
@@ -61,7 +61,7 @@
             <div class="categoryName">{{ drinkType }}</div>
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index) in drinkItems" :key="index" @click="addItem(item)">
-                <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
+                <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)'></div>
                 <div class="menuTitle">{{ item.title }}</div>
                 <div class="menuPrice">({{ item.price }}€)</div>
               </div>
@@ -77,7 +77,7 @@
             <div class="categoryName">{{ sideType }}</div>
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index) in sideItems" :key="index" @click="addItem(item)">
-                <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)' height="70%" width="70%" style="margin-top: 15px;"></div>
+                <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)'></div>
                 <div class="menuTitle">{{ item.title }}</div>
                 <div class="menuPrice">({{ item.price }}€)</div>
               </div>
@@ -136,8 +136,7 @@
   
   .contentItem {
     width: 100%;
-    min-height: 100vh;
-    padding: 20px;
+    padding: 0px 20px;
   }
   
   #burgersContent {
@@ -152,13 +151,13 @@
     background-color: #3c40c6;
   }
   
-  .personalisedBurger {
+  /* .personalisedBurger {
     background-color: #485460;
     height: 150px;
     border-radius: 10px;
     padding-left: 15%;
     padding-right: 15%;
-    /* Text */
+
     color: white;
     font-size: 40px;
     font-weight: bold;
@@ -180,7 +179,7 @@
     display: inline-block;
     vertical-align: middle;
     line-height: 60px;
-  }
+  } */
   
   .grid-container {
     display: grid;
@@ -228,35 +227,36 @@
   
   .menuPic img {
     display: block;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
+    height: 70%;
+    width: 70%;
   }
   
   .menuTitle {
     grid-area: menuTitle;
+    margin-top: 5px;
     color: white;
     text-align: center;
+    font-weight: bold;
     line-height: 30px;
     font-size: 20px;
-    /* font-weight: bold; */
-    /* text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
     text-transform: uppercase;
   }
   
   .menuPrice {
     grid-area: menuPrice;
+    margin-top: -5px;
     color: white;
     text-align: center;
     line-height: 30px;
     font-size: 20px;
-    /* font-weight: bold; */
-    /* text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
     text-transform: uppercase;
   }
   
   
   /* Queries */
-  
   @media only screen and (max-width: 730px) {
     .flap {
       /* Visual properties */
@@ -266,6 +266,13 @@
       /* Text inside*/
       font-size: 15px;
       line-height: 27.7px;
+    }
+    .content {
+      margin-top: 52.50px;
+      margin-bottom: 78px;
+    }
+    .contentItem {
+      padding: 0px 8px;
     }
     .personalisedBurger {
       height: 72.2px;
@@ -281,22 +288,18 @@
     .grid-container {
       grid-template-rows: 20px 115px;
     }
-    .menuItem {
-      grid-template-rows: 80px 15px 15px;
-    }
-    .content {
-      margin-top: 52.50px;
-      margin-bottom: 78px;
-    }
-    .contentItem {
-      padding: 10px;
-    }
     .categoryName {
       line-height: 20px;
       font-size: 20px;
     }
     .scrollable {
       grid-template-columns: 100px 100px 100px 100px 100px;
+    }
+    .menuItem {
+      grid-template-rows: 80px 15px 15px;
+    }
+    .menuPic img {
+      margin-top: 6px;
     }
     .menuTitle {
       line-height: 15px;
@@ -305,6 +308,7 @@
     .menuPrice {
       line-height: 15px;
       font-size: 12px;
+      margin-top: 0;
     }
   }
 </style>

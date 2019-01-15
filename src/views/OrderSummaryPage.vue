@@ -146,7 +146,7 @@
   
     <a>
       <div class="totalPrice">
-        <p>TOTAL: {{ this.order["price"][0].toFixed(2) }}</p>
+        <p>TOTAL: {{ this.order["price"][0].toFixed(2) }} €</p>
       </div>
     </a>
   
@@ -192,7 +192,7 @@
     height: 30px; */
     cursor: pointer;
     margin-left: 10px;
-    margin-top: 14px;
+    margin-top: 10px;
     /* border-radius: 20%; */
     background-color: transparent;
     border: none;
@@ -225,7 +225,7 @@
   /* Items are divided into three parts: top, middle and bottom */
   .item .top {
     display: flex;
-    height: 58px;
+    height: 50px;
     border-radius: 5px 5px 0px 0px;
     background-color: #333C45;
     /* Options:
@@ -251,11 +251,15 @@
   }
   
   #name {
-    color: white;
-    font-size: 20px;
-    line-height: 58px;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
+    left: -18px;
+
+    /* Text */
+    color: white;
+    font-size: 20px;
+    line-height: 50px;
   }
   
   .item .middle {
@@ -328,9 +332,7 @@
     background-color: #0C44D1;
   }
   
-  .pay p,
-  .modify p,
-  .totalPrice p {
+  .pay p, .modify p {
     text-align: center;
     line-height: 40px;
     color: white;
