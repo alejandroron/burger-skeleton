@@ -9,8 +9,8 @@
       removeItem: function(itemIndex) {
         this.$emit('removeItemFromOrder', itemIndex); //talking to orderpage
       },
-      formatTotal: function(total){
-        if(total < 0){
+      formatTotal: function(total) {
+        if (total < 0) {
           total = 0;
         }
         return total.toFixed(2);
@@ -39,24 +39,18 @@
 </template>
 
 <style>
-  .footer {
+  .currentOrder {
+    /* Position */
     position: fixed;
     bottom: 0;
+    z-index: 2;
+    /* Behaviour */
+    overflow: auto;
+    white-space: nowrap;
+    /* Visual Properties */
     height: 110px;
     width: 100%;
     background-color: #1e272e;
-    z-index: 2;
-    overflow: auto;
-    white-space: nowrap;
-    display: grid;
-    grid-template-columns: 1fr 110px;
-    grid-template-rows: 110px;
-    grid-template-areas: "a b";
-  }
-  
-  .currentOrder {
-    grid-area: a;
-    height: 110px;
   }
   
   .orderItem {
@@ -70,44 +64,35 @@
   }
   
   .orderItem img {
-    max-height: 75%;
-    margin: 5% 10px 0 10px;
+    max-height: 70%;
+    margin: 8px 0px 0px 17px;
   }
   
   .orderItem p {
     color: white;
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
   }
   
   .total {
-    grid-area: b;
-    padding-top: 25px;
+    /* Position */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+    /* Visual Properties */
+    height: 110px;
+    width: 110px;
     background-color: #416451;
-    color: #ffffff;
-    display: inline-block;
-
     /* Text */
+    padding-top: 25px;
+    font-size: 25px;
+    color: #ffffff;
     text-align: center;
     font-weight: bold;
-    font-size: 25px;
-  }
-  
-  .totalValue {
-    line-height: 40px;
-    vertical-align: center;
-    text-align: center;
-    font-weight: bold;
-    font-size: 25px;
   }
   
   @media only screen and (max-width: 730px) {
-    .footer {
-      height: 78px;
-      width: 100%;
-      grid-template-columns: 1fr 78px;
-      grid-template-rows: 78px;
-    }
     .currentOrder {
       height: 78px;
     }
@@ -116,24 +101,16 @@
       width: 78px;
     }
     .orderItem img {
-      max-height: 65%;
-      margin: 10px 10px;
+      margin: 4px 0px 2px 11.5px;
     }
     .orderItem p {
-      color: white;
-      text-align: center;
-      font-size: 10px;
-      margin: 0px;
-      margin-top: -12px;
+      font-size: 9px;
     }
     .total {
-      padding: 0px;
-      padding-top: 15px;
-      font-size: 18px;
-      text-align: center;
-    }
-    .totalValue {
-      line-height: 30px;
+      height: 78px;
+      width: 78px;
+      /* Text */
+      padding-top: 20px;
       font-size: 18px;
     }
   }
