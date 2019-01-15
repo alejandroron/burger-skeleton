@@ -9,8 +9,6 @@
     :titleProperty='"CREATE YOUR MENU"'
     :nextAddressProperty='"./#/OrderSummary/"'
     :nextTextProperty='"FINISH ORDER"'
-    :order='currentOrder'
-    :totalPrice='orderTotal'
     @added_customized_to_order="addItem"
     />
 
@@ -20,9 +18,9 @@
     />
 
     <TabsFooter
-    :currentOrder='currentOrder'
-    :orderTotal='orderTotal'
-    @removeItemFromOrder="removeItem"
+    :currentOrder='currentOrderTabs'
+    :orderTotal='orderTotalTabs'
+    @remove_item_from_order="removeItem"
     />
 
   </div>
@@ -36,7 +34,9 @@
   export default {
     name: 'Tabs',
     props: [
-      'currentPage'
+      'currentPage',
+      'currentOrderTabs',
+      'orderTotalTabs'
     ],
     components: {
     Navbar,
@@ -45,16 +45,20 @@
     },
     data: function() {
       return {
+      currentOrders: this.currentOrderTabs,
+      orderTotal: this.orderTotalTabs
       }
     },
     methods: {
       addItem: function(item) {
-        this.$emit('addedItemToOrder', item); // talking to order page
+      console.log('addItem Tabs')
+      this.$emit('added_item_to_order', item); // talking to order page
+      },
+      removeItem: function(item) {
+      this.$emit('removed_item_from_order', item); // talking to order page
       },
       changeView: function() {
-      this.$emit('changenavbar','BurgerConstruction');
       this.$emit('changeview','BurgerConstruction');
-
       }
     }
   }

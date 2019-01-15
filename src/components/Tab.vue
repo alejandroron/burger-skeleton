@@ -86,12 +86,11 @@ export default {
   },
   methods: {
     addItem: function(item) {
-      this.$emit('addedItemToOrder', item); // talking to order page
+    console.log('addItem in Tab');
+    this.$emit('added_item_to_order', item); // talking to tabs
     },
     changeView: function() {
     this.$emit('changeview','BurgerConstruction');
-
-
     }
   }
 }

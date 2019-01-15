@@ -6,9 +6,6 @@
   :backTextProperty='"BACK TO ORDER"'
   :titleProperty='"CREATE YOUR OWN BURGER"'
   :nextTextProperty='"FINISH BURGER"'
-  :order='currentOrder'
-  :totalPrice='orderTotal'
-  @added_customized_to_order="addItem"
   @back_address_property="changeView"
   @next_address_property="addBurgerToOrder"
   />
@@ -16,14 +13,14 @@
   <AccordianMenu
   :menuData="menuData"
   :decitem = "decitem"
-  @addIngredientToBurger="addIngredient"
-  @deleteIngredientFromBurger="removeItembyname"
+  @add_ingredient_to_burger="addIngredient"
+  @delete_ingredient_from_burger="removeItembyname"
   />
 
   <BurgerFooter
-  :currentOrder='currentOrder'
-  :orderTotal='orderTotal'
-  @removeItemFromOrder="removeItem"
+  :currentBurger='currentBurger'
+  :burgerTotal='burgerTotal'
+  @remove_item_from_order="removeItem"
   />
 
   </div>
@@ -51,38 +48,39 @@ export default {
   data () {
     return {
       menuData: customBurgerMenu,
-      currentOrder: runningOrder,
-      orderTotal: runningTotal,
+      currentBurger: [],
+      burgerTotal: [0.00],
       decitem: ''
     }
   },
   methods: {
     addIngredient: function(ingredient) {
-      // add order to order list
-      runningOrder.push({
-       item: ingredient
+    console.log('hi from burgerCons');
+      this.currentBurger.push({
+      item: ingredient
       });
 
       // update total price, have to use an array unfortunately
-      runningTotal.push(runningTotal[0] + ingredient.price);
-      runningTotal.splice(0, 1);
+      this.burgerTotal.push(runningTotal[0] + ingredient.price);
+      this.burgerTotal.splice(0, 1);
     },
     removeItem: function(itemIndex) {
-      runningTotal.push(runningTotal[0] - runningOrder[itemIndex].item.price);
-      runningTotal.splice(0, 1);
-      this.decitem = runningOrder[itemIndex].item.name;
-      runningOrder.splice(itemIndex, 1);
+      this.burgerTotal.push(runningTotal[0] - this.currentBurger[itemIndex].item.price);
+      this.burgerTotal.splice(0, 1);
+      this.decitem = this.currentBurger[itemIndex].item.name;
+      this.currentBurger.splice(itemIndex, 1);
     },
     removeItembyname: function(model) {
+    console.log('hi from burgerCons');
     var i;
     var counter = 0;
 
-    for (i=0; i<runningOrder.length; i++){
-    if(runningOrder[i].item.name == model.name && counter == 0){
-      runningTotal.push(runningTotal[0] - runningOrder[i].item.price);
-      runningTotal.splice(0, 1);
+    for (i=0; i<this.currentBurger.length; i++){
+    if(this.currentBurger[i].item.name == model.name && counter == 0){
+      this.burgerTotal.push(this.burgerTotal[0] - this.currentBurger[i].item.price);
+      this.burgerTotalTotal.splice(0, 1);
 
-      runningOrder.splice(i, 1);
+      this.currentBurger.splice(i, 1);
       counter++;
       }
       }

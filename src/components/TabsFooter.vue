@@ -7,8 +7,7 @@ export default {
   ],
   methods: {
     removeItem: function(itemIndex) {
-      // this.$parent.$emit('removeItemFromOrder', itemIndex);
-      this.$emit('removeItemFromOrder', itemIndex); //talking to orderpage
+      this.$emit('remove_item_from_order', itemIndex); //talking to tabs
     }
   }
 }
@@ -18,7 +17,7 @@ export default {
   <div class="footer">
     <div class="currentOrder">
 
-      <div class="orderItem" v-for="(item, index) of currentOrder" :key="index" @click="removeItem(index)">
+      <div class="orderItem" v-for="(item, index) of this.currentOrder" :key="index" @click="removeItem(index)">
         <div class="removeItem">
           <img src="@/assets/redX.png" />
         </div>
@@ -30,7 +29,7 @@ export default {
     <div class="total">
       <span>TOTAL:</span>
       <p class="totalValue">
-        ${{ orderTotal[0].toFixed(2) }}
+        ${{ this.orderTotal[0].toFixed(2) }}
       </p>
     </div>
   </div>

@@ -2,7 +2,9 @@
   <div id="container">
   <Tabs
   :currentPage='currentPage'
-  @addedItemToOrder="addItem"
+  :currentOrderTabs='currentOrder'
+  :orderTotalTabs='orderTotal'
+  @added_item_to_order="addItem"
   @changeview="changeView"
   />
 
@@ -18,10 +20,6 @@
 import Tabs from '@/components/Tabs.vue';
 import BurgerConstruction from './BurgerConstruction.vue';
 
-// using array because vue live updated array values
-var runningTotal = [ 0.00 ];
-var runningOrder = [];
-
 
 export default {
   name: 'OrderPage',
@@ -31,42 +29,29 @@ export default {
   },
   data () {
     return {
-      currentOrder: runningOrder,
-      orderTotal: this.toOrderArray(),
+      currentOrder: [],
+      orderTotal: [ 0.00 ],
       currentPage: []
 
     }
   },
   methods: {
     addItem: function(item) {
-      console.log(item);
+      console.log('add item OrderPage');
       // add order to order list
-      runningOrder.push({
+      this.currentOrder.push({
        item: item
       });
 
       // update total price, have to use an array unfortunately
-      runningTotal.push(runningTotal[0] + item.price);
-      runningTotal.splice(0, 1);
+      this.orderTotal.push(this.orderTotal[0] + item.price);
+      this.orderTotal.splice(0, 1);
     },
     removeItem: function(itemIndex) {
-      runningTotal.push(runningTotal[0] - runningOrder[itemIndex].item.price);
-      runningTotal.splice(0, 1);
+      this.orderTotal.push(this.orderTotal[0] - this.currentOrder[itemIndex].item.price);
+      this.orderTotal.splice(0, 1);
 
-      runningOrder.splice(itemIndex, 1);
-    },
-    toOrderArray: function(){
-    var string = this.$route.params.orderPageString;
-    console.log("string");
-    console.log(string);
-      if (string==0) {
-		console.log("entra");
-        return runningTotal;
-      }else{
-        var urljson = JSON.parse(string);
-          console.log(urljson);
-         return urljson.price;
-      }
+      this.currentOrder.splice(itemIndex, 1);
     },
     changeView:function(inputKey)
     {

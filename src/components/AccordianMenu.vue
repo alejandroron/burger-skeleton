@@ -1,9 +1,11 @@
 <template>
 <div class="component">
   <ul class="cd-accordion-menu">
-    <li v-for="dropdown in menuData" :key="dropdown">
-      <DropDownComponent :model="dropdown" 
+    <li v-for="(dropdown, dropdownIndex) in menuData" :key="dropdownIndex">
+      <DropDownComponent :model="dropdown[dropdownIndex]"
       :deccount = "decitem"
+      @delete_ingredient_from_burger="deleteIngredient"
+      @add_ingredient_to_burger="addIngredient"
       />
     </li>
   </ul>
@@ -18,7 +20,21 @@ export default {
     menuData: Object,
     decitem: String
   },
-  components: { DropDownComponent }
+  components: { DropDownComponent },
+  methods: {
+
+  deleteIngredient: function(ingredient) {
+  console.log('hi from Accordian');
+  this.$emit('delete_ingredient_from_burger', ingredient);
+  },
+
+  addIngredient: function(ingredient) {
+  console.log('hi from Accordian');
+  this.$emit('add_ingredient_to_burger', ingredient);
+  }
+
+  }
+
 }
 </script>
 
