@@ -45,10 +45,11 @@ export default {
       });
 
       // update total price, have to use an array unfortunately
-      this.orderTotal[0] + item.price;
+      this.orderTotal += item.price;
+
     },
     removeItem: function(itemIndex) {
-      this.orderTotal[0] - this.currentOrder[itemIndex].item.price;
+      this.orderTotal -= this.currentOrder[itemIndex].item.price;
 
       this.currentOrder.splice(itemIndex, 1);
     },

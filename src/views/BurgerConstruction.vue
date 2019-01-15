@@ -47,7 +47,7 @@ export default {
     return {
       menuData: customBurgerMenu,
       currentBurger: [],
-      burgerTotal: [0.00],
+      burgerTotal: 0.00,
       decitem: ''
     }
   },
@@ -69,12 +69,10 @@ export default {
       });
 
       // update total price, have to use an array unfortunately
-      this.burgerTotal.push(this.burgerTotal[0] + ingredient.price);
-      this.burgerTotal.splice(0, 1);
+    this.burgerTotal += ingredient.price;
     },
     removeItem: function(itemIndex) {
-      this.burgerTotal.push(this.burgerTotal[0] - this.currentBurger[itemIndex].item.price);
-      this.burgerTotal.splice(0, 1);
+      this.burgerTotal -= this.currentBurger[itemIndex].item.price;
       this.decitem = this.currentBurger[itemIndex].item.name;
       this.currentBurger.splice(itemIndex, 1);
     },
@@ -96,6 +94,7 @@ export default {
     console.log('hi from add burger to order');
     this.$emit('added_custom_burger', this.makeArrayToOrder());
     this.$emit('changeview','Tabs');
+    this.currentBurger = []
     },
 
     changeView: function() {

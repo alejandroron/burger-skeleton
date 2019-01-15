@@ -29,7 +29,7 @@ export default {
     <div class="total">
       <span>TOTAL:</span>
       <p class="totalValue">
-        ${{ burgerTotal[0].toFixed(2) }}
+        ${{ burgerTotal.toFixed(2) }}
       </p>
     </div>
   </div>
