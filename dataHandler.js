@@ -67,7 +67,7 @@ Data.prototype.getOrderNumber = function () {
 Data.prototype.addOrder = function (order) {
   var orderId = this.getOrderNumber();
   this.orders[orderId] = order;
-  this.orders[orderId].status = "not-started";
+  this.orders[orderId].status = "not started";
   return orderId;
 };
 
@@ -90,4 +90,3 @@ Data.prototype.setOrderStatus = function(orderID, orderStatus){
 }
 
 module.exports = Data;
-

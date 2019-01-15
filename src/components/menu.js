@@ -8,7 +8,7 @@ var menu = {
       imgSrc: 'beef1.png',
       price: 4.00,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Beef Patty', 'Beef Patty', 'Cheese', 'Lettuce', 'Ketchup' ]
+      ingredients: ['Kaiser Roll', 'Beef Patty', 'Cheese', 'Lettuce', 'Ketchup' ]
     },
     {
       title: 'Bacon Deli',
@@ -29,14 +29,14 @@ var menu = {
       imgSrc:'beef4.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Beef Patty', 'Beef Patty', 'Bacon', 'Cheese']
+      ingredients:['Kaiser Roll','Beef Patty', 'Bacon', 'Cheese']
     },
     {
       title: 'Double Meat',
       imgSrc:'beef5.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll', 'Beef Patty', 'Beef Patty', 'Cheese']
+      ingredients:['Kaiser Roll', 'Beef Patty', 'Cheese', 'Lettuce']
     }
     ],
   chicken: [
@@ -52,7 +52,7 @@ var menu = {
       imgSrc:'chicken2.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo', 'Tomato']
+      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Tomato']
     },
     {
       title: 'Crispy Chicken',
@@ -66,14 +66,14 @@ var menu = {
       imgSrc:'chicken4.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo']      
+      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo']
     },
     {
       title: 'Chicken BBQ',
       imgSrc:'chicken5.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo', 'BBQ']      
+      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo', 'BBQ']
     }
   ],
   fish: [
@@ -96,7 +96,7 @@ var menu = {
       imgSrc:'fish3.png',
       price: 3.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Fish','Fish','Cheese']
+      ingredients:['Kaiser Roll','Fish','Cheese', 'Tomato']
     }
   ],
   vegetarian: [
@@ -112,21 +112,21 @@ var menu = {
       imgSrc:'veggie2.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese']      
+      ingredients:['Kaiser Roll','Vegetarian','Cheese']
     },
     {
       title: 'Typical Veg',
       imgSrc:'veggie3.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers']      
+      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers']
     },
     {
       title: 'Veggie Cool',
       imgSrc:'veggie4.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers', 'Tomato']       
+      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers', 'Tomato']
     }
   ]
   },

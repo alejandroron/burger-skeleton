@@ -13,29 +13,20 @@
               <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
                 <span id="title">{{ orderItem.item.title }}</span>
                 <ul>
-                <li class="ingredient" v-for="(ingredient, ingredientIndex) in orderItem.item.ingredients" :key="ingredientIndex">
-                  <span>{{ ingredient["name"] }}</span>
-
-              <!--
-              The above span will list the entire ingredient attribute for each ingredient:
-              as example, if you order Bacon Deli one of the ingredients will be this:
-              { "NAME": "KAISER ROLL",
-              "PRICE": 0.3825082958361685, "QUANTITY": 1,
-              "TOTALPRICE": 0.3825082958361685 }
-              and so on for each ingredient,
-              if anyone knows how to get ONLY the name property out of this
-              then feel free to add it, otherwise code is working fine
-              -->
-              </li>
+                  <div v-for="(ingredient, ingredientIndex) in orderItem.item.ingredients" :key="ingredientIndex">
+                    <li class="ingredient" v-if="ingredient.quantity>0">
+                      <span>{{ ingredient["name"] }} x {{ ingredient["quantity"] }}</span>
+                    </li>
+                  </div>
               </ul>
             </li>
           </ul>
         </div>
         <div class="bottom" id="orderFinished" v-if="object.status==='finished'" v-on:click="changeStatus(object)">
-          {{ object.status }}
+          {{ object.status }}<br> {{ object.place }}
         </div>
         <div class="bottom" v-else v-on:click="changeStatus(object)">
-          {{ object.status }}
+          {{ object.status }}<br> {{ object.place }}
         </div>
       </div>
     </div>
@@ -61,7 +52,7 @@ import Navbar from '@/components/Navbar.vue';
 // another reason to hate vue, we have to use an array
 // an object won't auto update >:(
 var orders = [];
-
+// var ingredientQuantity = this.orderItem.item[index]["item"]["ingredients"][ingredientIndex]["quantity"];
 export default {
   name: 'KitchenOrderPage',
   components: {
@@ -74,10 +65,11 @@ export default {
   },
   created: function () {
     this.$store.state.socket.on('initialize', function (obj) {
+      console.log(obj);
       orders.push(obj.orders);
     }.bind(this)),
     this.$store.state.socket.on('newOrder', function (orderID, order) {
-
+      console.log(order);
       alert('neworder: ' + orderID);
 
       var currentOrders = orders[0];
@@ -91,7 +83,7 @@ export default {
   {
   changeStatus: function(object)
     {
-      if (object.status==='not-started')
+      if (object.status==='not started')
       {
         object.status = 'started';
       }
@@ -172,12 +164,13 @@ h3 {
 
 .item .middle {
   overflow: auto;
-  height: 187px;
+  min-height: 187px;
+  /* height: auto; */
   padding: 15px 10px;
 }
 
 .item .bottom {
-  height: 38px;
+  height: auto;
   border-radius: 0px 0px 5px 5px;
   color: white;
   line-height: 38px;

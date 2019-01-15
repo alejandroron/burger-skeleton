@@ -1,22 +1,22 @@
 <template>
   <div id="container">
     <Navbar
-      :displayButtons='true'
-      :orderPage='true'
-      :backAddressProperty='"./#/"'
-      :backTextProperty='"START OVER"'
-      :titleProperty='"CREATE YOUR MENU"'
-      :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
-      :nextTextProperty='"FINISH ORDER"'
-	  
-      @added_customized_to_order="addItem" />
+    :displayButtons='true'
+    :orderPage='true'
+    :backAddressProperty='"./#/"'
+    :backTextProperty='"START OVER"'
+    :titleProperty='"CREATE YOUR MENU"'
+    :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
+    :nextTextProperty='"FINISH ORDER"'
+
+    @added_customized_to_order="addItem" />
     <Tabs
-      @addedItemToOrder="addItem"
-      @changeview="$emit('changeview','BurgerConstruction')" />
+    @addedItemToOrder="addItem"
+    @changeview="$emit('changeview','BurgerConstruction')" />
     <Footer
-      :currentOrder='currentOrder'
-      :orderTotal='orderTotal'
-      @removeItemFromOrder="removeItem" />
+    :currentOrder='currentOrder'
+    :orderTotal='orderTotal'
+    @removeItemFromOrder="removeItem" />
   </div>
 </template>
 
@@ -32,7 +32,7 @@ import sharedVueStuff from '@/components/sharedVueStuff.js';
 "use strict";
 var runningTotal = [ 0.00 ];
 var runningOrder = [];
-
+var runningPlace = "";
 export default {
   name: 'OrderPage',
   components: {
@@ -43,29 +43,34 @@ export default {
   data () {
     return {
       currentOrder: runningOrder,
-      orderTotal: runningTotal
+      orderTotal: runningTotal,
+      place : runningPlace
+
     }
   },
   mixins: [sharedVueStuff],
   computed: {
     modifyUrl: function(){
-		runningTotal=JSON.parse(this.$route.params.orderPageString).price;
-		
-	},
+      runningTotal=JSON.parse(this.$route.params.orderPageString).price;
+
+    },
     passedTotal: function() {
-	    console.log("passedTotal");
-	    return  JSON.parse(this.$route.params.orderPageString).price;
-	  
+      console.log("passedTotal");
+      return  JSON.parse(this.$route.params.orderPageString).price;
+
     },
     passedOrder: function(){
-	    return JSON.parse(this.$route.params.orderPageString).order; 
-	},
+      return JSON.parse(this.$route.params.orderPageString).order;
+    },
+    passedPlace: function(){
+      return JSON.parse(this.$route.params.orderPageString).place;
+    }
   },
   methods: {
     addItem: function(item) {
       // add order to order list
-	   runningOrder.push({
-       item: item
+      runningOrder.push({
+        item: item
       });
 
       // update total price, have to use an array unfortunately
@@ -77,12 +82,13 @@ export default {
       runningTotal.splice(0, 1);
 
       runningOrder.splice(itemIndex, 1);
-	 
+
     },
     convertOrdersToString() {
       var order = {
         price: runningTotal,
-        order: runningOrder
+        order: runningOrder,
+        place: this.place
       };
 
       var truncatedOrderString = JSON.stringify(order);
@@ -93,14 +99,16 @@ export default {
   },
   created: function () {
     this.$store.state.socket.on('modified',function() {
-	  console.log("recibo");
+      console.log("recibo");
       runningOrder=this.passedOrder;
-	  runningTotal=this.passedTotal;
-	  this.orderTotal=this.passedTotal;
-	  this.currentOrder=this.passedOrder;
-	  console.log(this.orderTotal);
+      runningTotal=this.passedTotal;
+      this.orderTotal=this.passedTotal;
+      this.currentOrder=this.passedOrder;
+      console.log(this.orderTotal);
     }.bind(this));
-
+    this.$store.state.socket.on('selectedPlace', function(){
+      this.place=this.passedPlace;
+    }.bind(this));
   }
 }
 </script>

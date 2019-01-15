@@ -3,30 +3,31 @@
 
     <div id="frontpage">
       <!-- <div class="flags">
-        <img src="@/assets/sweden.png">
-        <img src="@/assets/uk.png">
-      </div> -->
+      <img src="@/assets/sweden.png">
+      <img src="@/assets/uk.png">
+    </div> -->
 
-      <div class="title">
-        EATING LOCATION
-      </div>
-
-      <div class="buttons">
-        <a class="dine_in" :href="'./#/OrderPage/' + emptyOrderString()">
-          <img class="dineIN" src="@/assets/dine_in.png">
-        </a>
-        <a class="take_out" :href="'./#/OrderPage/' + emptyOrderString()">
-          <img class="takeOUT" src="@/assets/take_out.png">
-        </a>
-      </div>
+    <div class="title">
+      EATING LOCATION
     </div>
 
+    <div class="buttons">
+      <a class="dine_in" :href="'./#/OrderPage/' + emptyOrderStringIn()">
+        <img class="dineIN" src="@/assets/dine_in.png" v-on:click="sendPlace">
+      </a>
+      <a class="take_out" :href="'./#/OrderPage/' + emptyOrderStringOut()">
+        <img class="takeOUT" src="@/assets/take_out.png" v-on:click="sendPlace">
+      </a>
+    </div>
   </div>
+
+</div>
 </template>
 
 <script>
 import OrderPage from './OrderPage.vue';
 import BurgerConstruction from './BurgerConstruction.vue';
+
 
 export default {
   name: 'StartPage',
@@ -35,10 +36,16 @@ export default {
     BurgerConstruction
   },
   methods:{
-    emptyOrderString: function (){
-      var emptyOrder = { price:[0.001], order:[] };
+    emptyOrderStringIn: function (){
+      var emptyOrder = { price:[0.001], order:[], place: "dine in" };
       return JSON.stringify(emptyOrder);
-	  return emptyOrder.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
+    },
+    emptyOrderStringOut: function (){
+      var emptyOrder = { price:[0.001], order:[], place: "take away" };
+      return JSON.stringify(emptyOrder);
+    },
+    sendPlace: function(){
+      this.$store.state.socket.emit('selectedPlace');
     }
   }
 }
