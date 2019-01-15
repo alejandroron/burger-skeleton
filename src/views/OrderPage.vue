@@ -8,6 +8,7 @@
       :titleProperty='"CREATE YOUR MENU"'
       :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
       :nextTextProperty='"MODIFY OR PAY"'
+      :currentOrder='currentOrder'
 
       @added_customized_to_order="addItem" />
     <Tabs

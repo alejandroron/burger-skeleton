@@ -3,21 +3,22 @@
     props: [
       'displayButtons',
       'orderPage',
-  
+      'currentOrder',
+
       'backAddressProperty',
       'backTextProperty',
-  
+
       'titleProperty',
-  
+
       'nextAddressProperty',
       'nextTextProperty',
-  
+
       'customizedOrder',
       'customizedPrice'
     ],
     methods: {
       addCustomizedToOrder: function() {
-  
+
         /*convert the customized order array into an item
         and add it to the footer*/
         var item = {
@@ -30,7 +31,7 @@
         this.$parent.$emit('added_customized_to_order', item);
       },
       goSummaryOrder: function() {
-  
+
       }
     }
   }
@@ -38,21 +39,21 @@
 
 <template>
   <div class='fixed navbar'>
-  
+
     <a :href="backAddressProperty" v-if="displayButtons">
       <div class="button" id="backButton"> {{ backTextProperty }} </div>
     </a>
-  
+
     <h1>{{ titleProperty }}</h1>
-  
-    <a :href="nextAddressProperty" v-if="displayButtons">
+
+    <a :href="nextAddressProperty" v-if="displayButtons && currentOrder.length>0">
       <div class="button" id="nextButton" v-on:click="goSummaryOrder()"> {{ nextTextProperty }} </div>
     </a>
-  
-    <!-- <a :href="nextAddressProperty" v-else-if="displayButtons">
-          <div class="button" id="nextButton" v-on:click="addCustomizedToOrder()"> {{ nextTextProperty }} </div>
-        </a> -->
-  
+
+    <a v-else-if="displayButtons">
+      <div id="hiddenButton"></div>
+    </a>
+
   </div>
 </template>
 
@@ -60,23 +61,23 @@
   a {
     text-decoration: none;
   }
-  
+
   * {
     box-sizing: border-box;
   }
-  
+
   .fixed {
     position: fixed;
     top: 0;
     z-index: 2;
   }
-  
+
   .blank {
     grid-area: c;
     width: 150px;
     height: 40px;
   }
-  
+
   .navbar {
     display: grid;
     grid-template-areas: "a b c";
@@ -87,7 +88,7 @@
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.16);
     background-color: #416451;
   }
-  
+
   .navbar h1 {
     grid-area: b;
     color: white;
@@ -95,7 +96,7 @@
     font-size: 40px;
     text-transform: uppercase;
   }
-  
+
   .button {
     width: 150px;
     height: 40px;
@@ -110,22 +111,32 @@
     text-align: center;
     line-height: 40px;
   }
-  
+
   #backButton {
     grid-area: a;
     margin-left: 15px;
     background-color: #ff3f34;
   }
-  
+
   #nextButton {
     grid-area: c;
     margin-right: 15px;
     background-color: #05c46b;
   }
-  
-  
+
+  #hiddenButton {
+    grid-area: c;
+    margin-right: 15px;
+    background-color: transparent;
+    width: 150px;
+    height: 40px;
+    border-radius: 100px;
+    align-self: center;
+  }
+
+
   /* Queries */
-  
+
   @media only screen and (max-width: 730px) {
     .navbar h1 {
       font-size: 25px;
@@ -146,7 +157,7 @@
       margin-right: 7px;
     }
   }
-  
+
   @media only screen and (max-width: 380px) {
     .navbar h1 {
       font-size: 19px;
