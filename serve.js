@@ -84,6 +84,9 @@ io.on('connection', function (socket) {
   socket.on('modified',function() {
 	  io.emit('modified');
   });
+  socket.on('inOrOut',function(str) {
+	  io.emit('inOrOut',str);
+  });
 });
 const port = 8080;
 http.listen(port, function() {

@@ -43,7 +43,8 @@ export default {
   data () {
     return {
       currentOrder: runningOrder,
-      orderTotal: runningTotal
+      orderTotal: runningTotal,
+	  place:JSON.parse(this.$route.params.orderPageString).place
     }
   },
   mixins: [sharedVueStuff],
@@ -82,7 +83,8 @@ export default {
     convertOrdersToString() {
       var order = {
         price: runningTotal,
-        order: runningOrder
+        order: runningOrder,
+		place:this.place
       };
 
       var truncatedOrderString = JSON.stringify(order);
