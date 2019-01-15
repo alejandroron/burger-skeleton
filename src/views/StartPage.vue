@@ -65,12 +65,12 @@ a {
 .title {
   margin-top: 50px;
   align-self: center;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 60px;
   text-align: center;
   color: #fff;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 .buttons {

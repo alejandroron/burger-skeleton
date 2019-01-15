@@ -57,7 +57,7 @@ a {
 .title {
   margin-top: 20px;
   align-self: center;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 60px;
   text-align: center;

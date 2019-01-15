@@ -174,7 +174,7 @@
   body {
     margin: 0;
     background-color: #2D4739;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
   
   h2 {

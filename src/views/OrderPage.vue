@@ -7,7 +7,7 @@
       :backTextProperty='"START OVER"'
       :titleProperty='"CREATE YOUR MENU"'
       :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
-      :nextTextProperty='"FINISH ORDER"'
+      :nextTextProperty='"MODIFY OR PAY"'
 	  
       @added_customized_to_order="addItem" />
     <Tabs

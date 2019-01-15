@@ -64,9 +64,9 @@ name: "DropDownComponent",
 </script>
 
 <style>
-@import url(https://fonts.google.com/specimen/Roboto);
+/* @import url(https://fonts.google.com/specimen/Roboto); */
 body {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
   font-weight: 400;
 }
