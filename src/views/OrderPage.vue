@@ -1,5 +1,11 @@
 <template>
   <div id="container">
+
+  <StartPage
+  :currentPage='currentPage'
+  @changeview="changeView"
+  />
+
   <Tabs
   :currentPage='currentPage'
   :currentOrderTabs='currentOrder'
@@ -18,6 +24,7 @@
 </template>
 
 <script>
+import StartPage from './StartPage.vue';
 import Tabs from '@/components/Tabs.vue';
 import BurgerConstruction from './BurgerConstruction.vue';
 
@@ -25,8 +32,9 @@ import BurgerConstruction from './BurgerConstruction.vue';
 export default {
   name: 'OrderPage',
   components: {
+    StartPage,
     Tabs,
-    BurgerConstruction,
+    BurgerConstruction
   },
   data () {
     return {
@@ -55,6 +63,8 @@ export default {
     },
     changeView:function(inputKey)
     {
+    console.log('hi from changeview OrderPage');
+    console.log(inputKey);
     if (inputKey==='BurgerConstruction')
       {
       var justNumber = 0;
@@ -62,11 +72,29 @@ export default {
       }
     else if (inputKey==='Tabs')
       {
+      if (this.currentPage.length > 1) {
+        while (this.currentPage.length > 1)
+        {
+          this.currentPage.splice(0,1);
+        }
+      }
+      else {
+        var someNumber = 0;
+        this.currentPage.push(someNumber);
+      }
+      }
+    else if (inputKey==='StartPage')
+      {
       this.currentPage = [];
       }
-   }
+/*    else if (inputKey==='OrderSummary')
+      {
+      this.currentPage = [];
+      } */
+    }
+  }
 }
-}
+
 </script>
 
 <style scoped>

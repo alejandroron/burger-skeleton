@@ -28,7 +28,7 @@
 </script>
 
 <template>
-  <div class='fixed navbar' v-if="'currentPage.length !== 0'">
+  <div class='fixed navbar' v-if="currentPage.length === 2">
       <div class="button" id="backButton" v-on:click="changeView()">
       {{ backTextProperty }}
       </div>

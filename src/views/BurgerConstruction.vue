@@ -1,5 +1,5 @@
 <template>
-  <div id="container" v-if="currentPage.length !== 0">
+  <div id="container" v-if="currentPage.length===2">
   <NavbarBurger
   :currentPage='currentPage'
   :displayButtons='true'

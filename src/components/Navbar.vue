@@ -13,23 +13,28 @@
 
     ],
     methods: {
-      changeView: function() {
-      console.log('hi')
-      this.$emit('changeview','Tabs');
+      changeView: function(identifier) {
+      console.log('hi from changeView Navbar');
+      if (identifier === 1)  {
+      this.$emit('back_address_property','StartPage');
+      }
+      else if (identifier === 2){
+      this.$emit('next_address_property','OrderSummary');
+      }
       }
     }
   }
 </script>
 
   <template>
-    <div class='fixed navbar' v-if='currentPage.length === 0'>
-        <div class="button" id="backButton" v-on:click="">
+    <div class='fixed navbar' v-if="currentPage.length === 1">
+        <div class="button" id="backButton" v-on:click="changeView(1)">
         {{ backTextProperty }}
         </div>
 
         <h1>{{ titleProperty }}</h1>
 
-        <div class="button" id="nextButton" v-on:click="">
+        <div class="button" id="nextButton" v-on:click="changeView(2)">
         {{ nextTextProperty }}
         </div>
     </div>

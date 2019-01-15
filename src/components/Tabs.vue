@@ -1,15 +1,15 @@
 <template>
-  <div class="container" v-if="currentPage.length===0">
+  <div class="container" v-if="currentPage.length===1">
 
     <Navbar
     :currentPage='currentPage'
     :displayButtons='true'
-    :backAddressProperty='"./#/"'
     :backTextProperty='"START OVER"'
     :titleProperty='"CREATE YOUR MENU"'
-    :nextAddressProperty='"./#/OrderSummary/"'
     :nextTextProperty='"FINISH ORDER"'
     @added_customized_to_order="addItem"
+    @back_address_property="changeView"
+    @next_address_property="changeView"
     />
 
     <Tab
@@ -57,8 +57,9 @@
       removeItem: function(item) {
       this.$emit('removed_item_from_order', item); // talking to order page
       },
-      changeView: function() {
-      this.$emit('changeview','BurgerConstruction');
+      changeView: function(identifier) {
+      console.log('hi from changeView Tabs');
+      this.$emit('changeview',identifier);
       }
     }
   }

@@ -1,9 +1,6 @@
 <template>
-    <div class="container">
-
-
-
-      <div id="frontpage">
+  <div class="container" v-if="currentPage.length===0">
+    <div id="frontpage">
       <div class="flags">
         <img src="@/assets/sweden.png">
         <img src="@/assets/uk.png">
@@ -13,33 +10,29 @@
       </div>
 
       <div class="buttons">
-        <a class="dine_in" :href="urlstring()">
+        <div class="dine_in" v-on:click="changeView()">
           <img class="dineIN" src="@/assets/dine_in.png">
-        </a>
-        <a class="take_out" :href="urlstring()">
+        </div>
+        <div class="take_out" v-on:click="changeView()">
           <img class="takeOUT" src="@/assets/take_out.png">
-        </a>
+        </div>
       </div>
-    </div>
 
     </div>
+  </div>
 </template>
 
 <script>
 
 export default {
   name: 'StartPage',
-  components:{
-  },
-  data:function(){
-    return{
-    }
-  },
+  props: [
+  'currentPage'
+  ],
   methods:{
-    urlstring:function(){
-      var urlstring = "./#/OrderPage/";
-      return urlstring + JSON.stringify(0);
-    }
+  changeView: function() {
+  this.$emit('changeview','Tabs');
+  }
   }
 }
 </script>
