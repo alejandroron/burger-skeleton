@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Navbar :titleProperty='"Orders"' />
+    <NavbarSummary
+    :titleProperty='"Orders"'
+    />
 
     <div class="boxes">
         <div class="item" v-for="(object, index) in orders[0]" :key="index">
@@ -43,7 +45,7 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar.vue';
+import NavbarSummary from '@/components/NavbarSummary.vue';
 
 // example orders data
 // { '1':
@@ -64,7 +66,7 @@ var orders = [];
 export default {
   name: 'KitchenOrderPage',
   components: {
-    Navbar
+    NavbarSummary
   },
   data () {
     return {

@@ -11,6 +11,7 @@
   :currentOrderTabs='currentOrder'
   :orderTotalTabs='orderTotal'
   @added_item_to_order="addItem"
+  @removed_item_from_order="removeItem"
   @changeview="changeView"
   />
 
@@ -20,6 +21,14 @@
   @changeview="changeView"
   />
 
+  <OrderSummaryPage
+  :currentPage='currentPage'
+  :currentOrder='currentOrder'
+  :orderTotal='orderTotal'
+  @modifyorder="changeView"
+  @item_delete="removeItem"
+  />
+
   </div>
 </template>
 
@@ -27,6 +36,7 @@
 import StartPage from './StartPage.vue';
 import Tabs from '@/components/Tabs.vue';
 import BurgerConstruction from './BurgerConstruction.vue';
+import OrderSummaryPage from './OrderSummaryPage.vue';
 
 
 export default {
@@ -34,7 +44,8 @@ export default {
   components: {
     StartPage,
     Tabs,
-    BurgerConstruction
+    BurgerConstruction,
+    OrderSummaryPage
   },
   data () {
     return {
@@ -51,19 +62,31 @@ export default {
       this.currentOrder.push({
        item: item
       });
-
-      // update total price, have to use an array unfortunately
+      // update total price
       this.orderTotal += item.price;
-
     },
+
     removeItem: function(itemIndex) {
       this.orderTotal -= this.currentOrder[itemIndex].item.price;
-
       this.currentOrder.splice(itemIndex, 1);
     },
+
+    placeOrder: function()
+    {
+      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+      this.$store.state.socket.emit('order', this.currentOrder);
+    },
+
+    decrementIngredient: function(indexItem, indexIngredient)
+    {
+    },
+
+    incrementIngredient: function(indexItem, indexIngredient)
+    {
+    },
+
     changeView:function(inputKey)
     {
-    console.log('hi from changeview OrderPage');
     console.log(inputKey);
     if (inputKey==='BurgerConstruction')
       {
@@ -72,27 +95,35 @@ export default {
       }
     else if (inputKey==='Tabs')
       {
-      if (this.currentPage.length > 1) {
+      if (this.currentPage.length > 1)
+      {
         while (this.currentPage.length > 1)
         {
           this.currentPage.splice(0,1);
         }
       }
-      else {
+      else
+      {
         var someNumber = 0;
         this.currentPage.push(someNumber);
       }
       }
     else if (inputKey==='StartPage')
-      {
+    {
       this.currentPage = [];
+    }
+    else if (inputKey==='OrderSummary')
+    {
+    console.log('hello from orderSummary loopdiloop');
+      while (this.currentPage.length < 3)
+      {
+        var justAnotherNumber = 3;
+        this.currentPage.push(justAnotherNumber);
       }
-/*    else if (inputKey==='OrderSummary')
-      {
-      this.currentPage = [];
-      } */
+    }
     }
   }
+
 }
 
 </script>

@@ -1,359 +1,61 @@
-<script>
-import Navbar from '@/components/Navbar.vue';
-import sharedVueStuff from '@/components/sharedVueStuff.js';
-
-var removedOrders = [];
-
-export default {
-  name: 'Summary',
-  components: {
-    Navbar
-  },
-  mixins: [ sharedVueStuff ],
-  data: function() {
-    return {
-      order: this.orderToArray(),
-
-      // perhaps not necessary to return this array, just added in case
-      removedItemsArray: removedOrders,
-      counter: 0
-    }
-  },
-  methods:{
-  orderToArray: function ()
-   {
-    var order=JSON.parse(this.$route.params.orderString);
-    var i,len;
-
-    for (i=0, len=order.order.length; i < len; i++)
-    {
-      if(order.order[i]["item"]["isBurger"])
-      {
-        var j,len2;
-        for(j=0, len2=order.order[i]["item"]["ingredients"].length; j < len2;j++)
-        {
-          var randomPrice=Math.random();
-          var ingre=
-          {
-            name:order.order[i]["item"]["ingredients"][j],
-            price:randomPrice,
-            quantity:1,
-            totalPrice:randomPrice
-          };
-          order.order[i]["item"]["ingredients"][j]=ingre;
-        }
-      }
-    }
-
-    var truncatedOrderString = JSON.stringify(order);
-    truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
-    console.log(truncatedOrderString);
-    return order;
-  },
-
-  placeOrder: function ()
-    {
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      this.$store.state.socket.emit('order', this.order );
-    },
-
-  deleteItem: function(index)
-    {
-      removedOrders.push(this.order.order[index]);
-      this.order["price"][0] = this.order["price"][0] - this.order.order[index]["item"]["price"];
-
-      this.order.order.splice(index, 1);
-    },
-
-  incrementItem: function(indexItem,indexIngredient)
-    {
-      this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]++;
-      var ingredientPrice=this.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
-      var ingredientQuantity=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
-
-      if(ingredientQuantity>1)
-      {
-        this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice*(ingredientQuantity);
-        this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]+ingredientPrice;
-        console.log(this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]);
-        this.updateTotalPrice();
-      }
-
-      else
-      {
-        //this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice;
-        console.log(this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]);
-        this.updateTotalPrice();
-      }
-    },
-
-  decrementItem: function(indexItem,indexIngredient)
-    {
-      var quantity=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
-      var ingredientPrice=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
-      var ingredientQuantity=this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
-
-      if(quantity>1)
-        {
-        this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]--;
-        this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"]=ingredientPrice*(ingredientQuantity);
-        this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]-ingredientPrice;
-        }
-      if(quantity==1)
-        {
-        //this.order.order[indexItem]["item"]["ingredients"].splice(indexIngredient,1);
-        this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]--;
-        //this.order.order[indexItem]["item"]["price"]=this.order.order[indexItem]["item"]["price"]-ingredientPrice;
-        }
-
-    this.updateTotalPrice();
-    },
-
-  updateTotalPrice: function()
-  {
-		var price=0.0;
-		var i,len;
-		for (i=0, len=this.order.order.length; i < len; i++)
-    {
-			price=this.order.order[i]["item"]["price"]+price;
-		}
-    this.order[price]=price;
-    console.log(this.order[price]);
-
-	},
-  orderToString: function(){
-    return "./#/OrderPage/" + JSON.stringify(this.order);
-  }
-  }
-}
-</script>
-
 <template>
-  <div>
-    <Navbar :titleProperty='"ORDER SUMMARY"' :displayButtons='null' :orderPage='null' />
+  <div class="container" v-if="currentPage.length===3">
+    <NavbarSummary
+    :titleProperty='"ORDER SUMMARY"'
+    />
 
-    <div class="boxes">
-
-      <div class="item" v-for="(item, index) in order.order" :key="index" >
-        <div class="top">
-          <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/redX.png" id="minus" width="30px" height="30px"></button>
-          <h2 id="name">{{ item.item.title }}</h2>
-        </div>
-
-        <div class="middle">
-          <div v-if="item.item.isBurger">
-            <ul class="ingredientList">
-              <li class="ingredient" v-for="(ingredient, indexIngredient) in item.item.ingredients" :key="indexIngredient">
-                <span>{{ ingredient["name"] }}: {{ ingredient["totalPrice"].toFixed(2) }}</span>
-                <div class="ingredientInfo">
-                  <button class="minus" v-on:click="decrementItem(index,indexIngredient)">
-                  <img src="@/assets/minus.png">
-                  </button>
-                  <span class="ingredientCount">{{ingredient["quantity"]}}</span>
-                  <button class="plus" v-on:click="incrementItem(index,indexIngredient)">
-                    <img src="@/assets/plus.png">
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="bottom">
-          ${{ item.item.price.toFixed(2) }}
-        </div>
-      </div>
-
-    </div>
-
-    <a>
-      <div class="totalPrice">
-        <p>TOTAL: {{ this.order["price"][0].toFixed(2) }}</p>
-      </div>
-    </a>
-
-    <a :href="orderToString()">
-      <div class="modify">
-        <p>MODIFY</p>
-      </div>
-    </a>
-
-    <a href="./#/OrderCompleted" v-on:click="placeOrder()">
-      <div class="pay">
-        <p>PAY</p>
-      </div>
-    </a>
-
+    <OrderSummary
+    :order='finalOrder'
+    :price='finalTotal'
+    @delete_item="deleteItem"
+    @decrement_item="decrementItem"
+    @increment_item="incrementItem"
+    />
   </div>
+
 </template>
 
-<style>
-h1, h2, h3, h4, h5, p {
-  margin: 0;
-  padding: 0;
-}
 
-body {
-  margin: 0;
-  background-color: #2D4739;
-  font-family: Roboto, sans-serif;
-}
+<script>
+  import NavbarSummary from '@/components/NavbarSummary.vue';
+  import OrderSummary from '@/components/OrderSummary.vue';
 
-h2 {
-  font-size: 20px;
-  font-weight: bold;
-}
+  export default {
+    name: 'OrderSummaryPage',
+    props: [
+      'currentPage',
+      'currentOrder',
+      'orderTotal'
+    ],
+    components: {
+      NavbarSummary,
+      OrderSummary
+    },
+    data: function() {
+      return {
+        finalOrder: this.currentOrder,
+        finalTotal: this.orderTotal
+      }
+    },
+    methods: {
+    deleteItem: function(index)
+    {
+    this.$emit('item_delete', index);
+    },
 
-h3 {
-  font-size: 20px;
-  font-weight: normal;
-}
+    decrementItem: function(indexItem, indexIngredient)
+    {
+    this.$emit('decrement_ingredient', indexItem, indexIngredient);
+    },
 
-#delete {
-  width : 30px;
-  cursor: pointer;
-  margin-right: -5px;
-  margin-top: -5px;
-  border-radius: 50%;
-  background-color: transparent;
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
-  border: none;
-}
+    incrementItem: function(indexItem, indexIngredient)
+    {
+    this.$emit('increment_ingredient',indexItem, indexIngredient);
+    },
 
-.boxes {
-  margin-top: 90px;
-  margin-bottom: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(0px, 279.52px));
-  grid-gap: 20px;
-  justify-content: center;
-}
-/* Boxes is the group of boxes, formed by items */
+    }
+  }
+</script>
 
-.item {
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  background-color: #FFA801;
-  /* The colour depends, all the options are, i think we'd need JS for this:
-  Gray: #485460
-  Black: #000000
-  Purple: #3C40C6 */
-}
-
-/* Items are divided into three parts: top, middle and bottom */
-
-.item .top {
-  display: flex;
-  height: 58px;
-  border-radius: 5px 5px 0px 0px;
-  background-color: #EF9D00;
-  /* Options:
-  Gray: #333C45
-  Black: #171717
-  Purple: #303398
-  */
-}
-
-.plus, .minus {
-  background-color: transparent;
-  cursor: pointer;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  border: none;
-}
-
-.minus img, .plus img {
-  margin: -2px 0 0 -8px;
-  width: 20px;
-  height: 20px;
-  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
-}
-
-#name {
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  line-height: 58px;
-  margin-left: 60px;
-}
-
-.item .middle {
-  overflow: auto;
-  height: 187px;
-  padding: 5px 10px;
-}
-
-.item .bottom {
-  height: 38px;
-  border-radius: 0px 0px 5px 5px;
-  color: white;
-  line-height: 38px;
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-  background-color: #EF9D00;
-  /* Options:
-  Gray: #333C45
-  Black: #171717
-  Purple: #303398
-  */
-}
-
-.ingredientList {
-  margin: 0;
-}
-
-.ingredient {
-  color: white;
-  border-bottom: 1px solid black;
-  padding: 10px 0;
-}
-
-.ingredientInfo {
-  float: right;
-}
-
-.ingredientCount {
-  font-size: 23px;
-  margin: 0 8px;
-}
-/* Modify and Pay buttons */
-
-.modify {
-  cursor: pointer;
-  bottom: 40px;
-  position: fixed;
-  width: 100%;
-  height: 40px;
-  background-color: #05C46B;
-}
-
-.pay {
-  cursor: pointer;
-  bottom: 0px;
-  position: fixed;
-  width: 100%;
-  height: 40px;
-  background-color: #0C44D1;
-}
-
-.totalPrice {
-  cursor: pointer;
-  bottom: 80px;
-  position: fixed;
-  width: 100%;
-  height: 40px;
-  background-color: #0C44D1;
-}
-
-.pay p, .modify p, .totalPrice p {
-  text-align: center;
-  line-height: 40px;
-  color: white;
-  font-size: 20px;
-}
+<style scoped>
 </style>

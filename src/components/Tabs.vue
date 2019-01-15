@@ -1,7 +1,7 @@
 <template>
   <div class="container" v-if="currentPage.length===1">
 
-    <Navbar
+    <NavbarTabs
     :currentPage='currentPage'
     :displayButtons='true'
     :backTextProperty='"START OVER"'
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import Navbar from '@/components/Navbar.vue';
+  import NavbarTabs from '@/components/NavbarTabs.vue';
   import Tab from '@/components/Tab.vue';
   import TabsFooter from '@/components/TabsFooter.vue';
 
@@ -39,7 +39,7 @@
       'orderTotalTabs'
     ],
     components: {
-    Navbar,
+    NavbarTabs,
     Tab,
     TabsFooter
     },
