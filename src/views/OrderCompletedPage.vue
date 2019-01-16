@@ -1,8 +1,7 @@
 <template>
   <div class="">
-    <img id="completed" src="@/assets/Completed.png" class="image">
+    <img src="@/assets/Completed.png" class="image">
     <div id="finishMessage">ORDER COMPLETED!</div>
-  
     <a :href='this.staringPage'>
       <div v-on:click="reload" class="buttonFinish">
         <p>START A NEW ORDER</p>
@@ -46,11 +45,16 @@
   }
   .buttonFinish {
     cursor: pointer;
-    bottom: 0px;
+
     position: fixed;
-    width: 100%;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 300px;
     height: 40px;
     background-color: #FFA801;
+    border-radius: 100px;
   }
   .buttonFinish p {
     text-align: center;
