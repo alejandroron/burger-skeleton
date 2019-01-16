@@ -4,7 +4,7 @@
       :displayButtons='true'
       :backAddressProperty='"./#/OrderPage"'
       :backTextProperty='"MAIN PAGE"'
-      :titleProperty='"CREATE YOUR OWN BURGER"'
+      :titleProperty='"PERSONALISED BURGER"'
       :nextAddressProperty='"./#/OrderPage"'
       :nextTextProperty='"FINISH BURGER"'
       :order='currentOrder'

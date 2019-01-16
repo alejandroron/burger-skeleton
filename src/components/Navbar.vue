@@ -155,7 +155,7 @@
 
   @media only screen and (max-width: 380px) {
     .navbar h1 {
-      font-size: 19px;
+      font-size: 15px;
     }
   }
 </style>

@@ -6,7 +6,7 @@
       :orderPage='false'
       :backAddressProperty='"./#/OrderPage/customizedBurger"'
       :backTextProperty='"MAIN PAGE"'
-      :titleProperty='"CREATE YOUR OWN BURGER"'
+      :titleProperty='"CUSTOM BURGER"'
       :nextAddressProperty='"./#/OrderPage/customizedBurger"'
       :nextTextProperty='"FINISH BURGER"'
       :customizedOrder='currentOrder'

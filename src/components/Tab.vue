@@ -144,7 +144,7 @@
   
   .contentItem {
     width: 100%;
-    padding: 0px 20px;
+    padding: 20px 20px 0px 20px;
   }
   
   #burgersContent {
@@ -159,7 +159,7 @@
     background-color: #3c40c6;
   }
   
-  /* .personalisedBurger {
+  .personalisedBurger {
     background-color: #485460;
     height: 150px;
     border-radius: 10px;
@@ -187,7 +187,7 @@
     display: inline-block;
     vertical-align: middle;
     line-height: 60px;
-  } */
+  }
   
   .grid-container {
     display: grid;
@@ -285,9 +285,9 @@
     }
     .contentItem {
       min-height: 85vh;
-      padding: 0px 8px;
+      padding: 8px 8px 0px 8px;
     }
-    /* .personalisedBurger {
+    .personalisedBurger {
       height: 72.2px;
       padding-left: 13%;
       padding-right: 13%;
@@ -296,7 +296,7 @@
     }
     .personalisedBurger p {
       line-height: 20px;
-    } */
+    }
     .grid-container {
       grid-template-rows: 20px 115px;
     }
