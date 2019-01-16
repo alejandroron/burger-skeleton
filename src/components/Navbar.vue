@@ -128,7 +128,6 @@
 
 
   /* Queries */
-
   @media only screen and (max-width: 730px) {
     .navbar h1 {
       font-size: 25px;
@@ -147,6 +146,11 @@
     }
     #nextButton {
       margin-right: 7px;
+    }
+    #hiddenButton {
+      margin-right: 7px;
+      width: 50px;
+      height: 35px;
     }
   }
 
