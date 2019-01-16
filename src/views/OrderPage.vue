@@ -136,6 +136,7 @@ export default {
 		}		
 	}.bind(this));
 	this.$store.state.socket.on('selectedPlace',function() {
+		runningPlace=this.passedPlace;
 		this.place=this.passedPlace;
 	}.bind(this));
 }
