@@ -126,7 +126,6 @@
     align-self: center;
   }
 
-
   /* Queries */
   @media only screen and (max-width: 730px) {
     .navbar h1 {
