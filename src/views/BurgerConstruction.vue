@@ -52,12 +52,32 @@ export default {
   },
   methods: {
     addIngredient: function(ingredient) {
-      // add order to order list
-      runningOrder.push({item:ingredient});
 
-      // update total price, have to use an array unfortunately
-      runningTotal.push(runningTotal[0] + ingredient.price);
-      runningTotal.splice(0, 1);
+        var i;
+        var counter = 0;
+        var flag = false;
+        for(i=0 ; i<runningOrder.length; i++){
+            if(runningOrder[i].item.name == ingredient.name && counter == 0){
+                flag = true;
+                runningOrder.splice(i,1, {item: ingredient});
+         
+                runningTotal.push(runningTotal[0]+ingredient.price);
+                runningTotal.splice(0,1);
+                counter++;
+
+        }
+
+
+        }
+        
+        if(!flag){
+            runningOrder.push({item: ingredient});
+            runningTotal.push(runningTotal[0]+ingredient.price);
+            runningTotal.splice(0,1);
+        
+        }
+
+
     },
     removeItem: function(itemIndex) {
       runningTotal.push(runningTotal[0] - runningOrder[itemIndex].item.price);
@@ -68,14 +88,21 @@ export default {
     removeItembyname: function(model) {
     var i;
     var counter = 0;
-    for (i=0; i<runningOrder.length; i++){
-    if(runningOrder[i].item.name == model.name && counter == 0){
-      runningTotal.push(runningTotal[0] - runningOrder[i].item.price);
-      runningTotal.splice(0, 1);
-      runningOrder.splice(i, 1);
-      counter++;
-      }
-      }
+    
+        var flag = false;
+        for(i=0 ; i<runningOrder.length; i++){
+            if(runningOrder[i].item.name == model.name && counter == 0){
+                flag = true;
+            runningOrder.splice(i,1, {item: model});
+                runningTotal.push(runningTotal[0]-model.price);
+                runningTotal.splice(0,1);
+                counter++;
+
+        }
+
+
+        }
+        
     },
 	finishCreatedBurger: function(){
 		//if(this.nextTextProperty=="FINISH BURGER"){

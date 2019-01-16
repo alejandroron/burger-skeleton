@@ -2,6 +2,7 @@
   <li :class="[hasChildren ? 'folder' : 'file']">
     <label :class="{'open': open}" @click="toggle">
         {{ model.name }}
+        
         <div class="numbers" v-if="!hasChildren">
           <div class = "minuses" v-if="counter!=0">
             <button class="minus" @click="deleteIngredient(model)"><img src ="../assets/minus2.png">

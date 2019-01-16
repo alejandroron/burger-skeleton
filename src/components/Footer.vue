@@ -24,10 +24,16 @@
 <template>
   <div class="footer">
     <div class="currentOrder">
-      <div class="orderItem" v-for="(item, index) of currentOrder" :key="index" @click="removeItem(index)">
+      <div class="orderItem" v-for="(item, index) of currentOrder" :key="index" @click="removeItem(index)"  v-if = "item.item.title" >
         <img :src='require("@/assets/Food/" + item.item.imgSrc)'>
         <p>{{ item.item.title }}</p>
       </div>
+          <div class="orderItem" v-for="(item, index) of currentOrder" :key="index" @click="removeItem(index)"  v-if = "item.item.name && item.item.quantity !=0" >
+        <img :src='require("@/assets/Food/" + item.item.imgSrc)'>
+        <p>{{ item.item.name }} : {{ item.item.quantity }}</p>
+      </div>
+      
+      
     </div>
   
     <div class="total">
