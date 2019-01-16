@@ -4,6 +4,7 @@
     <li v-for="(dropdown, index) in menuData" :key="index">
       <DropDownComponent :model=menuData[index]
       :deccount = "decitem"
+	  :currentOrder="currentOrder"
       />
     </li>
   </ul>
@@ -15,6 +16,7 @@ import DropDownComponent from '../components/DropDownComponent.vue';
 export default {
   name: 'AccordianMenu',
   props: {
+    currentOrder: Array,
     menuData: Object,
     decitem: String
   },

@@ -19,7 +19,8 @@
       <DropDownComponent
         v-for="(model, index) in model.children"
         :key="index"
-        :model="model">
+        :model="model"
+		@removeItemFromOrder="deleteIngredient(this.currentOrder[itemIndex])">
       </DropDownComponent>
     </ul>
   </li>
@@ -29,6 +30,7 @@
 export default {
 name: "DropDownComponent",
   props: {
+    currentOrder: Array,
     model: Object,
     deccount: String
   },
@@ -53,11 +55,13 @@ name: "DropDownComponent",
     
       this.$parent.$parent.$emit('deleteIngredientFromBurger', ingredient); 
       this.counter--;
+	  ingredient["quantity"]=this.counter;
     },
     addIngredient: function(ingredient) {
     
-      this.$parent.$parent.$emit('addIngredientToBurger', ingredient);      
+      this.$parent.$parent.$emit('addIngredientToBurger', ingredient);	  
       this.counter++;
+	  ingredient["quantity"]=this.counter;
     }
   }
 }

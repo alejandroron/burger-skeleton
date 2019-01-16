@@ -13,6 +13,7 @@
       :customizedPrice='orderTotal'
 	  @CustomOrder="finishCreatedBurger"/>
     <AccordianMenu
+	  :currentOrder="currentOrder"
       :menuData="menuData"
       :decitem = "decitem"
       @addIngredientToBurger="addIngredient"
@@ -20,7 +21,7 @@
     <Footer
       :currentOrder='currentOrder'
       :orderTotal='orderTotal'
-      @removeItemFromOrder="removeItem" />
+      @removeItemFromOrder=""/>
   </div>
 </template>
 

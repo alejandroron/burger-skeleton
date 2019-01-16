@@ -39,9 +39,14 @@
                   totalPrice: 0.50
                 };
               }else{
-				orderItems[i]["item"]["ingredients"][j].quantity=1;
-				orderItems[i]["item"]["ingredients"][j].totalPrice=orderItems[i]["item"]["ingredients"][j].price;
+				if(orderItems[i]["item"]["ingredients"][j].hasOwnProperty("quantity")){					
+					orderItems[i]["item"]["ingredients"][j].totalPrice=orderItems[i]["item"]["ingredients"][j].price*orderItems[i]["item"]["ingredients"][j].quantity;
 
+				}else{
+					orderItems[i]["item"]["ingredients"][j].quantity=1;
+					orderItems[i]["item"]["ingredients"][j].totalPrice=orderItems[i]["item"]["ingredients"][j].price;
+
+				}
 				
 			  }
             }
