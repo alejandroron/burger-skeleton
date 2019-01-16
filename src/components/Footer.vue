@@ -24,7 +24,6 @@
 <template>
   <div class="footer">
     <div class="currentOrder">
-  
       <div class="orderItem" v-for="(item, index) of currentOrder" :key="index" @click="removeItem(index)">
         <img :src='require("@/assets/Food/" + item.item.imgSrc)'>
         <p>{{ item.item.title }}</p>
