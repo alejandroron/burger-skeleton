@@ -1,5 +1,6 @@
 <script>
   import menu from '@/components/menu.js';
+  var ownBurger=false;
   export default {
     name: 'Tabs',
     data: function() {
@@ -7,17 +8,24 @@
         activetab: 'burgers',
         burgers: menu.burgers,
         drinks: menu.drinks,
-        sides: menu.sides
+        sides: menu.sides,
+		createOwnBurger: ownBurger
       }
     },
+	
     methods: {
       addItem: function(item) {
         this.$emit('addedItemToOrder', item); // talking to order page
       },
       showIngredients: function(ingredients) {
         return 'Ingredients: \n\n' + ingredients.join('\n');
-      }
+      },
+	  switchCreateOwnBurger:function(){
+		console.log("switch");
+		this.$emit('createOwnBurger');
+	  }
     }
+	
   }
 </script>
 
@@ -32,11 +40,11 @@
   
     <div class="content">
       <div class="contentItem" id="burgersContent" v-if="activetab === 'burgers'">
-        <!-- <a href="./#/BurgerConstruction">
-          <div class="personalisedBurger">
+         <a href="./#/BurgerConstruction">
+          <div class="personalisedBurger" @click="switchCreateOwnBurger()">
             <p>CREATE YOUR OWN PERSONALISED BURGER!</p>
           </div>
-        </a> -->
+        </a> 
         <div v-for="(burgerItems, burgerType) in burgers" :key="burgerType">
           <br>
           <div class="grid-container">

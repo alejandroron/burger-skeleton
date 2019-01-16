@@ -16,7 +16,9 @@
         return total.toFixed(2);
       }
     }
-  }
+		
+	}
+  
 </script>
 
 <template>

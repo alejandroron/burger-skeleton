@@ -13,10 +13,10 @@
 
       <div class="buttons">
         <a class="dine_in" :href="'./#/OrderPage/' + emptyOrderStringIn()">
-          <img class="dineIN" src="@/assets/dine_in.png">
+          <img class="dineIN" src="@/assets/dine_in.png" v-on:click="sendPlace">
         </a>
         <a class="take_out" :href="'./#/OrderPage/' + emptyOrderStringOut()">
-          <img class="takeOUT" src="@/assets/take_out.png">
+          <img class="takeOUT" src="@/assets/take_out.png" v-on:click="sendPlace">
         </a>
       </div>
     </div>
@@ -37,14 +37,17 @@ export default {
   methods:{
     emptyOrderStringIn: function (){
       var emptyOrder = { price:[0.001], order:[],place:"in" };
+	  
       return JSON.stringify(emptyOrder);
-	  return emptyOrder.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
-    },
+	},
 	emptyOrderStringOut: function (){
       var emptyOrder = { price:[0.001], order:[],place:"out" };
+	  
       return JSON.stringify(emptyOrder);
-	  return emptyOrder.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
-    }
+	},
+	sendPlace: function(){
+	  this.$store.state.socket.emit('selectedPlace');
+	}
   }
 }
 </script>

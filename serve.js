@@ -84,8 +84,14 @@ io.on('connection', function (socket) {
   socket.on('modified',function() {
 	  io.emit('modified');
   });
-  socket.on('inOrOut',function(str) {
-	  io.emit('inOrOut',str);
+  socket.on('custo',function(burger) {
+	  console.log("server");
+	  console.log(burger);
+	  io.emit('custo',burger);
+  });
+  socket.on('selectedPlace',function() {
+	  console.log("sending the place")
+	  io.emit('selectedPlace');
   });
 });
 const port = 8080;

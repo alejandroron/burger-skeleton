@@ -7,10 +7,9 @@
       :backTextProperty='"START OVER"'
       :titleProperty='"CREATE YOUR MENU"'
       :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
-      :nextTextProperty='"FINISH ORDER"'
-	  
-      @added_customized_to_order="addItem" />
+      :nextTextProperty='"FINISH ORDER"' />
     <Tabs
+	  @createOwnBurger="createdBurgerF"
       @addedItemToOrder="addItem"
       @changeview="$emit('changeview','BurgerConstruction')" />
     <Footer
@@ -24,7 +23,7 @@
 import Navbar from '@/components/Navbar.vue';
 import Tabs from '@/components/Tab.vue';
 import Footer from '@/components/Footer.vue';
-import sharedVueStuff from '@/components/sharedVueStuff.js';
+
 
 // wanted to do something like this to utilize the url bar
 //var runningTotal = passedTotal();
@@ -32,6 +31,8 @@ import sharedVueStuff from '@/components/sharedVueStuff.js';
 "use strict";
 var runningTotal = [ 0.00 ];
 var runningOrder = [];
+var runningPlace = "";
+var anyCreatedBurger = 0;
 
 export default {
   name: 'OrderPage',
@@ -44,10 +45,12 @@ export default {
     return {
       currentOrder: runningOrder,
       orderTotal: runningTotal,
-	  place:JSON.parse(this.$route.params.orderPageString).place
+	  place: runningPlace,
+	  createdBurger: anyCreatedBurger,
+	  counter:0
+	  
     }
   },
-  mixins: [sharedVueStuff],
   computed: {
     modifyUrl: function(){
 		runningTotal=JSON.parse(this.$route.params.orderPageString).price;
@@ -61,6 +64,15 @@ export default {
     passedOrder: function(){
 	    return JSON.parse(this.$route.params.orderPageString).order; 
 	},
+	passedPlace: function(){
+	    return JSON.parse(this.$route.params.orderPageString).place; 
+	},
+	passedCreatedBurger: function(burger){
+		var arr=[];
+		console.log(burger);
+		this.addItem(burger);
+		return runningOrder;
+	}
   },
   methods: {
     addItem: function(item) {
@@ -80,7 +92,12 @@ export default {
       runningOrder.splice(itemIndex, 1);
 	 
     },
-    convertOrdersToString() {
+	createdBurgerF: function() {
+	  console.log("entro createdBurgerF");
+      this.createdBurger=1;
+	 
+    },
+    convertOrdersToString: function() {
       var order = {
         price: runningTotal,
         order: runningOrder,
@@ -92,18 +109,27 @@ export default {
       // vue doesn't like this property being passed
       return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
     }
+	
   },
   created: function () {
-    this.$store.state.socket.on('modified',function() {
-	  console.log("recibo");
-      runningOrder=this.passedOrder;
-	  runningTotal=this.passedTotal;
-	  this.orderTotal=this.passedTotal;
-	  this.currentOrder=this.passedOrder;
-	  console.log(this.orderTotal);
-    }.bind(this));
-
-  }
+	console.log("created");
+	this.$store.state.socket.on('modified',function() {		
+		runningOrder=this.passedOrder;
+		runningTotal=this.passedTotal;
+		this.orderTotal=this.passedTotal;
+		this.currentOrder=this.passedOrder;
+	}.bind(this));
+	this.$store.state.socket.on('custo',function(burger) {
+		if(this.createdBurger==1){
+			this.createdBurger=0;
+			console.log(burger);
+			this.addItem(burger);
+		}		
+	}.bind(this));
+	this.$store.state.socket.on('selectedPlace',function() {
+		this.place=this.passedPlace;
+	}.bind(this));
+}
 }
 </script>
 

@@ -1,8 +1,8 @@
 <template>
 <div class="component">
   <ul class="cd-accordion-menu">
-    <li v-for="dropdown in menuData" :key="dropdown">
-      <DropDownComponent :model="dropdown" 
+    <li v-for="(dropdown, index) in menuData" :key="index">
+      <DropDownComponent :model=menuData[index]
       :deccount = "decitem"
       />
     </li>
