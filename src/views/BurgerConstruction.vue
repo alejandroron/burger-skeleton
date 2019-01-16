@@ -93,15 +93,25 @@ export default {
         for(i=0 ; i<runningOrder.length; i++){
             if(runningOrder[i].item.name == model.name && counter == 0){
                 flag = true;
-            runningOrder.splice(i,1, {item: model});
                 runningTotal.push(runningTotal[0]-model.price);
                 runningTotal.splice(0,1);
                 counter++;
-
+                console.log(model.quantity);
+                if(model.quantity!=1){
+                runningOrder.splice(i,1, {item: model});
+                }
+                else if(model.quantity==1){
+                runningOrder.splice(i,1);
+                }
+                
+                
         }
 
 
         }
+        
+        
+
         
     },
 	finishCreatedBurger: function(){
