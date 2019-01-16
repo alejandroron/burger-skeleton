@@ -14,13 +14,10 @@
     ],
     methods: {
       addCustomizedToOrder: function() {
-      console.log('hi from addCustomToOrder');
       this.$emit('next_address_property');
       },
       changeView: function() {
-      console.log('hi from NavbarBurger');
       this.$emit('back_address_property','Tabs');
-
 
       }
     }

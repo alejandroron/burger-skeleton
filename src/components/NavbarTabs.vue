@@ -2,7 +2,7 @@
   export default {
     props: [
       'currentPage',
-
+      'currentOrder',
       'displayButtons',
 
       'backTextProperty',
@@ -14,12 +14,10 @@
     ],
     methods: {
       changeView: function(identifier) {
-      console.log('hi from changeView Navbar');
       if (identifier === 1)  {
       this.$emit('back_address_property','StartPage');
       }
       else if (identifier === 2){
-      console.log('hi from order summary button');
       this.$emit('next_address_property','OrderSummary');
       }
       }
@@ -35,7 +33,7 @@
 
         <h1>{{ titleProperty }}</h1>
 
-        <div class="button" id="nextButton" v-on:click="changeView(2)">
+        <div class="button" id="nextButton" v-if="currentOrder.length > 0" v-on:click="changeView(2)">
         {{ nextTextProperty }}
         </div>
     </div>

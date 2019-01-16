@@ -5,8 +5,8 @@
     />
 
     <OrderSummary
-    :order='finalOrder'
-    :price='finalTotal'
+    :order='currentOrderSummary'
+    :price='orderTotalSummary'
     @delete_item="deleteItem"
     @modify_order="modifyOrder"
     @emit_order="sendOrder"
@@ -40,7 +40,6 @@
     methods: {
     deleteItem: function(index)
     {
-    console.log('deleting item');
     this.$emit('item_delete', index);
     },
     sendOrder: function()

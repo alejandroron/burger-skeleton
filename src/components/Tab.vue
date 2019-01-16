@@ -18,10 +18,14 @@
           </div>
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index) in burgerItems" :key="index" @click="addItem(item)">
+                <a :title="showIngredients(item.ingredients)">
                 <div class="menuPic"><img :src="item.imgSrc" height="70%" width="70%" style="margin-top: 15px;">
                 </div>
                 <div class="menuTitle">{{ item.title }}
                 </div>
+                <div class="menuPrice">({{ item.price }}€)
+                </div>
+                </a>
               </div>
             </div>
         </div>
@@ -40,6 +44,8 @@
           </div>
           <div class="menuTitle">{{ item.title }}
           </div>
+          <div class="menuPrice">({{ item.price }}€)
+          </div>
         </div>
       </div>
     </div>
@@ -57,6 +63,8 @@
           <div class="menuPic"><img :src="item.imgSrc" height="70%" width="70%" style="margin-top: 15px;">
           </div>
           <div class="menuTitle">{{ item.title }}
+          </div>
+          <div class="menuPrice">({{ item.price }}€)
           </div>
         </div>
       </div>
@@ -86,11 +94,13 @@ export default {
   },
   methods: {
     addItem: function(item) {
-    console.log('addItem in Tab');
     this.$emit('added_item_to_order', item); // talking to tabs
     },
     changeView: function() {
     this.$emit('changeview','BurgerConstruction');
+    },
+    showIngredients: function(ingredients) {
+    return 'Ingredients: \n\n' + ingredients.join('\n');
     }
   }
 }

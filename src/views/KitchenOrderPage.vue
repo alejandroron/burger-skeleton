@@ -12,27 +12,32 @@
 
           <div class="middle">
             <ul class="ingredientList">
-              <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
+              <li class="itemsInOrder" v-for="(orderItem, index) in object" :key="index">
                 <span>{{ orderItem.item.title }}
-                <li class="ingredient" v-for="(item, ingredientIndex) in orderItem" :key="ingredientIndex">
-                <span>{{ orderItem.item.ingredients }}
+                <li class="ingredient" v-if="orderItem.item.isBurger" v-for="(item, ingredientIndex) in orderItem.item.ingredients" :key="ingredientIndex">
 
-              <!--
-              The above span will list the entire ingredient attribute for each ingredient:
-              as example, if you order Bacon Deli one of the ingredients will be this:
-              { "NAME": "KAISER ROLL",
-              "PRICE": 0.3825082958361685, "QUANTITY": 1,
-              "TOTALPRICE": 0.3825082958361685 }
-              and so on for each ingredient,
-              if anyone knows how to get ONLY the name property out of this
-              then feel free to add it, otherwise code is working fine
-              -->
+                <span>
+		{{item}}
 
-                </span>
-                </li>
+
+</span>
+</li>
+  <li class="ingredient" v-if="!orderItem.item.isBurger" v-for="(item, ingredientIndex) in orderItem.item.ingredients" :key="ingredientIndex">
+
+                <span>
+		{{item["item"]["name"]}}
+
+</span>
+</li>
+
+
+
                 </span>
                 </li>
           </ul>
+
+
+
         </div>
 
         <div class="bottom" v-on:click="changeStatus(object)">
@@ -47,20 +52,6 @@
 <script>
 import NavbarSummary from '@/components/NavbarSummary.vue';
 
-// example orders data
-// { '1':
-//    { order: [ {
-//       item: {
-//         "title": "Chili Burger",
-//         "price": 1.41,
-//         "isBurger": true,
-//         "ingredients":["Kaiser Roll","Beef Patty","Onions","Peppers","Lettuce"]
-//        }
-//       } ],
-//      status: 'not-started' } }
-
-// another reason to hate vue, we have to use an array
-// an object won't auto update >:(
 var orders = [];
 
 export default {

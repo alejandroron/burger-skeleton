@@ -63,7 +63,6 @@ export default {
   },
   methods: {
     addItem: function(item) {
-      console.log('add item OrderPage');
       // add order to order list
       this.currentOrder.push({
        item: item
@@ -79,22 +78,12 @@ export default {
 
     placeOrder: function()
     {
-      console.log('order sent');
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', this.currentOrder);
     },
-/*
-    decrementIngredient: function(indexItem, indexIngredient)
-    {
-    },
 
-    incrementIngredient: function(indexItem, indexIngredient)
-    {
-    },
-*/
     changeView:function(inputKey)
     {
-    console.log(inputKey);
     if (inputKey==='BurgerConstruction')
       {
       var justNumber = 0;
@@ -121,7 +110,6 @@ export default {
     }
     else if (inputKey==='OrderSummary')
     {
-      console.log(this.currentOrder);
       while (this.currentPage.length < 3)
       {
         var justAnotherNumber = 3;

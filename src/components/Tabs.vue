@@ -3,6 +3,7 @@
 
     <NavbarTabs
     :currentPage='currentPage'
+    :currentOrder='currentOrders'
     :displayButtons='true'
     :backTextProperty='"START OVER"'
     :titleProperty='"CREATE YOUR MENU"'
@@ -51,14 +52,12 @@
     },
     methods: {
       addItem: function(item) {
-      console.log('addItem Tabs')
       this.$emit('added_item_to_order', item); // talking to order page
       },
       removeItem: function(item) {
       this.$emit('removed_item_from_order', item); // talking to order page
       },
       changeView: function(identifier) {
-      console.log('hi from changeView Tabs');
       this.$emit('changeview',identifier);
       }
     }

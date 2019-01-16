@@ -3,12 +3,12 @@
     <label :class="{'open': open}" @click="toggle" >
       {{ model.name }}
       <div class="numbers" v-if="!hasChildren">
-        <div class = "minuses" v-if="counter!=0">
+        <div class = "minuses" v-if="model.counter!=0">
           <button class="minus" @click="deleteIngredient(model)"><img src ="../assets/minus2.png">
           </button>
         </div>
 
-        <div class="number">{{ counter }}</div>
+        <div class="number">{{ model.counter }}</div>
         <div class ="pluses">
 
           <button class="plus" @click="addIngredient(model)"><img src ="../assets/plus2.png"></button>
@@ -50,14 +50,10 @@ name: "DropDownComponent",
       }
     },
     deleteIngredient: function(ingredient) {
-    console.log('hi from dropdownComp');
     this.$parent.$parent.$emit('delete_ingredient_from_burger', ingredient);
-    this.counter--;
     },
     addIngredient: function(ingredient) {
-    console.log('hi from dropdownComp');
     this.$parent.$parent.$emit('add_ingredient_to_burger', ingredient);
-    this.counter++;
     }
   }
 }

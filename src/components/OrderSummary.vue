@@ -11,31 +11,32 @@
       </div>
 
       <div class="middle">
+
         <div v-if="item.item.isBurger">
           <ul class="ingredientList">
             <li class="ingredient" v-for="(ingredient, indexIngredient) in item.item.ingredients" :key="indexIngredient">
             <span>
               {{ ingredient }}
             </span>
-            <!-- <div class="ingredientInfo">
-              <button class="minus" v-on:click="this.$emit('decrement_item', index, indexIngredient)">
-                <img src="@/assets/minus.png">
-              </button>
-              <span class="ingredientCount">
-                {{ingredient["quantity"]}}
-              </span>
-              <button class="plus" v-on:click="this.$emit('increment_item', index, indexIngredient)">
-                <img src="@/assets/plus.png">
-              </button>
-            </div> -->
             </li>
           </ul>
         </div>
+
+        <div v-if="!item.item.isBurger">
+          <ul class="ingredientList">
+            <li class="ingredient" v-for="(ingredient, indexIngredient) in item.item.ingredients" :key="indexIngredient">
+            <span>
+              {{ ingredient["item"]["name"] }}
+            </span>
+            </li>
+          </ul>
+        </div>
+
       </div>
 
       <div class="bottom">
       <p>
-        {{ item.item.price.toFixed(2) }} €
+      {{ item.item.price.toFixed(2) }} €
       </p>
       </div>
 
@@ -44,7 +45,8 @@
 
 
   <div class="totalPrice">
-    <p>TOTAL: {{price.toFixed(2) }}</p>
+    <p>TOTAL: {{ this.price.toFixed(2) }} </p>
+
   </div>
 
   <div class="modify" v-on:click="$emit('modify_order')">
@@ -64,9 +66,7 @@ name: 'OrderSummary',
 props:[
 'order',
 'price'
-],
-
-
+]
 }
 </script>
 

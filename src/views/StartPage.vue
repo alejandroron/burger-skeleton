@@ -1,10 +1,10 @@
 <template>
   <div class="container" v-if="currentPage.length===0">
     <div id="frontpage">
-      <div class="flags">
+      <!-- <div class="flags">
         <img src="@/assets/sweden.png">
         <img src="@/assets/uk.png">
-      </div>
+      </div> -->
       <div class="title">
         EATING LOCATION
       </div>
@@ -39,33 +39,28 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
 .container {
   display: flex;
   flex-direction: column;
 }
-
 a {
   text-decoration: none;
 }
-
 .flags {
   margin-top: 10px;
   margin-right: 10px;
   align-self: flex-end;
 }
-
 .title {
-  margin-top: 20px;
+  margin-top: 50px;
   align-self: center;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 60px;
   text-align: center;
   color: #fff;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
-
 .buttons {
   display: flex;
   flex-direction: row;
@@ -74,29 +69,27 @@ a {
   align-items: center;
   justify-content: center;
 }
-
+.dine_in:hover {
+  cursor: pointer;
+}
 /*    Responsiveness*/
 @media screen and (max-width: 760px), screen and (max-height: 420px) {
   .flags {
     margin-top: 5px;
     margin-right: 5px;
   }
-
   .flags img {
     width: 90px;
     height: 67px;
   }
-
   .title {
-    margin-top: 10px;
+    margin-top: 40px;
     font-size: 50px;
   }
-
   .buttons {
     margin-top: 12px;
     flex-direction: column;
   }
-
   .buttons img {
     width: 154px;
     height: 168px;
@@ -108,7 +101,6 @@ a {
     flex-direction: row;
   }
 }
-
 /*iPhone 5/5S/SE*/
 @media screen and (max-width: 320px) and (max-height: 568px), (max-width: 568px) and (max-height: 320px){
   .title {
