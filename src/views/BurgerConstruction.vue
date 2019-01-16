@@ -2,6 +2,7 @@
   <div id="container">
     <Navbar
       :displayButtons='true'
+	  :currentOrder='currentOrder'
       :orderPage='false'
       :backAddressProperty='"./#/OrderPage/customizedBurger"'
       :backTextProperty='"MAIN PAGE"'

@@ -3,19 +3,21 @@
     <Navbar
       :displayButtons='true'
       :orderPage='true'
+	  :currentOrder='currentOrder'
       :backAddressProperty='"./#/"'
       :backTextProperty='"START OVER"'
       :titleProperty='"CREATE YOUR MENU"'
       :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
-      :nextTextProperty='"FINISH ORDER"' />
+      :nextTextProperty='"MODIFY OR PAY"' />
     <Tabs
 	  @createOwnBurger="createdBurgerF"
       @addedItemToOrder="addItem"
       @changeview="$emit('changeview','BurgerConstruction')" />
+
     <Footer
-      :currentOrder='currentOrder'
-      :orderTotal='orderTotal'
-      @removeItemFromOrder="removeItem" />
+    :currentOrder='currentOrder'
+    :orderTotal='orderTotal'
+    @removeItemFromOrder="removeItem" />
   </div>
 </template>
 
@@ -32,7 +34,9 @@ import Footer from '@/components/Footer.vue';
 var runningTotal = [ 0.00 ];
 var runningOrder = [];
 var runningPlace = "";
+
 var anyCreatedBurger = 0;
+
 
 export default {
   name: 'OrderPage',
@@ -49,17 +53,18 @@ export default {
 	  createdBurger: anyCreatedBurger,
 	  counter:0
 	  
+
     }
   },
   computed: {
     modifyUrl: function(){
-		runningTotal=JSON.parse(this.$route.params.orderPageString).price;
-		
-	},
+      runningTotal=JSON.parse(this.$route.params.orderPageString).price;
+
+    },
     passedTotal: function() {
-	    console.log("passedTotal");
-	    return  JSON.parse(this.$route.params.orderPageString).price;
-	  
+      console.log("passedTotal");
+      return  JSON.parse(this.$route.params.orderPageString).price;
+
     },
     passedOrder: function(){
 	    return JSON.parse(this.$route.params.orderPageString).order; 
@@ -73,12 +78,13 @@ export default {
 		this.addItem(burger);
 		return runningOrder;
 	}
+
   },
   methods: {
     addItem: function(item) {
       // add order to order list
-	   runningOrder.push({
-       item: item
+      runningOrder.push({
+        item: item
       });
 
       // update total price, have to use an array unfortunately
@@ -90,7 +96,7 @@ export default {
       runningTotal.splice(0, 1);
 
       runningOrder.splice(itemIndex, 1);
-	 
+
     },
 	createdBurgerF: function() {
 	  console.log("entro createdBurgerF");
@@ -101,7 +107,8 @@ export default {
       var order = {
         price: runningTotal,
         order: runningOrder,
-		place:this.place
+        place: this.place
+
       };
 
       var truncatedOrderString = JSON.stringify(order);
@@ -120,8 +127,10 @@ export default {
 		this.currentOrder=this.passedOrder;
 	}.bind(this));
 	this.$store.state.socket.on('custo',function(burger) {
-		if(this.createdBurger==1){
+		console.log(this.createdBurger);
+		if(this.createdBurger==1){		    
 			this.createdBurger=0;
+			anyCreatedBurger = 0;
 			console.log(burger);
 			this.addItem(burger);
 		}		
@@ -130,6 +139,7 @@ export default {
 		this.place=this.passedPlace;
 	}.bind(this));
 }
+
 }
 </script>
 

@@ -39,7 +39,7 @@ var data = new Data();
 data.initializeData();
 
 io.on('connection', function (socket) {
-  
+
   // on client connect
   socket.emit('initialize', {
     orders: data.getAllOrders(),
@@ -92,6 +92,7 @@ io.on('connection', function (socket) {
   socket.on('selectedPlace',function() {
 	  console.log("sending the place")
 	  io.emit('selectedPlace');
+
   });
 });
 const port = 8080;

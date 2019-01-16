@@ -3,6 +3,7 @@
 
     <div id="frontpage">
       <!-- <div class="flags">
+
         <img src="@/assets/sweden.png">
         <img src="@/assets/uk.png">
       </div> -->
@@ -19,14 +20,19 @@
           <img class="takeOUT" src="@/assets/take_out.png" v-on:click="sendPlace">
         </a>
       </div>
+
     </div>
 
+    
   </div>
+
+</div>
 </template>
 
 <script>
 import OrderPage from './OrderPage.vue';
 import BurgerConstruction from './BurgerConstruction.vue';
+
 
 export default {
   name: 'StartPage',
@@ -36,18 +42,18 @@ export default {
   },
   methods:{
     emptyOrderStringIn: function (){
-      var emptyOrder = { price:[0.001], order:[],place:"in" };
-	  
+
+      var emptyOrder = { price:[0.001], order:[], place: "dine in" };
       return JSON.stringify(emptyOrder);
-	},
-	emptyOrderStringOut: function (){
-      var emptyOrder = { price:[0.001], order:[],place:"out" };
-	  
+    },
+    emptyOrderStringOut: function (){
+      var emptyOrder = { price:[0.001], order:[], place: "take away" };
       return JSON.stringify(emptyOrder);
-	},
-	sendPlace: function(){
-	  this.$store.state.socket.emit('selectedPlace');
-	}
+    },
+    sendPlace: function(){
+      this.$store.state.socket.emit('selectedPlace');
+    }
+
   }
 }
 </script>
@@ -73,12 +79,12 @@ a {
 .title {
   margin-top: 50px;
   align-self: center;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 60px;
   text-align: center;
   color: #fff;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 .buttons {

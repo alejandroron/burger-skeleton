@@ -2,9 +2,9 @@
   'use strict';
   import Navbar from '@/components/Navbar.vue';
   import sharedVueStuff from '@/components/sharedVueStuff.js';
-  
+
   var removedOrders = [];
-  
+
   export default {
     name: 'OrderSummaryPage',
     components: {
@@ -23,11 +23,11 @@
       initializeOrderWithIngredients: function() {
         var order = JSON.parse(this.$route.params.orderString);
         var orderItems = order.order;
-  
+
         for (var i = 0; i < orderItems.length; i++) {
-  
+
           var currentItem = orderItems[i]["item"];
-  
+
           if (currentItem["isBurger"]) {
             for (var j = 0; j < currentItem["ingredients"].length; j++) {
               var ingredientName = currentItem["ingredients"][j];
@@ -42,7 +42,7 @@
             }
           }
         }
-  
+
         return order;
       },
       placeOrder: function() {
@@ -54,14 +54,14 @@
       deleteItem: function(index) {
         removedOrders.push(this.order.order[index]);
         this.order["price"][0] = this.order["price"][0] - this.order.order[index]["item"]["price"];
-  
+
         this.order.order.splice(index, 1);
       },
       incrementItem: function(indexItem, indexIngredient) {
         this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]++;
         var ingredientPrice = this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
         var ingredientQuantity = this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
-  
+
         if (ingredientQuantity > 0) {
           this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"] = ingredientPrice * (ingredientQuantity);
           this.order.order[indexItem]["item"]["price"] = this.order.order[indexItem]["item"]["price"] + ingredientPrice;
@@ -75,7 +75,7 @@
         var quantity = this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
         var ingredientPrice = this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["price"];
         var ingredientQuantity = this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"];
-  
+
         if (quantity > 0) {
           this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["quantity"]--;
           this.order.order[indexItem]["item"]["ingredients"][indexIngredient]["totalPrice"] = ingredientPrice * (ingredientQuantity);
@@ -110,16 +110,16 @@
 <template>
   <div>
     <Navbar :titleProperty='"ORDER SUMMARY"' />
-  
+
     <div class="boxes">
-  
+
       <div class="item" v-for="(item, index) in order.order" :key="index">
         <div class="top">
           <!-- <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/X.png"></button> -->
           <div id="delete" v-on:click="deleteItem(index)"><img src="@/assets/redX.png"></div>
           <h2 id="name">{{ item.item.title }}</h2>
         </div>
-  
+
         <div class="middle">
           <div v-if="item.item.isBurger">
             <ul class="ingredientList">
@@ -138,32 +138,32 @@
             </ul>
           </div>
         </div>
-  
+
         <div class="bottom">
           {{ item.item.price.toFixed(2) }} €
         </div>
       </div>
-  
+
     </div>
-  
+
     <a>
       <div class="totalPrice">
         <p>TOTAL: {{ this.order["price"][0].toFixed(2) }} €</p>
       </div>
     </a>
-  
+
     <a :href="'./#/OrderPage/' + orderToString()" v-on:click="modify()">
       <div class="modify">
         <p>ADD AN ITEM</p>
       </div>
     </a>
-  
-    <a href="./#/OrderCompleted" v-on:click="placeOrder()">
+
+    <a href="./#/OrderCompleted" v-on:click="placeOrder()" v-if="order.order.length>0">
       <div class="pay">
         <p>PAY</p>
       </div>
     </a>
-  
+
   </div>
 </template>
 
@@ -172,23 +172,23 @@
     margin: 0;
     padding: 0;
   }
-  
+
   body {
     margin: 0;
     background-color: #2D4739;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
-  
+
   h2 {
     font-size: 20px;
     font-weight: bold;
   }
-  
+
   h3 {
     font-size: 20px;
     font-weight: normal;
   }
-  
+
   #delete {
     /* width: 30px;
     height: 30px; */
@@ -199,7 +199,7 @@
     background-color: transparent;
     border: none;
   }
-  
+
   .boxes {
     margin-top: 110px;
     margin-bottom: 140px;
@@ -211,7 +211,7 @@
     grid-gap: 20px;
     justify-content: center;
   }
-  
+
   /* Boxes is the group of boxes, formed by items */
   .item {
     border-radius: 5px;
@@ -222,8 +222,8 @@
     Black: #000000
     Purple: #3C40C6 */
   }
-  
-  
+
+
   /* Items are divided into three parts: top, middle and bottom */
   .item .top {
     display: flex;
@@ -236,7 +236,7 @@
     Purple: #303398
     */
   }
-  
+
   .plus, .minus {
     background-color: transparent;
     cursor: pointer;
@@ -245,13 +245,13 @@
     height: 20px;
     border: none;
   }
-  
+
   .minus img, .plus img {
     margin: -2px 0 0 -8px;
     width: 20px;
     height: 20px;
   }
-  
+
   #name {
     position: relative;
     margin-left: auto;
@@ -263,13 +263,13 @@
     font-size: 20px;
     line-height: 50px;
   }
-  
+
   .item .middle {
     overflow: auto;
     height: 187px;
     padding: 5px 10px;
   }
-  
+
   .item .bottom {
     height: 38px;
     border-radius: 0px 0px 5px 5px;
@@ -285,28 +285,28 @@
     Purple: #303398
     */
   }
-  
+
   .ingredientList {
     margin: 0;
   }
-  
+
   .ingredient {
     color: white;
     border-bottom: 1px solid black;
     padding: 10px 0;
   }
-  
+
   .ingredientInfo {
     float: right;
   }
-  
+
   .ingredientCount {
     font-size: 23px;
     margin: 0 8px;
   }
-  
+
   /* Modify and Pay buttons */
-  
+
   .totalPrice {
     top: 60px;
     position: fixed;
@@ -314,32 +314,32 @@
     height: 30px;
     background-color: #000000;
   }
-  
-  .modify {
+
+  .pay {
     cursor: pointer;
     bottom: 40px;
     position: fixed;
     width: 100%;
     height: 40px;
-    background-color: #05C46B;
+    background-color: #0C44D1;
   }
-  
-  .pay {
+
+  .modify {
     cursor: pointer;
     bottom: 0px;
     position: fixed;
     width: 100%;
     height: 40px;
-    background-color: #0C44D1;
+    background-color: #05C46B;
   }
-  
+
   .pay p, .modify p {
     text-align: center;
     line-height: 40px;
     color: white;
     font-size: 20px;
   }
-  
+
   .totalPrice p {
     text-align: center;
     line-height: 30px;

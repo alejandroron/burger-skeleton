@@ -34,8 +34,8 @@
   
     <div class="flaps">
       <a class="flap" id="burgersFlap" v-on:click="activetab='burgers'"> BURGERS </a>
-      <a class="flap" id="drinksFlap" v-on:click="activetab='drinks'"> DRINKS </a>
       <a class="flap" id="sidesFlap" v-on:click="activetab='sides'"> SIDES </a>
+      <a class="flap" id="drinksFlap" v-on:click="activetab='drinks'"> DRINKS </a>
     </div>
   
     <div class="content">
@@ -209,7 +209,7 @@
     overflow: auto;
     white-space: nowrap;
     display: grid;
-    grid-template-columns: 200px 200px 200px 200px 200px;
+    grid-template-columns: 199px 199px 199px 199px 199px;
     grid-template-areas: "burger1 burger2 burger3 burger4 burger5";
   }
   
