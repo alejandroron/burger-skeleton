@@ -97,6 +97,10 @@ export default {
 		console.log("burgerConstruction");
 		console.log(item);
 		this.$store.state.socket.emit('custo',item);
+		runningOrder=[];
+		runningTotal=[0.00];
+		this.currentOrder=runningOrder;
+		this.orderTotal=runningTotal;
 		//}
 	}
   }
