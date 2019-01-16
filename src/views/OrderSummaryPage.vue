@@ -38,7 +38,12 @@
                   quantity: 1,
                   totalPrice: 0.50
                 };
-              }
+              }else{
+				orderItems[i]["item"]["ingredients"][j].quantity=1;
+				orderItems[i]["item"]["ingredients"][j].totalPrice=orderItems[i]["item"]["ingredients"][j].price;
+
+				
+			  }
             }
           }
         }
