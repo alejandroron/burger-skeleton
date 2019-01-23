@@ -2,11 +2,11 @@
   <div class="container">
   
     <div id="frontpage">
-      <!-- <div class="flags">
+      <div class="flags">
   
-          <img src="@/assets/sweden.png">
-          <img src="@/assets/uk.png">
-        </div> -->
+          <img src="@/assets/sweden.png" v-on:click="changeLenguageToSwedish">
+          <img src="@/assets/uk.png" v-on:click="changeLenguageToEnglish">
+        </div> 
   
       <div class="title">
         EATING LOCATION
@@ -32,14 +32,19 @@
 <script>
   import OrderPage from './OrderPage.vue';
   import BurgerConstruction from './BurgerConstruction.vue';
-  
-  
+  import sharedVueStuff from '@/components/sharedVueStuff.js';
+  var en=require("../../data/ui_en.json");
   export default {
     name: 'StartPage',
     components: {
       OrderPage,
       BurgerConstruction
     },
+	data () {
+	   return{
+	       uiLabels:en
+	   }
+	},
     methods: {
       emptyOrderStringIn: function() {
   
@@ -60,7 +65,19 @@
       },
       sendPlace: function() {
         this.$store.state.socket.emit('selectedPlace');
-      }
+		this.$store.state.socket.emit('label',this.uiLabels);
+		
+      },
+	  changeLenguageToEnglish: function() {
+		en=require("../../data/ui_en.json");
+	    this.uiLabels=require("../../data/ui_en.json");
+		console.log(this.uiLabels);
+		},
+	  changeLenguageToSwedish: function() {
+		en=require("../../data/ui_sv.json");
+	    this.uiLabels=require("../../data/ui_sv.json");
+		console.log(this.uiLabels);
+		}
   
     }
   }

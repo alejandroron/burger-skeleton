@@ -44,7 +44,9 @@ io.on('connection', function (socket) {
   socket.emit('initialize', {
     orders: data.getAllOrders(),
     uiLabels: data.getUILabels()
+	
   });
+  console.log("lenguage");
 
   // When someone orders something
   socket.on('order', function (order) {
@@ -92,6 +94,17 @@ io.on('connection', function (socket) {
   socket.on('selectedPlace',function() {
 	  console.log("sending the place")
 	  io.emit('selectedPlace');
+
+  });
+  socket.on('ini',function() {
+	  socket.emit('initialize', {
+    orders: data.getAllOrders(),
+    uiLabels: data.getUILabels()
+	
+  });
+  });
+  socket.on('label',function(data) {
+	  io.emit('label', data);
 
   });
 });

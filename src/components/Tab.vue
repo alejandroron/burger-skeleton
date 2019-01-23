@@ -3,6 +3,13 @@
   var ownBurger=false;
   export default {
     name: 'Tabs',
+	props: [
+	  'uiLabels',
+      'BurgerTabTextProperty',
+	  'DrinksTabTextProperty',
+	  'SidesTabTextProperty',
+	  'CreateBurgerTextProperty'
+    ],
     data: function() {
       return {
         activetab: 'burgers',
@@ -23,6 +30,8 @@
 	  switchCreateOwnBurger:function(){
 		console.log("switch");
 		this.$emit('createOwnBurger');
+		//this.$store.state.socket.emit('ini');
+		this.$store.state.socket.emit('label',this.uiLabels);
 	  }
     }
 	
@@ -33,16 +42,16 @@
   <div class="wrapper">
   
     <div class="flaps">
-      <a class="flap" id="burgersFlap" v-on:click="activetab='burgers'"> BURGERS </a>
-      <a class="flap" id="sidesFlap" v-on:click="activetab='sides'"> SIDES </a>
-      <a class="flap" id="drinksFlap" v-on:click="activetab='drinks'"> DRINKS </a>
+      <a class="flap" id="burgersFlap" v-on:click="activetab='burgers'"> {{uiLabels[BurgerTabTextProperty]}} </a>
+      <a class="flap" id="sidesFlap" v-on:click="activetab='sides'"> {{uiLabels[SidesTabTextProperty]}} </a>
+      <a class="flap" id="drinksFlap" v-on:click="activetab='drinks'"> {{uiLabels[DrinksTabTextProperty]}} </a>
     </div>
   
     <div class="content">
       <div class="contentItem" id="burgersContent" v-if="activetab === 'burgers'">
          <a href="./#/BurgerConstruction">
           <div class="personalisedBurger" @click="switchCreateOwnBurger()">
-            <p>CREATE YOUR OWN PERSONALISED BURGER!</p>
+            <p>{{CreateBurgerTextProperty}}</p>
           </div>
         </a> 
         <div v-for="(burgerItems, burgerType) in burgers" :key="burgerType">

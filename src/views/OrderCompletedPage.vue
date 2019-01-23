@@ -1,29 +1,38 @@
 <template>
   <div class="">
     <img src="@/assets/Completed.png" class="image">
-    <div id="finishMessage">ORDER COMPLETED!</div>
+    <div id="finishMessage">{{uiLabels.lblOrderCompleted}}</div>
     <a :href='this.staringPage'>
       <div v-on:click="reload" class="buttonFinish">
-        <p>START A NEW ORDER</p>
+        <p>{{uiLabels.btnNewOrder}}</p>
       </div>
     </a>
   </div>
 </template>
 
 <script>
+  var en=require("../../data/ui_en.json");
+
   var staringPage = "./#/";
   export default {
     name: 'OrderCompletedPage',
     data() {
       return {
-        staringPage: staringPage
+        staringPage: staringPage,
+		uiLabels: en
       }
     },
     methods: {
       reload: function() {
         window.location.reload();
       }
-    }
+    },
+	created: function(){
+     this.$store.state.socket.on('label',function(data) {
+		en=data;
+		this.uiLabels=data;
+	}.bind(this));
+  }
   }
 </script>
 

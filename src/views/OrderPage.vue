@@ -1,20 +1,27 @@
 <template>
   <div id="container">
     <Navbar
+	  :uiLabels='uiLabels'
       :displayButtons='true'
       :orderPage='true'
 	  :currentOrder='currentOrder'
       :backAddressProperty='"./#/"'
-      :backTextProperty='"START OVER"'
-      :titleProperty='"CREATE YOUR MENU"'
+      :backTextProperty='uiLabels.start'
+      :titleProperty='uiLabels.titleCreateYourMenu'
       :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
-      :nextTextProperty='"MODIFY OR PAY"' />
+      :nextTextProperty='uiLabels.btnGoSummary' />
     <Tabs
+	  :uiLabels="uiLabels"
+	  :BurgerTabTextProperty='"tbBurgers"'
+	  :DrinksTabTextProperty='"tbDrinks"'
+	  :SidesTabTextProperty='"tbSides"'
+	  :CreateBurgerTextProperty='uiLabels.btnPersonalizedBurger'	  
 	  @createOwnBurger="createdBurgerF"
       @addedItemToOrder="addItem"
       @changeview="$emit('changeview','BurgerConstruction')" />
 
     <Footer
+	:totalProperty='uiLabels.lblTotal'
     :currentOrder='currentOrder'
     :orderTotal='orderTotal'
     @removeItemFromOrder="removeItem" />
@@ -26,7 +33,6 @@ import Navbar from '@/components/Navbar.vue';
 import Tabs from '@/components/Tab.vue';
 import Footer from '@/components/Footer.vue';
 
-
 // wanted to do something like this to utilize the url bar
 //var runningTotal = passedTotal();
 //var runningOrder = passedOrder();
@@ -36,6 +42,7 @@ var runningOrder = [];
 var runningPlace = "";
 
 var anyCreatedBurger = 0;
+var en=require("../../data/ui_en.json");
 
 
 export default {
@@ -45,17 +52,19 @@ export default {
     Tabs,
     Footer
   },
+ 
   data () {
     return {
       currentOrder: runningOrder,
       orderTotal: runningTotal,
 	  place: runningPlace,
 	  createdBurger: anyCreatedBurger,
-	  counter:0
-	  
+	  counter:0,
+	  uiLabels:en
 
     }
   },
+  
   computed: {
     modifyUrl: function(){
       runningTotal=JSON.parse(this.$route.params.orderPageString).price;
@@ -114,6 +123,7 @@ export default {
       var truncatedOrderString = JSON.stringify(order);
       // regex expression for removing the imgSrc property of the string
       // vue doesn't like this property being passed
+	  
       return truncatedOrderString.replace(/,"imgSrc":"\/img\/[a-zA-Z0-9,-]*.[a-zA-Z0-9]*.png"/g,'');
     }
 	
@@ -139,6 +149,11 @@ export default {
 		runningPlace=this.passedPlace;
 		this.place=this.passedPlace;
 	}.bind(this));
+	this.$store.state.socket.on('label',function(data) {
+		en=data;
+		this.uiLabels=data;
+	}.bind(this));
+	
 }
 
 }

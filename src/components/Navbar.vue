@@ -1,10 +1,12 @@
 <script>
+  var en=require("../../data/ui_en.json");  
   export default {
+    
     props: [
       'displayButtons',
       'orderPage',
       'currentOrder',
-
+	  'uiLabels',
       'backAddressProperty',
       'backTextProperty',
 
@@ -19,10 +21,18 @@
     methods: {
       addCustomizedToOrder: function() {
 		this.$emit('CustomOrder');
+		this.$store.state.socket.emit('label',this.uiLabels);
       },
       goSummaryOrder: function() {
-
-      }
+		//this.$store.state.socket.emit('ini');
+		this.$store.state.socket.emit('label',this.uiLabels);
+		
+      },
+	  goBack: function(){
+		//this.$store.state.socket.emit('ini');
+		this.$store.state.socket.emit('label',this.uiLabels);
+		
+	  }
     }
   }
 </script>
@@ -31,7 +41,7 @@
   <div class='fixed navbar'>
 
     <a :href="backAddressProperty" v-if="displayButtons">
-      <div class="button" id="backButton"> {{ backTextProperty }} </div>
+      <div class="button" id="backButton" v-on:click="goBack()"> {{ backTextProperty }} </div>
     </a>
 
     <h1>{{ titleProperty }}</h1>

@@ -1,5 +1,5 @@
 'use strict';
-
+var lenguage="./data/ui_en.json";
 // Stuff that is used both in the ordering system and in the kitchen
 var sharedVueStuff = {
   data: function () {
@@ -15,10 +15,12 @@ var sharedVueStuff = {
       this.orders = data.orders;
       this.uiLabels = data.uiLabels;
       this.ingredients = data.ingredients;
+	  lenguage=data.uiLabels;
     }.bind(this));
 
     this.$store.state.socket.on('switchLang', function (data) {
       this.uiLabels = data;
+	  lenguage=data;
     }.bind(this));
 
     this.$store.state.socket.on('currentQueue', function (data) {
@@ -35,6 +37,7 @@ var sharedVueStuff = {
       } else {
         this.lang = "en";
       }
+	  console.log(this.lang);
       this.$store.state.socket.emit('switchLang', this.lang);
     }
   }

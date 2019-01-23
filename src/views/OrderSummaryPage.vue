@@ -2,23 +2,26 @@
   'use strict';
   import Navbar from '@/components/Navbar.vue';
   import sharedVueStuff from '@/components/sharedVueStuff.js';
-
+  
   var removedOrders = [];
-
+  var en=require("../../data/ui_en.json");
+  
   export default {
     name: 'OrderSummaryPage',
     components: {
       Navbar
     },
-    mixins: [sharedVueStuff],
+	mixins: [sharedVueStuff],
     data: function() {
       return {
         order: this.initializeOrderWithIngredients(),
         // perhaps not necessary to return this array, just added in case
         removedItemsArray: removedOrders,
-        counter: 0
+        counter: 0,
+		uiLabels:en
       }
     },
+	
     methods: {
       initializeOrderWithIngredients: function() {
         var order = JSON.parse(this.$route.params.orderString);
@@ -58,6 +61,8 @@
       placeOrder: function() {
         // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 		console.log(this.order);
+		this.$store.state.socket.emit('label',this.uiLabels);
+		
         this.$store.state.socket.emit('order', this.order);
 		
       },
@@ -112,14 +117,22 @@
       modify: function() {
         console.log("emito");
         this.$store.state.socket.emit('modified');
+		//this.$store.state.socket.emit('ini');
       }
-    }
+    },
+	created: function () {
+	   this.$store.state.socket.on('label',function(data) {
+		en=data;
+		this.uiLabels=data;
+	}.bind(this));
+	}
+
   }
 </script>
 
 <template>
   <div>
-    <Navbar :titleProperty='"ORDER SUMMARY"' />
+    <Navbar :titleProperty='uiLabels.titleOrderSummary' />
 
     <div class="boxes">
 
@@ -158,19 +171,19 @@
 
     <a>
       <div class="totalPrice">
-        <p>TOTAL: {{ this.order["price"][0].toFixed(2) }} €</p>
+        <p>{{uiLabels.lblTotal}}: {{ this.order["price"][0].toFixed(2) }} €</p>
       </div>
     </a>
 
     <a :href="'./#/OrderPage/' + orderToString()" v-on:click="modify()">
       <div class="modify">
-        <p>ADD AN ITEM</p>
+        <p>{{uiLabels.btnModify}}</p>
       </div>
     </a>
 
     <a href="./#/OrderCompleted" v-on:click="placeOrder()" v-if="order.order.length>0">
       <div class="pay">
-        <p>PAY</p>
+        <p>{{uiLabels.btnPay}}</p>
       </div>
     </a>
 

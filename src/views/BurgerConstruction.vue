@@ -1,14 +1,15 @@
 <template>
   <div id="container">
     <Navbar
+	  :uiLabels='uiLabels'
       :displayButtons='true'
 	  :currentOrder='currentOrder'
       :orderPage='false'
       :backAddressProperty='"./#/OrderPage/customizedBurger"'
-      :backTextProperty='"MAIN PAGE"'
-      :titleProperty='"CUSTOM BURGER"'
+      :backTextProperty="uiLabels.btnMainPage"
+      :titleProperty='uiLabels.titleCustomBurger'
       :nextAddressProperty='"./#/OrderPage/customizedBurger"'
-      :nextTextProperty='"FINISH BURGER"'
+      :nextTextProperty='uiLabels.btnFinishBurger'
       :customizedOrder='currentOrder'
       :customizedPrice='orderTotal'
 	  @CustomOrder="finishCreatedBurger"/>
@@ -19,6 +20,7 @@
       @addIngredientToBurger="addIngredient"
       @deleteIngredientFromBurger="removeItembyname"/>
     <Footer
+	  :totalProperty='uiLabels.lblTotal'
       :currentOrder='currentOrder'
       :orderTotal='orderTotal'
       @removeItemFromOrder=""/>
@@ -29,11 +31,11 @@
 import Navbar from '@/components/Navbar.vue';
 import AccordianMenu from '@/components/AccordianMenu.vue';
 import Footer from '@/components/Footer.vue';
-
 import customBurgerMenu from '@/components/customBurgerMenu.js';
 
 var runningTotal = [ 0.00 ];
 var runningOrder = [];
+var en=require("../../data/ui_en.json");
 
 export default {
   name: 'BurgerConstruction',
@@ -47,7 +49,8 @@ export default {
       menuData: customBurgerMenu,
       currentOrder: runningOrder,
       orderTotal: runningTotal,
-      decitem: ''
+      decitem: '',
+	  uiLabels: en
     }
   },
   methods: {
@@ -141,6 +144,12 @@ export default {
 		this.orderTotal=runningTotal;
 		//}
 	}
+  },
+  created: function(){
+     this.$store.state.socket.on('label',function(data) {
+		en=data;
+		this.uiLabels=data;
+	}.bind(this));
   }
 }
 </script>

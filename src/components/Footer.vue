@@ -3,7 +3,8 @@
     name: 'Footer',
     props: [
       'currentOrder',
-      'orderTotal'
+      'orderTotal',
+	  'totalProperty'
     ],
     methods: {
       removeItem: function(itemIndex) {
@@ -37,7 +38,7 @@
     </div>
   
     <div class="total">
-      <span>TOTAL</span>
+      <span>{{totalProperty}}</span>
       <p class="totalValue">
         {{ formatTotal(orderTotal[0]) }} €
       </p>
