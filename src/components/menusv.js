@@ -2,7 +2,7 @@
 
 var menuSV = {
   burgers: {
-    beefSV: [
+    nötkott: [
       {
       title: 'Dubbelburgare',
       imgSrc: 'beef1.png',
@@ -39,7 +39,7 @@ var menuSV = {
       ingredients:['Kaiser Roll', 'Nötkött', 'Ost', 'Sallad']
     }
     ],
-  chickenSV: [
+  kyckling: [
     {
       title: 'Kycklingmål',
       imgSrc:'chicken1.png',
@@ -76,7 +76,7 @@ var menuSV = {
       ingredients: ['Kaiser Roll', 'Kyckling', 'Sallad', 'Majonnäs', 'BBQ']
     }
   ],
-  fishSV: [
+  fisk: [
     {
       title: 'Fiskburgare',
       imgSrc:'fish1.png',
@@ -99,7 +99,7 @@ var menuSV = {
       ingredients:['Kaiser Roll','Fiskburgare','Ost', 'Tomater']
     }
   ],
-  vegetarianSV: [
+  vegetariska: [
     {
       title: 'Veggiemål',
       imgSrc:'veggie1.png',
@@ -131,7 +131,7 @@ var menuSV = {
   ]
   },
   drinks: {
-    waterSV: [
+    vatten: [
       {
         title: 'Evian',
         imgSrc:'evian.png',
@@ -153,7 +153,7 @@ var menuSV = {
         price: 1.00
       }
     ],
-    sodasSV: [
+    läsk: [
       {
         title: 'Cola',
         imgSrc:'coke.png',
@@ -180,7 +180,7 @@ var menuSV = {
         price: 1.00
       }
     ],
-    beersSV: [
+    öl: [
       {
         title: 'Norrlands',
         imgSrc:'norrlands.png',
@@ -209,7 +209,7 @@ var menuSV = {
     ]
   },
   sides: {
-    friesSV: [
+    tillbehör: [
       {
         title: 'Chili cheese',
         imgSrc:'chillicheese.png',
@@ -236,7 +236,7 @@ var menuSV = {
         price: 1.00
       }
     ],
-    saucesSV: [
+    såser: [
       {
         title: 'BBQ',
         imgSrc:'bbq.png',
@@ -263,7 +263,7 @@ var menuSV = {
         price: 0.50
       }
     ],
-    shakesSV: [
+    shakes: [
       {
         title: 'Choklad',
         imgSrc:'choco.png',
