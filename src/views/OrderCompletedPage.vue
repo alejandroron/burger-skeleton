@@ -32,7 +32,7 @@
 	    this.Labels=data;
 		en=data;
 		console.log(this.Labels["start"]);
-		OrderCompletedPage.style.display = 'block'
+		//OrderCompletedPage.style.display = 'block'
 		
 	}.bind(this));
   }
@@ -40,9 +40,6 @@
 </script>
 
 <style>
-  #OrderCompletedPage{
-    display: none;
-  }
   .image {
     display: block;
     margin-left: auto;
