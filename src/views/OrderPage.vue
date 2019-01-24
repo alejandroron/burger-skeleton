@@ -159,7 +159,7 @@ export default {
 		if(data["btnPay"].localeCompare("PAY")!=0){		    
 			vmenu=menuSV;
 			this.menu=menuSV;
-			console.log(this.menu["burgers"]["beef"][0]["title"]);
+			//console.log(this.menu["burgers"]["beef"][0]["title"]);
 		}else{
 			vmenu=menuEN;
 			this.menu=menuEN;

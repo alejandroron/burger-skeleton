@@ -1,6 +1,6 @@
 'use strict';
 
-var customBurgerMenu = {
+var customBurgerMenuSV = {
   buns: {
     name: "BRÖD",
     children: [
@@ -43,4 +43,4 @@ var customBurgerMenu = {
   }
 }
 
-export default customBurgerMenu;
+export default customBurgerMenuSV;

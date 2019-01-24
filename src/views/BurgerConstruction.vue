@@ -31,12 +31,14 @@
 import Navbar from '@/components/Navbar.vue';
 import AccordianMenu from '@/components/AccordianMenu.vue';
 import Footer from '@/components/Footer.vue';
-import customBurgerMenu from '@/components/customBurgerMenu.js';
+import customBurgerMenuEN from '@/components/customBurgerMenu_en.js';
+import customBurgerMenuSV from '@/components/customBurgerMenu_sv.js';
+
 
 var runningTotal = [ 0.00 ];
 var runningOrder = [];
 var en=require("../../data/ui_en.json");
-
+var customBurgerMenu=customBurgerMenuEN;
 export default {
   name: 'BurgerConstruction',
   components: {
@@ -149,6 +151,14 @@ export default {
      this.$store.state.socket.on('label',function(data) {
 		en=data;
 		this.uiLabels=data;
+		if(data["btnPay"].localeCompare("PAY")!=0){		    
+			customBurgerMenu=customBurgerMenuSV;
+			this.menuData=customBurgerMenuSV;
+			
+		}else{
+			customBurgerMenu=customBurgerMenuEN;
+			this.menuData=customBurgerMenuEN;
+		}
 	}.bind(this));
   }
 }
