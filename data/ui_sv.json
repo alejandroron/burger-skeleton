@@ -1,5 +1,5 @@
 {
-  "titleStartPage" :"EATING LOCATIONSWEDISH",
+  "titleStartPage" :"Var vill ni äta?",
   "start" : "Börja om",
   "titleCreateYourMenu" : "Skapa din meny",
   "btnPersonalizedBurger" : "Skapa din egen hamburgare!",
@@ -14,6 +14,6 @@
   "btnMainPage" : "Beställningar",
   "titleCustomBurger" : "Anpassad burgare",
   "btnFinishBurger" : "Färdig",
-  "btnNewOrder" : "START A NEW ORDERSWEDISH",
-  "lblOrderCompleted" : "Order Completed!SWEDISH"
+  "btnNewOrder" : "Påbörja ny beställning",
+  "lblOrderCompleted" : "Beställning lagd!"
 }
