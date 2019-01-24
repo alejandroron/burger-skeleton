@@ -9,7 +9,7 @@
         </div> 
   
       <div class="title">
-        EATING LOCATION
+         {{uiLabels.titleStartPage}}
       </div>
   
       <div class="buttons">

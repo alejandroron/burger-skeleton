@@ -1,9 +1,10 @@
 <script>
-  import menu from '@/components/menu.js';
+   
   var ownBurger=false;
   export default {
     name: 'Tabs',
 	props: [
+	  'menu',
 	  'uiLabels',
       'BurgerTabTextProperty',
 	  'DrinksTabTextProperty',
@@ -13,10 +14,7 @@
     data: function() {
       return {
         activetab: 'burgers',
-        burgers: menu.burgers,
-        drinks: menu.drinks,
-        sides: menu.sides,
-		createOwnBurger: ownBurger
+        createOwnBurger: ownBurger
       }
     },
 	
@@ -54,7 +52,7 @@
             <p>{{CreateBurgerTextProperty}}</p>
           </div>
         </a> 
-        <div v-for="(burgerItems, burgerType) in burgers" :key="burgerType">
+        <div v-for="(burgerItems, burgerType) in menu.burgers" :key="burgerType">
           <br>
           <div class="grid-container">
             <div class="categoryName">{{ burgerType }}</div>
@@ -72,7 +70,7 @@
       </div>
   
       <div class="contentItem" id="drinksContent" v-if="activetab === 'drinks'">
-        <div v-for="(drinkItems, drinkType) in drinks" :key="drinkType">
+        <div v-for="(drinkItems, drinkType) in menu.drinks" :key="drinkType">
           <br>
           <div class="grid-container">
             <div class="categoryName">{{ drinkType }}</div>
@@ -88,7 +86,7 @@
       </div>
   
       <div class="contentItem" id="sidesContent" v-if="activetab === 'sides'">
-        <div v-for="(sideItems, sideType) in sides" :key="sideType">
+        <div v-for="(sideItems, sideType) in menu.sides" :key="sideType">
           <br>
           <div class="grid-container">
             <div class="categoryName">{{ sideType }}</div>

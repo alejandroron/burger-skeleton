@@ -1,10 +1,10 @@
 <template>
-  <div class="">
+  <div id="OrderCompletedPage">
     <img src="@/assets/Completed.png" class="image">
-    <div id="finishMessage">{{uiLabels.lblOrderCompleted}}</div>
+    <div id="finishMessage">{{Labels.lblOrderCompleted}}</div>
     <a :href='this.staringPage'>
       <div v-on:click="reload" class="buttonFinish">
-        <p>{{uiLabels.btnNewOrder}}</p>
+        <p>{{Labels.btnNewOrder}}</p>
       </div>
     </a>
   </div>
@@ -19,7 +19,7 @@
     data() {
       return {
         staringPage: staringPage,
-		uiLabels: en
+		Labels: en
       }
     },
     methods: {
@@ -29,14 +29,20 @@
     },
 	created: function(){
      this.$store.state.socket.on('label',function(data) {
+	    this.Labels=data;
 		en=data;
-		this.uiLabels=data;
+		console.log(this.Labels["start"]);
+		OrderCompletedPage.style.display = 'block'
+		
 	}.bind(this));
   }
   }
 </script>
 
 <style>
+  #OrderCompletedPage{
+    display: none;
+  }
   .image {
     display: block;
     margin-left: auto;

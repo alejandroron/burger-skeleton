@@ -11,6 +11,7 @@
       :nextAddressProperty='"./#/OrderSummary/" + convertOrdersToString()'
       :nextTextProperty='uiLabels.btnGoSummary' />
     <Tabs
+	  :menu='menu'
 	  :uiLabels="uiLabels"
 	  :BurgerTabTextProperty='"tbBurgers"'
 	  :DrinksTabTextProperty='"tbDrinks"'
@@ -32,7 +33,9 @@
 import Navbar from '@/components/Navbar.vue';
 import Tabs from '@/components/Tab.vue';
 import Footer from '@/components/Footer.vue';
-
+import menuEN from '@/components/menuen.js';
+import menuSV from '@/components/menusv.js';
+ 
 // wanted to do something like this to utilize the url bar
 //var runningTotal = passedTotal();
 //var runningOrder = passedOrder();
@@ -43,7 +46,7 @@ var runningPlace = "";
 
 var anyCreatedBurger = 0;
 var en=require("../../data/ui_en.json");
-
+var vmenu=menuEN;
 
 export default {
   name: 'OrderPage',
@@ -60,7 +63,8 @@ export default {
 	  place: runningPlace,
 	  createdBurger: anyCreatedBurger,
 	  counter:0,
-	  uiLabels:en
+	  uiLabels:en,
+	  menu:vmenu
 
     }
   },
@@ -152,6 +156,14 @@ export default {
 	this.$store.state.socket.on('label',function(data) {
 		en=data;
 		this.uiLabels=data;
+		if(data["btnPay"].localeCompare("PAY")!=0){		    
+			vmenu=menuSV;
+			this.menu=menuSV;
+			console.log(this.menu["burgers"]["beef"][0]["title"]);
+		}else{
+			vmenu=menuEN;
+			this.menu=menuEN;
+		}
 	}.bind(this));
 	
 }

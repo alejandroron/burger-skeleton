@@ -60,7 +60,7 @@
       },
       placeOrder: function() {
         // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-		console.log(this.order);
+		console.log("placeorder");
 		this.$store.state.socket.emit('label',this.uiLabels);
 		
         this.$store.state.socket.emit('order', this.order);
