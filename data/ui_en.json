@@ -15,5 +15,6 @@
   "titleCustomBurger" : "CUSTOM BURGER",
   "btnFinishBurger" : "FINISH BURGER",
   "btnNewOrder" : "START A NEW ORDER",
-  "lblOrderCompleted" : "Order Completed!"
+  "lblOrderCompleted" : "Order Completed!",
+  "languageProp" : "eng"
 }

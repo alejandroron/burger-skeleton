@@ -8,35 +8,35 @@ var menuSV = {
       imgSrc: 'beef1.png',
       price: 4.00,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Nötkött', 'Ost', 'Sallad', 'Ketchup' ]
+      ingredients: ['Kejsarbröd', 'Nötkött', 'Ost', 'Sallad', 'Ketchup' ]
     },
     {
       title: 'Baconburgare',
       imgSrc: 'beef2.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll', 'Nötkött', 'Bacon']
+      ingredients:['Kejsarbröd', 'Nötkött', 'Bacon']
     },
     {
       title: 'Chiliburgare',
       imgSrc:'beef3.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Nötkött', 'Lök', 'Chili', 'Sallad']
+      ingredients:['Kejsarbröd','Nötkött', 'Lök', 'Chili', 'Sallad']
     },
     {
       title: 'Trippelburgare',
       imgSrc:'beef4.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Nötkött', 'Bacon', 'Ost']
+      ingredients:['Kejsarbröd','Nötkött', 'Bacon', 'Ost']
     },
     {
       title: 'Dubbelmål',
       imgSrc:'beef5.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll', 'Nötkött', 'Ost', 'Sallad']
+      ingredients:['Kejsarbröd', 'Nötkött', 'Ost', 'Sallad']
     }
     ],
   kyckling: [
@@ -45,35 +45,35 @@ var menuSV = {
       imgSrc:'chicken1.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Kyckling', 'Sallad', 'Majonnäs']
+      ingredients: ['Kejsarbröd', 'Kyckling', 'Sallad', 'Majonnäs']
     },
     {
       title: 'Kyckling Fresh',
       imgSrc:'chicken2.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Kyckling', 'Sallad', 'Tomater']
+      ingredients: ['Kejsarbröd', 'Kyckling', 'Sallad', 'Tomater']
     },
     {
       title: 'Friterad kyckling',
       imgSrc:'chicken3.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Kyckling', 'Sallad', 'Majonnäs', 'Tomater']
+      ingredients: ['Kejsarbröd', 'Kyckling', 'Sallad', 'Majonnäs', 'Tomater']
     },
     {
       title: 'Kycklingmål dubbel',
       imgSrc:'chicken4.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Kyckling', 'Sallad', 'Majonnäs']
+      ingredients: ['Kejsarbröd', 'Kyckling', 'Sallad', 'Majonnäs']
     },
     {
       title: 'Grillad kyckling',
       imgSrc:'chicken5.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Kyckling', 'Sallad', 'Majonnäs', 'BBQ']
+      ingredients: ['Kejsarbröd', 'Kyckling', 'Sallad', 'Majonnäs', 'BBQ']
     }
   ],
   fisk: [
@@ -82,21 +82,21 @@ var menuSV = {
       imgSrc:'fish1.png',
       price: 3.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Fiskburgare','Ost','Tomater']
+      ingredients:['Kejsarbröd','Fiskburgare','Ost','Tomater']
     },
     {
       title: 'Fiskmål',
       imgSrc:'fish2.png',
       price: 3.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Fiskburgare','Ost']
+      ingredients:['Kejsarbröd','Fiskburgare','Ost']
     },
     {
       title: 'Storgäddan',
       imgSrc:'fish3.png',
       price: 3.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Fiskburgare','Ost', 'Tomater']
+      ingredients:['Kejsarbröd','Fiskburgare','Ost', 'Tomater']
     }
   ],
   vegetariska: [
@@ -105,28 +105,28 @@ var menuSV = {
       imgSrc:'veggie1.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Tofuburgare','Ost', 'Tomater']
+      ingredients:['Kejsarbröd','Tofuburgare','Ost', 'Tomater']
     },
     {
       title: 'Friterad tofumål',
       imgSrc:'veggie2.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Tofuburgare','Ost']
+      ingredients:['Kejsarbröd','Tofuburgare','Ost']
     },
     {
       title: 'Klassisker',
       imgSrc:'veggie3.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Tofuburgare','Ost', 'Chili']
+      ingredients:['Kejsarbröd','Tofuburgare','Ost', 'Chili']
     },
     {
       title: 'Deli Veg',
       imgSrc:'veggie4.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Tofuburgare','Ost', 'Chili', 'Tomater']
+      ingredients:['Kejsarbröd','Tofuburgare','Ost', 'Chili', 'Tomater']
     }
   ]
   },
