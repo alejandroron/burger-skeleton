@@ -17,6 +17,7 @@
   "btnNewOrder" : "START A NEW ORDER",
   "lblOrderCompleted" : "Order Completed!",
   "languageProp" : "eng",
+  "CustomOrder": "Custom Order",
   "1" : "Double Beef",
   "2" : "Kaiser Roll",
   "3" : "Beef Patty",

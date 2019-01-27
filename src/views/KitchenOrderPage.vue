@@ -11,11 +11,11 @@
           <div class="middle">
             <ul class="ingredientList">
               <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
-                <span id="title">{{ orderItem.item.title }}</span>
+                <span id="title">{{ lenguage[orderItem.item.title] }}</span>
                 <ul>
                   <div v-for="(ingredient, ingredientIndex) in orderItem.item.ingredients" :key="ingredientIndex">
                     <li class="ingredient" v-if="ingredient.quantity>0">
-                      <span>{{ ingredient["name"] }} x {{ ingredient["quantity"] }}</span>
+                      <span>{{ lenguage[ingredient["name"]] }} x {{ ingredient["quantity"] }}</span>
                     </li>
                   </div>
               </ul>
@@ -36,6 +36,9 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
+import uiLabelsEN from '../../data/ui_en.json';
+import uiLabelsSV from '../../data/ui_sv.json';
+
 
 // example orders data
 // { '1':
@@ -60,7 +63,8 @@ export default {
   },
   data () {
     return {
-      orders
+      orders,
+	  lenguage:uiLabelsEN
     }
   },
   created: function () {

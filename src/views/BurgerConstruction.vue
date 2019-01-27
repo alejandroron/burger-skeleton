@@ -131,7 +131,7 @@ export default {
 		
 		}
         var item = {
-          title: 'Custom Order',
+          title: 'CustomOrder',
           imgSrc: "beef1.png",
           price: this.orderTotal[0],
           isBurger: true,
@@ -151,14 +151,14 @@ export default {
      this.$store.state.socket.on('label',function(data) {
 		en=data;
 		this.uiLabels=data;
-		if(data["btnPay"].localeCompare("PAY")!=0){		    
-			customBurgerMenu=customBurgerMenuSV;
-			this.menuData=customBurgerMenuSV;
+		// if(data["btnPay"].localeCompare("PAY")!=0){		    
+			// customBurgerMenu=customBurgerMenuSV;
+			// this.menuData=customBurgerMenuSV;
 			
-		}else{
-			customBurgerMenu=customBurgerMenuEN;
-			this.menuData=customBurgerMenuEN;
-		}
+		// }else{
+			// customBurgerMenu=customBurgerMenuEN;
+			// this.menuData=customBurgerMenuEN;
+		// }
 	}.bind(this));
   }
 }
