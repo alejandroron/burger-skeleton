@@ -11,11 +11,11 @@
           <div class="middle">
             <ul class="ingredientList">
               <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
-                <span id="title">{{ orderItem.item.title }}</span>
+                <span id="title">{{ uiLabels[orderItem.item.title] }}</span>
                 <ul>
                   <div v-for="(ingredient, ingredientIndex) in orderItem.item.ingredients" :key="ingredientIndex">
                     <li class="ingredient" v-if="ingredient.quantity>0">
-                      <span>{{ ingredient["name"] }} x {{ ingredient["quantity"] }}</span>
+                      <span>{{ uiLabels[ingredient["name"]] }} x {{ ingredient["quantity"] }}</span>
                     </li>
                   </div>
               </ul>
@@ -52,6 +52,7 @@ import Navbar from '@/components/Navbar.vue';
 // another reason to hate vue, we have to use an array
 // an object won't auto update >:(
 var orders = [];
+var en=require("../../data/ui_en.json");
 // var ingredientQuantity = this.orderItem.item[index]["item"]["ingredients"][ingredientIndex]["quantity"];
 export default {
   name: 'KitchenOrderPage',
@@ -60,7 +61,8 @@ export default {
   },
   data () {
     return {
-      orders
+      orders,
+      uiLabels: en
     }
   },
   created: function () {
