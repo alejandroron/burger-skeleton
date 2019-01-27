@@ -4,205 +4,205 @@ var menu = {
   burgers: {
     beef: [
       {
-      title: 'Double Beef',
+      title: "1",
       imgSrc: 'beef1.png',
       price: 4.00,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Beef Patty', 'Cheese', 'Lettuce', 'Ketchup' ]
+      ingredients: ["2", "3", "4", "5", "6" ]
     },
     {
-      title: 'Bacon Deli',
+      title: "8",
       imgSrc: 'beef2.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll', 'Beef Patty', 'Bacon']
+      ingredients:["2", "3", "9"]
     },
     {
-      title: 'Chili Burger',
+      title: "10",
       imgSrc:'beef3.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Beef Patty', 'Onions', 'Peppers', 'Lettuce']
+      ingredients:["2","3", "11", "12", "5"]
     },
     {
-      title: 'Big Beef',
+      title: "13",
       imgSrc:'beef4.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Beef Patty', 'Bacon', 'Cheese']
+      ingredients:["2","3", "9", "4"]
     },
     {
-      title: 'Double Meat',
+      title: "15",
       imgSrc:'beef5.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll', 'Beef Patty', 'Cheese', 'Lettuce']
+      ingredients:["2", "3", "4", "5"]
     }
     ],
   chicken: [
     {
-      title: 'Chicken Basic',
+      title: "16",
       imgSrc:'chicken1.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo']
+      ingredients: ["2", "17", "5", "18"]
     },
     {
-      title: 'Chicken Deli',
+      title: "19",
       imgSrc:'chicken2.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Tomato']
+      ingredients: ["2", "17", "5", "20"]
     },
     {
-      title: 'Crispy Chicken',
+      title: "21",
       imgSrc:'chicken3.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo', 'Tomato']
+      ingredients: ["2", "17", "5", "18", "20"]
     },
     {
-      title: 'Large Chicken',
+      title: "22",
       imgSrc:'chicken4.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo']
+      ingredients: ["2", "17", "5", "18"]
     },
     {
-      title: 'Chicken BBQ',
+      title: "23",
       imgSrc:'chicken5.png',
       price: 3.50,
       isBurger: true,
-      ingredients: ['Kaiser Roll', 'Chicken', 'Lettuce', 'Mayo', 'BBQ']
+      ingredients: ["2", "17", "5", "18", "24"]
     }
   ],
   fish: [
     {
-      title: 'Fish Burger',
+      title: "27",
       imgSrc:'fish1.png',
       price: 3.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Fish','Cheese','Tomato']
+      ingredients:["2","25","4","20"]
     },
     {
-      title: 'Integral Fish',
+      title: "28",
       imgSrc:'fish2.png',
       price: 3.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Fish','Cheese']
+      ingredients:["2","25","4"]
     },
     {
-      title: 'Long Fish',
+      title: "29",
       imgSrc:'fish3.png',
       price: 3.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Fish','Cheese', 'Tomato']
+      ingredients:["2","25","4", "20"]
     }
   ],
   vegetarian: [
     {
-      title: 'Classic Veggie',
+      title: "31",
       imgSrc:'veggie1.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Tomato']
+      ingredients:["2","30","4", "20"]
     },
     {
-      title: 'Cripsy Veggie',
+      title: "32",
       imgSrc:'veggie2.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese']
+      ingredients:["2","30","4"]
     },
     {
-      title: 'Typical Veg',
+      title: "33",
       imgSrc:'veggie3.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers']
+      ingredients:["2","30","4", "12"]
     },
     {
-      title: 'Veggie Cool',
+      title: "34",
       imgSrc:'veggie4.png',
       price: 4.00,
       isBurger: true,
-      ingredients:['Kaiser Roll','Vegetarian','Cheese', 'Peppers', 'Tomato']
+      ingredients:["2","30","4", "12", "20"]
     }
   ]
   },
   drinks: {
     water: [
       {
-        title: 'Evian',
+        title: "35",
         imgSrc:'evian.png',
         price: 0.99
       },
       {
-        title: 'Fiji',
+        title: "36",
         imgSrc:'fiji.png',
         price: 1.49
       },
       {
-        title: 'Solan',
+        title: "37",
         imgSrc:'solan.png',
         price: 1.00
       },
       {
-        title: 'Vichy',
+        title: "38",
         imgSrc:'vichy.png',
         price: 1.00
       }
     ],
     sodas: [
       {
-        title: 'Coke',
+        title: "39",
         imgSrc:'coke.png',
         price: 1.00
       },
       {
-        title: 'Coke Zero',
+        title: "40",
         imgSrc:'coke-zero.png',
         price: 0.75
       },
       {
-        title: 'Coke Light',
+        title: "41",
         imgSrc:'coke-light.png',
         price: 0.75
       },
       {
-        title: 'Fanta',
+        title: "42",
         imgSrc:'fanta.png',
         price: 1.00
       },
       {
-        title: 'Sprite',
+        title: "43",
         imgSrc:'sprite.png',
         price: 1.00
       }
     ],
     beers: [
       {
-        title: 'Norrlands',
+        title: "44",
         imgSrc:'norrlands.png',
         price: 2.00
       },
       {
-        title: 'Falcon',
+        title: "45",
         imgSrc:'falcon.png',
         price: 0.99
       },
       {
-        title: 'Heineken',
+        title: "46",
         imgSrc:'heineken.png',
         price: 2.00
       },
       {
-        title: 'Mahou',
+        title: "47",
         imgSrc:'mahou-gf.png',
         price: 2.50
       },
       {
-        title: 'Galicia',
+        title: "48",
         imgSrc:'eg.png',
         price: 2.99
       }
@@ -211,71 +211,71 @@ var menu = {
   sides: {
     fries: [
       {
-        title: 'Chillicheese',
+        title: "49",
         imgSrc:'chillicheese.png',
         price: 1.00
       },
       {
-        title: 'French Fries',
+        title: "50",
         imgSrc:'french-fries.png',
         price: 1.00
       },
       {
-        title: 'Mozzarella',
+        title: "51",
         imgSrc:'mozzarella.png',
         price: 1.00
       },
       {
-        title: 'Onion Rings',
+        title: "52",
         imgSrc:'onion-rings.png',
         price: 1.00
       },
       {
-        title: 'Chicken Wings',
+        title: "53",
         imgSrc:'wings.png',
         price: 1.00
       }
     ],
     sauces: [
       {
-        title: 'BBQ',
+        title: "24",
         imgSrc:'bbq.png',
         price: 0.50
       },
       {
-        title: 'Mango',
+        title: "54",
         imgSrc:'mango.png',
         price: 0.50
       },
       {
-        title: 'Mayo',
+        title: "18",
         imgSrc:'mayo.png',
         price: 0.50
       },
       {
-        title: 'Original',
+        title: "55",
         imgSrc:'original.png',
         price: 0.50
       },
       {
-        title: 'Ranch',
+        title: "56",
         imgSrc:'ranch.png',
         price: 0.50
       }
     ],
     shakes: [
       {
-        title: 'Chocolate',
+        title: "57",
         imgSrc:'choco.png',
         price: 2.50
       },
       {
-        title: 'Orange',
+        title: "58",
         imgSrc:'orange.png',
         price: 2.50
       },
       {
-        title: 'Strawberry',
+        title: "59",
         imgSrc:'strawberry.png',
         price: 2.50
       }

@@ -23,7 +23,12 @@
         this.$emit('addedItemToOrder', item); // talking to order page
       },
       showIngredients: function(ingredients) {
-        return 'Ingredients: \n\n' + ingredients.join('\n');
+		var str='Ingredients: \n\n';
+		var i=0;
+		for(i;i<ingredients.length;i++){
+			str=str+this.uiLabels[ingredients[i]]+'\n';
+		}
+        return str;
       },
 	  switchCreateOwnBurger:function(){
 		console.log("switch");
@@ -60,7 +65,7 @@
               <div class="menuItem" v-for="(item, index1) in burgerItems" :key="index1" @click="addItem(item)">
                 <a :title="showIngredients(item.ingredients)">
                   <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)'></div>
-                  <div class="menuTitle">{{ item.title }}</div>
+                  <div class="menuTitle">{{ uiLabels[item.title] }}</div>
                   <div class="menuPrice">({{ item.price }}€)</div>
                 </a>
               </div>
@@ -77,7 +82,7 @@
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index) in drinkItems" :key="index" @click="addItem(item)">
                 <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)'></div>
-                <div class="menuTitle">{{ item.title }}</div>
+                <div class="menuTitle">{{ uiLabels[item.title] }}</div>
                 <div class="menuPrice">({{ item.price }}€)</div>
               </div>
             </div>
@@ -93,7 +98,7 @@
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index) in sideItems" :key="index" @click="addItem(item)">
                 <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)'></div>
-                <div class="menuTitle">{{ item.title }}</div>
+                <div class="menuTitle">{{ uiLabels[item.title] }}</div>
                 <div class="menuPrice">({{ item.price }}€)</div>
               </div>
             </div>

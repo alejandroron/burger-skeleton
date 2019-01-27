@@ -140,14 +140,14 @@
         <div class="top">
           <!-- <button id="delete" v-on:click="deleteItem(index)"> <img src="@/assets/X.png"></button> -->
           <div id="delete" v-on:click="deleteItem(index)"><img src="@/assets/redX.png"></div>
-          <h2 id="name">{{ item.item.title }}</h2>
+          <h2 id="name">{{ uiLabels[item.item.title] }}</h2>
         </div>
 
         <div class="middle">
           <div v-if="item.item.isBurger">
             <ul class="ingredientList">
               <li class="ingredient" v-for="(ingredient, indexIngredient) in item.item.ingredients" :key="indexIngredient">
-                <span>{{ ingredient["name"] }}: {{ ingredient["price"].toFixed(2) }}</span>
+                <span>{{ uiLabels[ingredient["name"]] }}: {{ ingredient["price"].toFixed(2) }}</span>
                 <div class="ingredientInfo">
                   <button class="minus" v-on:click="decrementItem(index,indexIngredient)">
                     <img src="@/assets/minus.png">

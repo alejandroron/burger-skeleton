@@ -22,6 +22,7 @@
       @changeview="$emit('changeview','BurgerConstruction')" />
 
     <Footer
+	:uiLabels="uiLabels"
 	:totalProperty='uiLabels.lblTotal'
     :currentOrder='currentOrder'
     :orderTotal='orderTotal'
@@ -33,8 +34,8 @@
 import Navbar from '@/components/Navbar.vue';
 import Tabs from '@/components/Tab.vue';
 import Footer from '@/components/Footer.vue';
-import menuEN from '@/components/menuen.js';
-import menuSV from '@/components/menusv.js';
+import menuEN from '@/components/menu.js';
+//import menuSV from '@/components/menusv.js';
  
 // wanted to do something like this to utilize the url bar
 //var runningTotal = passedTotal();
@@ -153,18 +154,18 @@ export default {
 		runningPlace=this.passedPlace;
 		this.place=this.passedPlace;
 	}.bind(this));
-	this.$store.state.socket.on('label',function(data) {
-		en=data;
-		this.uiLabels=data;
-		if(data["btnPay"].localeCompare("PAY")!=0){		    
-			vmenu=menuSV;
-			this.menu=menuSV;
+	 this.$store.state.socket.on('label',function(data) {
+		 en=data;
+		 this.uiLabels=data;
+		// if(data["btnPay"].localeCompare("PAY")!=0){		    
+			// vmenu=menuSV;
+			// this.menu=menuSV;
 			//console.log(this.menu["burgers"]["beef"][0]["title"]);
-		}else{
-			vmenu=menuEN;
-			this.menu=menuEN;
-		}
-	}.bind(this));
+		// }else{
+			// vmenu=menuEN;
+			// this.menu=menuEN;
+		// }
+	 }.bind(this));
 	
 }
 
