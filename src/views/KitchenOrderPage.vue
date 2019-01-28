@@ -36,8 +36,6 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
-import uiLabelsEN from '../../data/ui_en.json';
-import uiLabelsSV from '../../data/ui_sv.json';
 
 
 // example orders data

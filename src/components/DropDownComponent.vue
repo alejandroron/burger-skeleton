@@ -1,7 +1,7 @@
 <template>
   <li :class="[hasChildren ? 'folder' : 'file']">
     <label :class="{'open': open}" @click="toggle">
-        {{ model.name }}
+        {{ uiLabels[model.name] }}
         
         <div class="numbers" v-if="!hasChildren">
           <div class = "minuses" v-if="counter!=0">
@@ -24,16 +24,19 @@
 </template>
 
 <script>
+  var en=require("../../data/ui_en.json");
+
   export default {
     name: "DropDownComponent",
     props: {
-      currentOrder: Array,
+	  currentOrder: Array,
       model: Object,
       deccount: String
     },
     data: function() {
       return {
-        open: false,
+	    uiLabels:en,
+	    open: false,
         counter: 0
       };
     },
@@ -60,7 +63,23 @@
         this.counter++;
         ingredient["quantity"] = this.counter;
       }
-    }
+    },
+	created: function(){
+     this.$store.state.socket.on('label',function(data) {
+		en=data;
+		this.uiLabels=data;
+		// if(data["btnPay"].localeCompare("PAY")!=0){		    
+			// customBurgerMenu=customBurgerMenuSV;
+			// this.menuData=customBurgerMenuSV;
+			
+		// }else{
+			// customBurgerMenu=customBurgerMenuEN;
+			// this.menuData=customBurgerMenuEN;
+		// }
+
+	}.bind(this));
+  
+  }
   }
 </script>
 

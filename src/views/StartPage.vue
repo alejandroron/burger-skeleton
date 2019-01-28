@@ -83,7 +83,7 @@
 		},
 	  changeLenguageToSwedish: function() {
 		en=require("../../data/ui_sv.json");
-	    this.uiLabels=require("../../data/ui_sv.json");
+	    this.uiLabels=en;
 
 		}
 

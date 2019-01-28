@@ -14,12 +14,14 @@
       :customizedPrice='orderTotal'
 	  @CustomOrder="finishCreatedBurger"/>
     <AccordianMenu
+	  :uiLabels='uiLabels'
 	  :currentOrder="currentOrder"
       :menuData="menuData"
       :decitem = "decitem"
       @addIngredientToBurger="addIngredient"
       @deleteIngredientFromBurger="removeItembyname"/>
     <Footer
+	  :uiLabels='uiLabels'
 	  :totalProperty='uiLabels.lblTotal'
       :currentOrder='currentOrder'
       :orderTotal='orderTotal'

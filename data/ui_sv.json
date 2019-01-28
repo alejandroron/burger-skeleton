@@ -74,7 +74,7 @@
   "56": "Ranch",
   "57": "Choklad",
   "58": "Apelsin",
-  "59": "Jordgubbe"  
+  "59": "Jordgubbe",  
   "60": "Kaiser Roll",
   "61": "Onion Roll",
   "62": "Potato Roll",
@@ -93,5 +93,9 @@
   "75": "Ketchup",
   "76": "Mustard",
   "77": "BQQ Sauce",
-  "78": "Mayo" 
+  "78": "Mayo",
+  "BUNS": "bröd",
+  "MEAT": "kött",
+  "INGREDIENTS": "ingredienser",
+  "SAUCES": "såser"
 }
