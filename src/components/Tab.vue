@@ -60,7 +60,7 @@
         <div v-for="(burgerItems, burgerType) in menu.burgers" :key="burgerType">
           <br>
           <div class="grid-container">
-            <div class="categoryName">{{ burgerType }}</div>
+            <div class="categoryName">{{ uiLabels[burgerType] }}</div>
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index1) in burgerItems" :key="index1" @click="addItem(item)">
                 <a :title="showIngredients(item.ingredients)">
@@ -78,7 +78,7 @@
         <div v-for="(drinkItems, drinkType) in menu.drinks" :key="drinkType">
           <br>
           <div class="grid-container">
-            <div class="categoryName">{{ drinkType }}</div>
+            <div class="categoryName">{{ uiLabels[drinkType] }}</div>
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index) in drinkItems" :key="index" @click="addItem(item)">
                 <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)'></div>
@@ -94,7 +94,7 @@
         <div v-for="(sideItems, sideType) in menu.sides" :key="sideType">
           <br>
           <div class="grid-container">
-            <div class="categoryName">{{ sideType }}</div>
+            <div class="categoryName">{{ uiLabels[sideType] }}</div>
             <div class="scrollable">
               <div class="menuItem" v-for="(item, index) in sideItems" :key="index" @click="addItem(item)">
                 <div class="menuPic"><img :src='require("@/assets/Food/" + item.imgSrc)'></div>
