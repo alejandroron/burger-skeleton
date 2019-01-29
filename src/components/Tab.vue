@@ -1,15 +1,14 @@
 <script>
-   
-  var ownBurger=false;
+  var ownBurger = false;
   export default {
     name: 'Tabs',
-	props: [
-	  'menu',
-	  'uiLabels',
+    props: [
+      'menu',
+      'uiLabels',
       'BurgerTabTextProperty',
-	  'DrinksTabTextProperty',
-	  'SidesTabTextProperty',
-	  'CreateBurgerTextProperty'
+      'DrinksTabTextProperty',
+      'SidesTabTextProperty',
+      'CreateBurgerTextProperty'
     ],
     data: function() {
       return {
@@ -17,27 +16,27 @@
         createOwnBurger: ownBurger
       }
     },
-	
+  
     methods: {
       addItem: function(item) {
         this.$emit('addedItemToOrder', item); // talking to order page
       },
       showIngredients: function(ingredients) {
-		var str='Ingredients: \n\n';
-		var i=0;
-		for(i;i<ingredients.length;i++){
-			str=str+this.uiLabels[ingredients[i]]+'\n';
-		}
+        var str = 'Ingredients: \n\n';
+        var i = 0;
+        for (i; i < ingredients.length; i++) {
+          str = str + this.uiLabels[ingredients[i]] + '\n';
+        }
         return str;
       },
-	  switchCreateOwnBurger:function(){
-		console.log("switch");
-		this.$emit('createOwnBurger');
-		//this.$store.state.socket.emit('ini');
-		this.$store.state.socket.emit('label',this.uiLabels);
-	  }
+      switchCreateOwnBurger: function() {
+        console.log("switch");
+        this.$emit('createOwnBurger');
+        //this.$store.state.socket.emit('ini');
+        this.$store.state.socket.emit('label', this.uiLabels);
+      }
     }
-	
+  
   }
 </script>
 
@@ -52,11 +51,11 @@
   
     <div class="content">
       <div class="contentItem" id="burgersContent" v-if="activetab === 'burgers'">
-         <a href="./#/BurgerConstruction">
+        <a href="./#/BurgerConstruction">
           <div class="personalisedBurger" @click="switchCreateOwnBurger()">
             <p>{{CreateBurgerTextProperty}}</p>
           </div>
-        </a> 
+        </a>
         <div v-for="(burgerItems, burgerType) in menu.burgers" :key="burgerType">
           <br>
           <div class="grid-container">
@@ -177,18 +176,19 @@
     border-radius: 10px;
     padding-left: 15%;
     padding-right: 15%;
-
+    /* Visual properties */
     color: white;
     font-size: 40px;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     line-height: 150px;
+    filter: drop-shadow(0px 0px 3px #000);
   }
   
   .personalisedBurger:hover {
     cursor: pointer;
-    box-shadow: 0px 0px 0px 1px white inset;
+    filter: drop-shadow(0px 0px 5px #000);
   }
   
   .personalisedBurger:active {
@@ -233,8 +233,8 @@
   .menuItem:hover {
     cursor: pointer;
     /* This brings problems in mobile devices
-    box-shadow: 0px 0px 0px 1px white inset;
-    border-radius: 10px; */
+      box-shadow: 0px 0px 0px 1px white inset;
+      border-radius: 10px; */
   }
   
   .menuItem:active {
@@ -277,10 +277,11 @@
     text-transform: uppercase;
   }
   
+  
   /* Queries */
   @media only screen and (max-width: 730px) {
     .flaps {
-    height: 40px;
+      height: 40px;
     }
     .flap {
       /* Visual properties */
@@ -288,8 +289,8 @@
       width: 100px;
       margin-top: 72.5px;
       /* Text inside*/
-      font-size: 15px;
-      line-height: 25px;
+      font-size: 12px;
+      line-height: 22px;
     }
     .content {
       margin-top: 52.50px;

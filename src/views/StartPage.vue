@@ -102,7 +102,6 @@
     text-decoration: none;
   }
 
-
    .flags {
     margin-top: 10px;
     margin-left: 5px;
@@ -110,8 +109,12 @@
   }
 
   .flags img {
-      width: 110px;
-      height: 87px;
+    width: 110px;
+    height: 87px;
+  }
+
+  .flags img:hover {
+    cursor: pointer;
   }
 
   .title {
@@ -134,12 +137,6 @@
     align-items: center;
     justify-content: center;
   }
-
-
-  .dine_in:hover {
-    cursor: pointer;
-  }
-
 
   /*    Responsiveness*/
   @media screen and (max-width: 760px),
