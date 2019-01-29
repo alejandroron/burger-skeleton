@@ -144,7 +144,7 @@
     .button {
       width: 50px;
       height: 35px;
-      font-size: 10px;
+      font-size: 11px;
       display: inline-block;
       vertical-align: middle;
       line-height: 14px;
