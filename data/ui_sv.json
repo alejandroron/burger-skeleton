@@ -1,4 +1,12 @@
-{
+{ 
+  "dine in": "dine inSV",
+  "take away": "take awaysv",
+  "started": "startedSV",
+  "not started": "not startedSV",
+  "finished": "finished",
+  "started": "started",
+  "Order": "OrderSV",
+  "Orders_state": "Orders stateSV",
   "beef": "NÖTKÖTT",
   "chicken": "KYCKLING",
   "fish": "FISK",

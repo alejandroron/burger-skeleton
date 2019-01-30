@@ -1,11 +1,16 @@
 <template>
   <div>
-    <Navbar :titleProperty='"Orders state"' />
+    <Navbar :titleProperty='uiLabels["Orders_state"]' />
+	<div class="flags">
+          <img src="@/assets/sweden.png" v-on:click="changeLenguageToSwedish">
+          <img src="@/assets/uk.png" v-on:click="changeLenguageToEnglish">
+    </div>
+
 
     <div class="boxes">
         <div class="item" v-for="(object, index) in orders[0]" :key="index">
           <div class="top">
-            <h2 id="name">Order #{{ index }}</h2>
+            <h2 id="name">{{uiLabels["Order"]}} #{{ index }}</h2>
           </div>
 
           <div class="middle">
@@ -23,10 +28,10 @@
           </ul>
         </div>
         <div class="bottom" id="orderFinished" v-if="object.status==='finished'" v-on:click="changeStatus(object)">
-          {{ object.status }}<br> {{ object.place }}
+          {{ uiLabels[object.status] }}<br> {{ uiLabels[object.place] }}
         </div>
         <div class="bottom" v-else v-on:click="changeStatus(object)">
-          {{ object.status }}<br> {{ object.place }}
+          {{ uiLabels[object.status] }}<br> {{ uiLabels[object.place] }}
         </div>
       </div>
     </div>
@@ -94,7 +99,15 @@ export default {
       {
         object.status = 'finished';
       }
-    }
+    },
+  changeLenguageToEnglish: function() {
+	  en=require("../../data/ui_en.json");
+      this.uiLabels=require("../../data/ui_en.json");
+	},
+  changeLenguageToSwedish: function() {
+	  en=require("../../data/ui_sv.json");
+	  this.uiLabels=en;
+	}
   }
 }
 </script>
@@ -211,4 +224,20 @@ cursor: pointer;
   font-size: 23px;
   margin: 0 8px;
 }
+.flags {
+  margin-top: 10px;
+  margin-left: 5px;
+  align-self: flex-end;
+ 
+}
+
+.flags img {
+  width: 110px;
+  height: 87px;
+}
+
+.flags img:hover {
+  cursor: pointer;
+}
+
 </style>
