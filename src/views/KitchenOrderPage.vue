@@ -7,13 +7,13 @@
     </div>
 
 
-    <div class="boxes">
-        <div class="item" v-for="(object, index) in orders[0]" :key="index">
-          <div class="top">
+    <div class="boxes2">
+        <div class="item2" v-for="(object, index) in orders[0]" :key="index">
+          <div class="top2">
             <h2 id="name">{{uiLabels["Order"]}} #{{ index }}</h2>
           </div>
 
-          <div class="middle">
+          <div class="middle2">
             <ul class="ingredientList">
               <li class="itemsInOrder" v-for="(orderItem, index) in object.order" :key="index">
                 <span id="title">{{ uiLabels[orderItem.item.title] }}</span>
@@ -27,10 +27,10 @@
             </li>
           </ul>
         </div>
-        <div class="bottom" id="orderFinished" v-if="object.status==='finished'" v-on:click="changeStatus(object)">
+        <div class="bottom2" id="orderFinished" v-if="object.status==='finished'" v-on:click="changeStatus(object)">
           {{ uiLabels[object.status] }}<br> {{ uiLabels[object.place] }}
         </div>
-        <div class="bottom" v-else v-on:click="changeStatus(object)">
+        <div class="bottom2" v-else v-on:click="changeStatus(object)">
           {{ uiLabels[object.status] }}<br> {{ uiLabels[object.place] }}
         </div>
       </div>
@@ -41,8 +41,6 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue';
-
-
 // example orders data
 // { '1':
 //    { order: [ {
@@ -120,7 +118,7 @@ h1, h2, h3, h4, h5, p {
 
 body {
   margin: 0;
-  background-color: #2D4739;
+  background-color: white;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -134,9 +132,7 @@ h3 {
   font-weight: normal;
 }
 
-.boxes {
-  margin-top: 90px;
-  margin-bottom: 100px;
+.boxes2 {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
@@ -147,30 +143,31 @@ h3 {
 }
 /* Boxes is the group of boxes, formed by items */
 
-.item {
+.item2 {
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  background-color: #FFA801;
+  background-color: white;
 }
 
 /* Items are divided into three parts: top, middle and bottom */
-.item .top {
+.item2 .top2 {
   display: flex;
-  height: 58px;
-  border-radius: 5px 5px 0px 0px;
-  background-color: #EF9D00;
+  height: 30px;
+  background-color: black;
+  border-radius: 0px;
 }
 
 #name {
   color: white;
+  position: unset;
   font-size: 20px;
   text-align: center;
-  line-height: 58px;
+  line-height: 30px;
   margin: 0 auto;
 }
 
 #title{
-  color: white;
+  color: black;
   font-size: 20px;
   text-align: center;
   font-weight: bold;
@@ -178,27 +175,34 @@ h3 {
   margin: 0 auto;
 }
 
-.item .middle {
+.item2 .middle2 {
   overflow: auto;
-  min-height: 187px;
+  max-height: 187px;
   /* height: auto; */
-  padding: 15px 10px;
+  padding: 5px 5px;
+  border-radius: 0px;
 }
 
-.item .bottom {
+.item2 .bottom2 {
   height: auto;
-  border-radius: 0px 0px 5px 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  border-radius: 100px;
+  background-color: #05C46B;
+  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.5));
+  /* Text */
   color: white;
-  line-height: 38px;
-  font-size: 30px;
+  line-height: 25px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
-  background-color: #EF9D00;
+
 }
 #orderFinished {
   color: 	#008000;
 }
-.item .bottom:hover {
+.item2 .bottom:hover {
 cursor: pointer;
 }
 
@@ -228,7 +232,6 @@ cursor: pointer;
   margin-top: 70px;
   margin-left: 5px;
   align-self: flex-end;
- 
 }
 
 .flags img {
