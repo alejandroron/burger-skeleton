@@ -225,7 +225,7 @@ cursor: pointer;
   margin: 0 8px;
 }
 .flags {
-  margin-top: 10px;
+  margin-top: 70px;
   margin-left: 5px;
   align-self: flex-end;
  

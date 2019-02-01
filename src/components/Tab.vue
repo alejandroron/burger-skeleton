@@ -183,7 +183,7 @@
     text-align: center;
     text-transform: uppercase;
     line-height: 150px;
-    filter: drop-shadow(0px 0px 3px #000);
+    filter: drop-shadow(0px 0px 2px #000);
   }
   
   .personalisedBurger:hover {
